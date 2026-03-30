@@ -208,4 +208,60 @@
     "expected_score_max": -1.4,
     "note": "Senti4SD train3098itemPOLARITY.csv t190, verified-from-literature"
   }
+,
+  {
+    "id": "gold-en-github-pos-002",
+    "text": "good work.",
+    "language": "en",
+    "expected_profanity": [],
+    "expected_frustration": [],
+    "expected_positive": ["good work"],
+    "expected_score_min": 0.7,
+    "expected_score_max": 1.1,
+    "note": "GitHub gold standard figshare 11604597 (ID 1723382), verified-from-literature"
+  },
+  {
+    "id": "gold-en-github-pos-003",
+    "text": "Makes sense.  Thanks for clarifying.",
+    "language": "en",
+    "expected_profanity": [],
+    "expected_frustration": [],
+    "expected_positive": ["makes sense", "thanks"],
+    "expected_score_min": 0.6,
+    "expected_score_max": 1.4,
+    "note": "GitHub gold standard figshare 11604597 (ID 2501973), verified-from-literature"
+  },
+  {
+    "id": "gold-en-github-pos-004",
+    "text": "Ah no problem, i actually didnt see Your comment before edit ;) It is ofcourse not a complain comment, i wanted to explain how much of dual-spec is supported now, and i look forward for more, without expecting You to rush with it and wishing You good luck",
+    "language": "en",
+    "expected_profanity": [],
+    "expected_frustration": [],
+    "expected_positive": ["good luck"],
+    "expected_score_min": 0.4,
+    "expected_score_max": 1.0,
+    "note": "GitHub gold standard figshare 11604597 (ID 48844), verified-from-literature"
+  },
+  {
+    "id": "gold-en-github-neg-003",
+    "text": "looks weird ",
+    "language": "en",
+    "expected_profanity": [],
+    "expected_frustration": ["looks weird"],
+    "expected_positive": [],
+    "expected_score_min": -1.1,
+    "expected_score_max": -0.4,
+    "note": "GitHub gold standard figshare 11604597 (ID 422534), verified-from-literature"
+  },
+  {
+    "id": "gold-en-github-neg-004",
+    "text": "I think there is a bug in weapon skills because when i restart the server even i save my char the weapon skills go again to 1 and the mangosd.conf the  maxskill  option doesn't work :S",
+    "language": "en",
+    "expected_profanity": [],
+    "expected_frustration": ["doesn't work"],
+    "expected_positive": [],
+    "expected_score_min": -1.3,
+    "expected_score_max": -0.6,
+    "note": "GitHub gold standard figshare 11604597 (ID 79602), verified-from-literature"
+  }
 ]

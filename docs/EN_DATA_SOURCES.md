@@ -78,6 +78,12 @@ It is intentionally conservative: a source appearing here does not mean its cont
   - `Good catch! Did not think of this. Please revert.`
   - `I'm going to revert this then. I don't like the inconsistency between compilation SDKs.`
   - `This spacing looks weird.`
+- Golden messages promoted in `PROD-684` (GitHub gold standard figshare 11604597):
+  - `good work.` (ID 1723382)
+  - `Makes sense.  Thanks for clarifying.` (ID 2501973)
+  - `Ah no problem, ... wishing You good luck` (ID 48844)
+  - `looks weird ` (ID 422534)
+  - `I think there is a bug ... option doesn't work :S` (ID 79602)
 
 ### 4. Stack Overflow content license reference
 
