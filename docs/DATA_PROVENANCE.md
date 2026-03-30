@@ -77,6 +77,15 @@ Examples:
 - a public GitHub PR comment promoted into a dictionary after review
 - a Stack Overflow snippet promoted into `must_not_match` after review
 
+### `maintainer-approved-common-vocabulary`
+
+Universally common sentiment or profanity expressions explicitly approved by the maintainer when an external citation would add little value and the risk of hallucination is effectively zero.
+
+Examples:
+
+- basic lexicon words explicitly approved in PR review (`good`, `bad`, `bueno`, `malo`)
+- obvious English profanity or emphasis phrases approved in PR review
+
 ### `synthetic-candidate`
 
 Automatically generated candidate data that has not yet been verified.
@@ -96,6 +105,7 @@ Allowed:
 - `verified-real`
 - `verified-from-literature`
 - `reviewed-public-source`
+- `maintainer-approved-common-vocabulary`
 
 Not allowed:
 
@@ -108,6 +118,7 @@ Allowed:
 - `verified-real`
 - `verified-from-literature`
 - carefully reviewed `reviewed-public-source`
+- `maintainer-approved-common-vocabulary` for short obvious expressions only
 
 Not allowed:
 
@@ -173,5 +184,6 @@ At the time of writing, the repo already relies on these approved sources:
 - `docs/PRD.md`
 - Tokamak ADR-001 sections explicitly referenced in PR comments for the imported Spanish seed dictionaries
 - approved golden seed examples from the PRD
+- maintainer approval in PR #1 for basic/common vocabulary and obvious profanity where exact external citation is unnecessary
 
 Synthetic calibration data from Tokamak's generation scripts is explicitly excluded from golden fixtures.
