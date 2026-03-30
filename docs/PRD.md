@@ -139,7 +139,8 @@ public struct SentimentConfig: Sendable {
     public var enableKeywords: Bool = true
     public var enableVADERRules: Bool = true
     public var enableNLTagger: Bool = true   // attenuated ×0.5
-    public var enableCoreML: Bool = false    // requires model in bundle
+    public var enableCoreML: Bool = false
+    public var coreMLModelURL: URL? = nil    // optional explicit model path
 
     /// NLTagger attenuation factor (0.0 to 1.0).
     /// Applied when keywords detect nothing. Default 0.5.
@@ -210,6 +211,7 @@ let session = analyzer.analyzeSession(messages)
 ```swift
 var config = SentimentConfig()
 config.enableCoreML = true
+config.coreMLModelURL = URL(filePath: "/path/to/SentimentKitSentiment.mlpackage")
 config.enableNLTagger = false  // disable if not wanted
 let analyzer = SentimentAnalyzer(config: config)
 ```

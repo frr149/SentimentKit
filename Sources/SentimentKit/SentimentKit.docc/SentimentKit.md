@@ -11,6 +11,7 @@ The package is structured as a layered pipeline:
 - Keyword dictionaries for profanity, frustration, and positive language
 - VADER-inspired adjustment rules for negation, intensity, and conjunctions
 - Optional `NLTagger` fallback when dictionaries find no signal
+- Optional local CoreML model configured through ``SentimentConfig``
 - Optional async hosted scorers that only refine session-level `meanScore`
 
 Use ``SentimentAnalyzer`` as the main entrypoint.

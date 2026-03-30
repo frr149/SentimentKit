@@ -74,6 +74,22 @@ let session = try await analyzer.analyzeSession([
 
 Hosted scorers may replace only `SessionAnalysis.meanScore`. They never invent expressions.
 
+## Use the Optional CoreML Layer
+
+If you generated the multilingual CoreML artifact locally, you can point the analyzer at it explicitly.
+
+```swift
+import SentimentKit
+
+var config = SentimentConfig()
+config.enableCoreML = true
+config.coreMLModelURL = URL(filePath: "/path/to/SentimentKitSentiment.mlpackage")
+
+let analyzer = SentimentAnalyzer(config: config)
+```
+
+The tokenizer directory `SentimentKitSentiment.tokenizer/` must live next to the `.mlpackage`. If either artifact is missing, SentimentKit falls back to the deterministic pipeline.
+
 ## Data Policy
 
 Built-in dictionaries and golden fixtures follow the provenance rules documented in `docs/DATA_PROVENANCE.md` in the repository.

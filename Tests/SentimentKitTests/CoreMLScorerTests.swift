@@ -108,6 +108,54 @@ struct CoreMLScorerTests {
         }
     }
 
+    @Test
+    func localGeneratedModelReturnsNilWhenTokenizerArtifactsAreMissing() throws {
+        guard let sourceModelURL = localGeneratedModelURL() else { return }
+
+        let workingDirectory = FileManager.default.temporaryDirectory
+            .appending(path: UUID().uuidString, directoryHint: .isDirectory)
+        try FileManager.default.createDirectory(at: workingDirectory, withIntermediateDirectories: true)
+        defer { try? FileManager.default.removeItem(at: workingDirectory) }
+
+        let copiedModelURL = workingDirectory.appending(path: sourceModelURL.lastPathComponent, directoryHint: .notDirectory)
+        try FileManager.default.copyItem(at: sourceModelURL, to: copiedModelURL)
+
+        let scorer = CoreMLScorer()
+        let score = scorer.scoreIfAvailable(
+            "Amazing work. This is excellent.",
+            languageCode: "en",
+            modelURL: copiedModelURL
+        )
+
+        #expect(score == nil)
+    }
+
+    @Test
+    func analyzerFallsBackCleanlyWhenExplicitCoreMLURLLacksTokenizerArtifacts() throws {
+        guard let sourceModelURL = localGeneratedModelURL() else { return }
+
+        let workingDirectory = FileManager.default.temporaryDirectory
+            .appending(path: UUID().uuidString, directoryHint: .isDirectory)
+        try FileManager.default.createDirectory(at: workingDirectory, withIntermediateDirectories: true)
+        defer { try? FileManager.default.removeItem(at: workingDirectory) }
+
+        let copiedModelURL = workingDirectory.appending(path: sourceModelURL.lastPathComponent, directoryHint: .notDirectory)
+        try FileManager.default.copyItem(at: sourceModelURL, to: copiedModelURL)
+
+        var config = SentimentConfig()
+        config.enableCoreML = true
+        config.coreMLModelURL = copiedModelURL
+
+        let analyzerWithBrokenCoreML = SentimentAnalyzer(config: config)
+        let analyzerWithoutCoreML = SentimentAnalyzer()
+        let message = "The interaction was pleasant but slightly confusing overall today"
+
+        let withBrokenCoreML = analyzerWithBrokenCoreML.analyze(message)
+        let withoutCoreML = analyzerWithoutCoreML.analyze(message)
+
+        #expect(withBrokenCoreML == withoutCoreML)
+    }
+
     private func localGeneratedModelURL() -> URL? {
         let modelURL = repositoryRoot()
             .appending(path: "Tools/CoreMLConversion/artifacts/SentimentKitSentiment.mlpackage")

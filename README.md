@@ -168,7 +168,26 @@ To compile the generated package with Apple's toolchain:
 
 The generated package is the INT8-quantized `SentimentKitSentiment.mlpackage`. The conversion tooling also leaves an intermediate `SentimentKitSentiment.raw.mlpackage` for inspection, but that artifact is not what the package expects to load by default.
 
-This keeps the SwiftPM package lightweight while preserving a documented path for local model generation.
+You can already wire a locally generated model into the public API:
+
+```swift
+import SentimentKit
+
+var config = SentimentConfig()
+config.enableCoreML = true
+config.coreMLModelURL = URL(filePath: "/path/to/SentimentKitSentiment.mlpackage")
+
+let analyzer = SentimentAnalyzer(config: config)
+```
+
+Current status of distribution:
+
+- there is no hosted model URL yet
+- the package must keep working when the model is absent
+- the generated model must stay next to its tokenizer directory: `SentimentKitSentiment.tokenizer/`
+- if either artifact is missing, SentimentKit falls back to the deterministic pipeline
+
+This keeps the SwiftPM package lightweight while preserving a documented path for local model generation and integration testing before distribution is finalized.
 
 ## Data provenance
 
