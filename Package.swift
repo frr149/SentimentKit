@@ -20,10 +20,7 @@ let package = Package(
         ),
         .testTarget(
             name: "SentimentKitTests",
-            dependencies: ["SentimentKit"],
-            resources: [
-                .copy("Fixtures"),
-            ]
+            dependencies: ["SentimentKit"]
         ),
     ]
 )
