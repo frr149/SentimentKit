@@ -105,7 +105,14 @@ def main() -> None:
     mlmodel.save(str(RAW_OUTPUT_PATH))
 
     print("Applying INT8 weight quantization")
-    quantized_model = cto.coreml.linear_quantize_weights(mlmodel, mode="linear_symmetric")
+    quantization_config = cto.coreml.OptimizationConfig(
+        global_config=cto.coreml.OpLinearQuantizerConfig(
+            mode="linear_symmetric",
+            dtype="int8",
+            granularity="per_channel",
+        )
+    )
+    quantized_model = cto.coreml.linear_quantize_weights(mlmodel, config=quantization_config)
     quantized_model.author = MODEL_AUTHOR
     quantized_model.version = MODEL_VERSION
     quantized_model.short_description = SHORT_DESCRIPTION

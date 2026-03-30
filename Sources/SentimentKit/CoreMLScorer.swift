@@ -32,13 +32,34 @@ struct CoreMLScorer: Sendable {
             throw CoreMLScorerError.missingModel(modelName)
         }
 
-        return try MLModel(contentsOf: url)
+        return try loadModel(at: url)
+    }
+
+    func loadModel(at url: URL) throws -> MLModel {
+        let loadURL: URL
+        switch url.pathExtension {
+        case "mlmodelc":
+            loadURL = url
+        case "mlpackage", "mlmodel":
+            loadURL = try MLModel.compileModel(at: url)
+        default:
+            loadURL = url
+        }
+
+        return try MLModel(contentsOf: loadURL)
     }
 
     func scoreIfAvailable(_ message: String, languageCode: String?, in bundle: Bundle = .module) -> Double? {
+        guard let modelURL = modelURL(in: bundle) else {
+            return nil
+        }
+
+        return scoreIfAvailable(message, languageCode: languageCode, modelURL: modelURL, bundle: bundle)
+    }
+
+    func scoreIfAvailable(_ message: String, languageCode: String?, modelURL: URL, bundle: Bundle = .module) -> Double? {
         let _ = languageCode
-        guard let modelURL = modelURL(in: bundle),
-              let model = try? MLModel(contentsOf: modelURL),
+        guard let model = try? loadModel(at: modelURL),
               let tokenizer = try? loadTokenizer(forModelAt: modelURL, in: bundle),
               let provider = makeFeatureProvider(for: message, tokenizer: tokenizer),
               let prediction = try? model.prediction(from: provider),
