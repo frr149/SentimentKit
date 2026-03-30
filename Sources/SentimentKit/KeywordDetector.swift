@@ -5,6 +5,14 @@ struct KeywordMatches: Sendable, Equatable {
     let frustration: [Expression]
     let positive: [Expression]
     let score: Double
+    let matches: [KeywordMatch]
+}
+
+struct KeywordMatch: Sendable, Equatable {
+    let expression: Expression
+    let score: Double
+    let start: Int
+    let end: Int
 }
 
 struct KeywordDetector: Sendable {
@@ -25,7 +33,7 @@ struct KeywordDetector: Sendable {
                         entry: entry,
                         type: dictionary.type,
                         language: dictionary.language,
-                        tokens: Self.tokenize(entry.expression)
+                        tokens: MessageTokenizer.tokenize(entry.expression).map(\.normalized)
                     )
                 }
             }
@@ -35,13 +43,16 @@ struct KeywordDetector: Sendable {
                 }
 
                 return lhs.tokens.count > rhs.tokens.count
-            }
+        }
     }
 
     func detect(in message: String, language: String? = nil) -> KeywordMatches {
-        let messageTokens = Self.tokenize(message)
+        detect(in: MessageTokenizer.tokenize(message), language: language)
+    }
+
+    func detect(in messageTokens: [MessageToken], language: String? = nil) -> KeywordMatches {
         guard messageTokens.isEmpty == false else {
-            return KeywordMatches(profanity: [], frustration: [], positive: [], score: 0)
+            return KeywordMatches(profanity: [], frustration: [], positive: [], score: 0, matches: [])
         }
 
         let filteredCandidates = candidates.filter { candidate in
@@ -56,6 +67,7 @@ struct KeywordDetector: Sendable {
         var profanity: [(position: Int, expression: Expression)] = []
         var frustration: [(position: Int, expression: Expression)] = []
         var positive: [(position: Int, expression: Expression)] = []
+        var matches: [KeywordMatch] = []
         var score = 0.0
 
         for candidate in filteredCandidates where candidate.tokens.isEmpty == false {
@@ -71,7 +83,7 @@ struct KeywordDetector: Sendable {
                     continue
                 }
 
-                let window = Array(messageTokens[tokenRange])
+                let window = messageTokens[tokenRange].map(\.normalized)
                 guard window == candidate.tokens else {
                     continue
                 }
@@ -80,6 +92,12 @@ struct KeywordDetector: Sendable {
                     text: candidate.entry.expression,
                     type: candidate.type,
                     language: candidate.language
+                )
+                let match = KeywordMatch(
+                    expression: expression,
+                    score: candidate.entry.score,
+                    start: startIndex,
+                    end: startIndex + windowSize - 1
                 )
 
                 switch candidate.type {
@@ -95,6 +113,7 @@ struct KeywordDetector: Sendable {
                     occupiedTokenIndexes.insert(index)
                 }
 
+                matches.append(match)
                 score += candidate.entry.score
             }
         }
@@ -103,22 +122,8 @@ struct KeywordDetector: Sendable {
             profanity: profanity.sorted { $0.position < $1.position }.map(\.expression),
             frustration: frustration.sorted { $0.position < $1.position }.map(\.expression),
             positive: positive.sorted { $0.position < $1.position }.map(\.expression),
-            score: score
+            score: score,
+            matches: matches.sorted { $0.start < $1.start }
         )
-    }
-
-    private static func tokenize(_ text: String) -> [String] {
-        let cleaned = text.unicodeScalars.map { scalar -> Character in
-            if CharacterSet.alphanumerics.contains(scalar) || CharacterSet.whitespacesAndNewlines.contains(scalar) {
-                return Character(scalar)
-            }
-
-            return " "
-        }
-
-        return String(cleaned)
-            .lowercased()
-            .split(whereSeparator: \.isWhitespace)
-            .map(String.init)
     }
 }

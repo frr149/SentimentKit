@@ -89,7 +89,10 @@ public struct ExpressionDictionary: Sendable, Equatable {
         let name = String(parts[0])
         let ext = parts.count == 2 ? String(parts[1]) : "tsv"
 
-        guard let url = bundle.url(forResource: name, withExtension: ext, subdirectory: "dictionaries") else {
+        let url = bundle.url(forResource: name, withExtension: ext, subdirectory: "dictionaries")
+            ?? bundle.url(forResource: name, withExtension: ext)
+
+        guard let url else {
             throw ExpressionDictionaryError.missingResource(resource)
         }
 

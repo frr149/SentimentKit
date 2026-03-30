@@ -1,1 +1,68 @@
-[]
+[
+  {
+    "id": "gold-es-001",
+    "text": "qué coño es esto, no funciona una mierda",
+    "language": "es",
+    "expected_profanity": ["qué coño", "mierda"],
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_score_min": -2.0,
+    "expected_score_max": -1.5,
+    "note": "Two profanity matches, no frustration"
+  },
+  {
+    "id": "gold-en-neutral-001",
+    "text": "delete the temp file and run make test",
+    "language": "en",
+    "expected_profanity": [],
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_score_min": 0.0,
+    "expected_score_max": 0.0,
+    "note": "Neutral developer command"
+  },
+  {
+    "id": "gold-en-negation-001",
+    "text": "this is not good at all",
+    "language": "en",
+    "expected_profanity": [],
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_score_min": -1.0,
+    "expected_score_max": -0.5,
+    "note": "Negation rule: not inverts good"
+  },
+  {
+    "id": "gold-es-frustration-001",
+    "text": "esto es una aberración, chapucero total",
+    "language": "es",
+    "expected_profanity": [],
+    "expected_frustration": ["aberración", "chapucero"],
+    "expected_positive": [],
+    "expected_score_min": -1.5,
+    "expected_score_max": -0.8,
+    "note": "Frustration without profanity"
+  },
+  {
+    "id": "gold-noise-001",
+    "text": "borra el fichero temporal",
+    "language": "es",
+    "expected_profanity": [],
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_score_min": 0.0,
+    "expected_score_max": 0.0,
+    "note": "Command, not profanity"
+  },
+  {
+    "id": "gold-noise-002",
+    "text": "huelga decir que exterminio no es la solución",
+    "language": "es",
+    "expected_profanity": [],
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_score_min": -0.5,
+    "expected_score_max": 0.0,
+    "note": "Neutral technical words should not match"
+  }
+]

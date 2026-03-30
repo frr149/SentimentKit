@@ -70,4 +70,13 @@ struct ExpressionDictionaryTests {
         #expect(dictionary.entries.count == 1)
         #expect(dictionary.entries.first == .init(expression: "awesome", score: 1.0))
     }
+
+    @Test
+    func loadsBundledDictionaryResource() throws {
+        let dictionary = try ExpressionDictionary.bundled(named: "es-profanity.tsv")
+
+        #expect(dictionary.language == "es")
+        #expect(dictionary.type == .profanity)
+        #expect(dictionary.entries.contains { $0.expression == "joder" })
+    }
 }

@@ -13,15 +13,33 @@ public struct SentimentAnalyzer: Sendable {
             return .neutral
         }
 
-        let detector = KeywordDetector(dictionaries: config.additionalDictionaries)
-        let matches = detector.detect(in: message)
+        let tokens = MessageTokenizer.tokenize(message)
+        let detector = KeywordDetector(dictionaries: BuiltInLexicons.dictionaries + config.additionalDictionaries)
+        let matches = detector.detect(in: tokens)
+        let vaderRules = BuiltInLexicons.vaderRules
+        let adjusted: (score: Double, intensity: Double) = config.enableVADERRules
+            ? vaderRules.apply(to: matches.matches, in: message, tokens: tokens)
+            : (matches.score, 0.0)
+        let visibleMatches = config.enableVADERRules
+            ? matches.matches.filter { vaderRules.isNegated($0, tokens: tokens) == false }
+            : matches.matches
+
+        let profanity = visibleMatches
+            .filter { $0.expression.type == .profanity }
+            .map(\.expression)
+        let frustration = visibleMatches
+            .filter { $0.expression.type == .frustration }
+            .map(\.expression)
+        let positive = visibleMatches
+            .filter { $0.expression.type == .positive }
+            .map(\.expression)
 
         return MessageAnalysis(
-            score: matches.score,
-            profanity: matches.profanity,
-            frustration: matches.frustration,
-            positive: matches.positive,
-            intensity: 0,
+            score: max(-2, min(2, adjusted.score)),
+            profanity: profanity,
+            frustration: frustration,
+            positive: positive,
+            intensity: adjusted.intensity,
             language: nil
         )
     }

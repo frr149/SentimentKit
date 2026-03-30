@@ -12,6 +12,16 @@ struct SentimentAnalyzerFoundationTests {
     }
 
     @Test
+    func analyzeUsesBundledSeedDictionariesByDefault() {
+        let analyzer = SentimentAnalyzer()
+
+        let result = analyzer.analyze("qué coño es esto")
+
+        #expect(result.profanity.map(\.text) == ["qué coño"])
+        #expect(result.score < 0)
+    }
+
+    @Test
     func analyzeUsesInjectedKeywordDictionaries() throws {
         let profanity = try ExpressionDictionary(
             language: "es",

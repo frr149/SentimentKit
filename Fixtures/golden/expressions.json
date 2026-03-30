@@ -1,4 +1,36 @@
 {
-  "must_match": [],
-  "must_not_match": []
+  "must_match": [
+    { "text": "joder", "type": "profanity", "language": "es" },
+    { "text": "fuck", "type": "profanity", "language": "en" },
+    { "text": "qué coño", "type": "profanity", "language": "es" },
+    { "text": "mierda", "type": "profanity", "language": "es" },
+    { "text": "aberración", "type": "frustration", "language": "es" },
+    { "text": "chapucero", "type": "frustration", "language": "es" },
+    { "text": "bad", "type": "frustration", "language": "en" },
+    { "text": "malo", "type": "frustration", "language": "es" },
+    { "text": "good", "type": "positive", "language": "en" },
+    { "text": "perfect", "type": "positive", "language": "en" },
+    { "text": "bueno", "type": "positive", "language": "es" },
+    { "text": "never been better", "type": "positive", "language": "en" }
+  ],
+  "must_not_match": [
+    { "text": "borra", "note": "command, not profanity" },
+    { "text": "huelga", "note": "neutral word" },
+    { "text": "exterminio", "note": "technical context" },
+    { "text": "hehco", "note": "typo, not profanity" },
+    { "text": "murió", "note": "technical context" },
+    { "text": "animal", "note": "ambiguous" },
+    { "text": "ok", "note": "neutral acknowledgment" },
+    { "text": "delete", "note": "technical command" },
+    { "text": "kill", "note": "technical command" },
+    { "text": "abort", "note": "technical command" },
+    { "text": "execute", "note": "technical command" },
+    { "text": "dump", "note": "technical command" },
+    { "text": "die", "note": "technical command" },
+    { "text": "crash", "note": "technical term" },
+    { "text": "fatal", "note": "technical term" },
+    { "text": "panic", "note": "technical term" },
+    { "text": "destroy", "note": "technical term" },
+    { "text": "nuke", "note": "technical slang" }
+  ]
 }

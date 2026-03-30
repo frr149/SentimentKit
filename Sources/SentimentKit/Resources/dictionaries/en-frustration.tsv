@@ -1,0 +1,10 @@
+# language: en
+# type: frustration
+# coverage: minimal — expand with verified data only
+bad	-1.0
+terrible	-1.0
+horrible	-1.0
+broken	-0.8
+frustrating	-0.8
+nonsense	-0.7
+useless	-0.8
