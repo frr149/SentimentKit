@@ -479,11 +479,17 @@ Deferred optional follow-up work:
 
 ### Phase 2: NLTagger integration
 
-- [ ] `NLTaggerScorer`: wraps NLTagger as attenuated secondary signal
-- [ ] Language detection via `NLLanguageRecognizer`
-- [ ] Integration into pipeline Stage 3
-- [ ] Tests verifying attenuation works correctly
-- [ ] Tests verifying NeutralCommandTests still pass with NLTagger enabled
+- [x] `NLTaggerScorer`: wraps NLTagger as attenuated secondary signal
+- [x] Language detection via `NLLanguageRecognizer`
+- [x] Integration into pipeline Stage 3
+- [x] Tests verifying attenuation works correctly
+- [x] Tests verifying NeutralCommandTests still pass with NLTagger enabled
+
+Status as of 2026-03-30:
+
+- Phase 2 is already implemented in-tree and validated by dedicated tests.
+- `NLTagger` remains a last-resort fallback only: it runs only when deterministic dictionaries find no signal.
+- The next incomplete implementation phase is Phase 3 (`CoreMLScorer` as an optional layer).
 
 ### Phase 3: CoreML DistilBERT (optional layer)
 
