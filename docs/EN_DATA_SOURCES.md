@@ -84,6 +84,11 @@ It is intentionally conservative: a source appearing here does not mean its cont
   - `Ah no problem, ... wishing You good luck` (ID 48844)
   - `looks weird ` (ID 422534)
   - `I think there is a bug ... option doesn't work :S` (ID 79602)
+- Golden messages promoted in the follow-up batch:
+  - `good work!! thx all.` (ID 1766848)
+  - `good work, thanks.` (ID 451861)
+  - `yeah thx 4 the answer m8 great work` (ID 452151)
+  - `broken compile. it needs a uint32 btw    count = 1  and ur chnage = 1  so why changed ?` (ID 1704370)
 
 ### 4. Stack Overflow content license reference
 
