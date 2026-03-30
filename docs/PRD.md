@@ -493,12 +493,12 @@ Status as of 2026-03-30:
 
 ### Phase 3: CoreML DistilBERT (optional layer)
 
-- [ ] Convert `lxyuan/distilbert-base-multilingual-cased-sentiments-student` to CoreML with INT8 quantization
+- [x] Convert `lxyuan/distilbert-base-multilingual-cased-sentiments-student` to CoreML with INT8 quantization
 - [ ] `CoreMLScorer`: loads model on-demand, runs inference
 - [ ] Integration into pipeline Stage 4
 - [ ] Tests for 12 languages
 - [ ] On-Demand Resources support (model downloaded separately)
-- [ ] Fallback: if model not available, pipeline works without it
+- [x] Fallback: if model not available, pipeline works without it
 
 ### Phase 4: LLM scorer (optional layer)
 

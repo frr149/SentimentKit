@@ -166,6 +166,8 @@ To compile the generated package with Apple's toolchain:
 ./Tools/CoreMLConversion/convert.sh --compile
 ```
 
+The generated package is the INT8-quantized `SentimentKitSentiment.mlpackage`. The conversion tooling also leaves an intermediate `SentimentKitSentiment.raw.mlpackage` for inspection, but that artifact is not what the package expects to load by default.
+
 This keeps the SwiftPM package lightweight while preserving a documented path for local model generation.
 
 ## Data provenance
