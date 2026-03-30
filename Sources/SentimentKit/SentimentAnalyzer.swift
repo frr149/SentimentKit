@@ -53,7 +53,15 @@ public struct SentimentAnalyzer: Sendable {
 
         let maybeCoreMLScore: Double?
         if config.enableCoreML, tokens.count >= 8, abs(finalScore) < 0.3 {
-            maybeCoreMLScore = coreMLScorer.scoreIfAvailable(message, languageCode: language)
+            if let coreMLModelURL = config.coreMLModelURL {
+                maybeCoreMLScore = coreMLScorer.scoreIfAvailable(
+                    message,
+                    languageCode: language,
+                    modelURL: coreMLModelURL
+                )
+            } else {
+                maybeCoreMLScore = coreMLScorer.scoreIfAvailable(message, languageCode: language)
+            }
         } else {
             maybeCoreMLScore = nil
         }
