@@ -89,6 +89,11 @@ It is intentionally conservative: a source appearing here does not mean its cont
   - `good work, thanks.` (ID 451861)
   - `yeah thx 4 the answer m8 great work` (ID 452151)
   - `broken compile. it needs a uint32 btw    count = 1  and ur chnage = 1  so why changed ?` (ID 1704370)
+- Golden messages from the latest batch:
+  - `Thanks for your amazing work, Malcrom ^_^` (ID 456384)
+  - `Amazing. Well done.` (ID 780502)
+  - `That is just amazing. Thank you.` (ID 467985)
+  - `and like remark totally useless without crash line at least` (ID 32438)
 
 ### 4. Stack Overflow content license reference
 
