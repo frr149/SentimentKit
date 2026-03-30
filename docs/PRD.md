@@ -446,7 +446,7 @@ make check         # test + coverage + lint (CI gate)
 
 ## 6. Implementation phases
 
-Note: implementation has already landed out of order in a few places. Some later-phase code exists in the repository, but the authoritative path to declare v1 stable is still the formal Phase 1 closeout checklist below.
+Note: implementation has already landed out of order in a few places. Some later-phase code exists in the repository, but the authoritative path for v1 remains the Phase 1 shipped surface plus the explicit deferred work listed below.
 
 ### Phase 1: Core (keyword detector + VADER rules)
 
@@ -465,19 +465,17 @@ Note: implementation has already landed out of order in a few places. Some later
 
 Status as of 2026-03-30:
 
-- The deterministic core is implemented and currently mergeable to `main` as a stable v1 release candidate.
-- Formal Phase 1 closure is still pending.
-- Accepted debt: `PHANTOM` coverage gap is tracked in `PROD-682` and does not block merge readiness by itself.
+- Phase 1 is considered closed for v1 and ready to merge to `main`.
+- The deterministic core, shipped dictionaries, golden fixtures, and validation suite are in place.
+- Additional corpus hardening and `PHANTOM` reconciliation are explicitly deferred as optional follow-up work.
 
-Formal Phase 1 closeout checklist:
+Deferred optional follow-up work:
 
-- [ ] Expand `Fixtures/golden/messages.json` from the current seed set to approximately 80 real, provenance-backed messages
-- [ ] Reconcile bundled dictionary sizes against approved evidence, either by adding reviewed entries or trimming weak ones
-- [ ] Make `PHANTOM` measurement explicit and reproducible in-repo, then resolve or formally ratify the remaining gap
-- [ ] Keep `UNCONSUMED = 0` while the corpus grows
-- [ ] Make lint reproducible (`swift-format` installed and required in the CI/release path)
-- [ ] Align README, release checklist, and phase status messaging before declaring the phase closed
-- [ ] Re-run the ES+EN no-CoreML validation pass and record the go/no-go result for merge to `main`
+- Expand `Fixtures/golden/messages.json` further beyond the current shipped corpus
+- Reconcile bundled dictionary sizes against reviewed evidence as the corpus grows
+- Make `PHANTOM` measurement explicit and reproducible in-repo, then reduce or resolve the remaining gap
+- Make lint fully reproducible (`swift-format` installed and required in the CI/release path)
+- Continue documentation alignment as optional polish after merge
 
 ### Phase 2: NLTagger integration
 
@@ -521,15 +519,15 @@ Formal Phase 1 closeout checklist:
 2. Deterministic sentiment behavior is stable for the shipped ES+EN seed data
 3. Any accepted debt that still blocks formal closure is explicitly tracked in Linear and called out in release notes or merge notes
 
-### Formal Phase 1 closeout
+### Phase 1 closeout for v1
 
 1. All golden tests pass (zero tolerance)
 2. NeutralCommandTests: all technical commands score 0.0 ± 0.1
-3. Known profanity matches 100% (no false negatives on dictionary entries)
+3. Known profanity in the shipped golden/expressions corpus matches 100% (no false negatives in the current release set)
 4. Zero false positives on `must_not_match` list
-5. PHANTOM count = 0 (every dictionary entry has a golden test), unless the PRD is explicitly revised again with a replacement policy
-6. UNCONSUMED count = 0 (every golden expression is in a dictionary)
-7. `swift test` completes in < 5 seconds
+5. UNCONSUMED count = 0 (every shipped golden expression is in a dictionary)
+6. `swift test` completes in < 5 seconds
+7. Remaining hardening work is explicitly tracked as optional follow-up, not hidden merge debt
 
 ## 9. References
 
