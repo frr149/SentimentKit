@@ -58,6 +58,11 @@ It is intentionally conservative: a source appearing here does not mean its cont
   Strong candidate for English dictionary growth and for manually curated golden-message candidates sourced from GitHub-native communication.
 - Risks / review notes:
   Even with a clearer dataset license than raw GitHub scraping, promoted fixtures should remain short, self-contained, and low-ambiguity.
+- Files inspected for the first import pass:
+  - `github_gold.csv`
+- First imported EN additions derived from this source:
+  - positive: `good catch`, `nice catch`, `good work`, `great work`, `makes sense`
+  - frustration: `don't like`, `looks weird`
 
 ### 4. Stack Overflow content license reference
 

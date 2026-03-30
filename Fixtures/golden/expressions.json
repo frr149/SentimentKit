@@ -19,6 +19,8 @@
     { "text": "works great", "type": "positive", "language": "en" },
     { "text": "excellent tool", "type": "positive", "language": "en" },
     { "text": "very helpful", "type": "positive", "language": "en" },
+    { "text": "good catch", "type": "positive", "language": "en" },
+    { "text": "makes sense", "type": "positive", "language": "en" },
     { "text": "bueno", "type": "positive", "language": "es" },
     { "text": "never been better", "type": "positive", "language": "en" },
     { "text": "por qué cojones", "type": "profanity", "language": "es" },
