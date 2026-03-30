@@ -1,0 +1,78 @@
+# English Data Sources
+
+Working notes for `PROD-679`.
+
+This file tracks English-language candidate sources for dictionary and golden-fixture expansion under the rules in `docs/DATA_PROVENANCE.md`.
+
+It is intentionally conservative: a source appearing here does not mean its contents are already approved for import.
+
+## Candidate sources
+
+### 1. Senti4SD gold standard and tooling repository
+
+- Source URL: `https://github.com/collab-uniba/Senti4SD`
+- Type: software-engineering-specific sentiment dataset and tool
+- Provenance bucket: `verified-from-literature`
+- Citation:
+  Calefato, F., Lanubile, F., Maiorano, F., Novielli, N. (2018). *Sentiment Polarity Detection for Software Development*. Empirical Software Engineering, 23(3), 1352-1382. DOI: `10.1007/s10664-017-9546-9`
+- Licensing note:
+  The public repository is published under the MIT license. The repo README states that the classifier is trained and evaluated on a gold standard of over 4K Stack Overflow posts.
+- Current import posture:
+  Good candidate for English dictionary growth and for extracting short, self-contained golden-expression candidates.
+- Risks / review notes:
+  Even with a permissive repo license, individual Stack Overflow source texts still deserve attribution-aware handling when promoted into visible fixtures.
+
+### 2. Stack Overflow emotion gold standard
+
+- Source URL: `https://github.com/collab-uniba/EmotionDatasetMSR18`
+- Type: manually annotated software-engineering emotion dataset
+- Provenance bucket: `verified-from-literature`
+- Citation:
+  Novielli, N., Calefato, F., Lanubile, F. (2018). *A Gold Standard for Emotion Annotation in Stack Overflow*. Proceedings of MSR 2018. DOI: `10.1145/3196398.3196453`
+- Licensing note:
+  The repository page does not expose an explicit repository license in the metadata we reviewed. The underlying Stack Overflow content is publicly licensed under CC BY-SA, with version depending on post date.
+- Supporting license reference:
+  `https://stackoverflow.com/help/licensing/`
+- Current import posture:
+  Candidate for expression discovery and possibly for carefully attributed golden-message promotion.
+- Risks / review notes:
+  Before importing raw message text into fixtures, review attribution and share-alike implications case by case.
+
+### 3. GitHub polarity gold standard
+
+- Source URL:
+  `https://figshare.com/articles/dataset/A_gold_standard_for_polarity_of_emotions_of_software_developers_in_GitHub/11604597`
+- Type: manually annotated GitHub pull-request and commit comments
+- Provenance bucket: `verified-from-literature`
+- Citation:
+  Novielli, N., Calefato, F., Dongiovanni, D., Girardi, D., Lanubile, F. (2020). *Can We Use SE-specific Sentiment Analysis Tools in a Cross-Platform Setting?* MSR 2020.
+- Licensing note:
+  The figshare dataset page reports `CC BY 4.0`.
+- Current import posture:
+  Strong candidate for English dictionary growth and for manually curated golden-message candidates sourced from GitHub-native communication.
+- Risks / review notes:
+  Even with a clearer dataset license than raw GitHub scraping, promoted fixtures should remain short, self-contained, and low-ambiguity.
+
+### 4. Stack Overflow content license reference
+
+- Source URL: `https://stackoverflow.com/help/licensing/`
+- Type: platform license reference
+- Provenance bucket: reference only
+- Licensing note:
+  Publicly accessible user contributions on Stack Overflow are licensed under CC BY-SA, with version depending on contribution date.
+- Current import posture:
+  This is not a dataset by itself. It is the licensing reference we should consult when evaluating Stack Overflow-derived corpora.
+
+## Current decisions
+
+- Preferred first source for English expansion: published SE-domain datasets and replication packages
+- Preferred first import targets: dictionary entries and golden expressions
+- Highest bar items: full golden messages
+- Explicitly forbidden: synthetic LLM-translated messages as golden fixtures
+
+## Next steps
+
+1. Download and inspect the candidate datasets with the clearest licensing first.
+2. Record exact files actually used, not just top-level source links.
+3. Extract candidate English profanity, frustration, positive, and `must_not_match` phrases into a reviewable staging list.
+4. Promote only reviewed evidence into bundled dictionaries and golden fixtures.
