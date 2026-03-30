@@ -63,6 +63,10 @@ It is intentionally conservative: a source appearing here does not mean its cont
 - First imported EN additions derived from this source:
   - positive: `good catch`, `nice catch`, `good work`, `great work`, `makes sense`
   - frustration: `don't like`, `looks weird`
+- First promoted EN golden messages derived from this source:
+  - `Good catch! Did not think of this. Please revert.`
+  - `I'm going to revert this then. I don't like the inconsistency between compilation SDKs.`
+  - `This spacing looks weird.`
 
 ### 4. Stack Overflow content license reference
 

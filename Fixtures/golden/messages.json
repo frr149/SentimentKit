@@ -22,6 +22,39 @@
     "note": "Neutral developer command"
   },
   {
+    "id": "gold-en-github-pos-001",
+    "text": "Good catch! Did not think of this. Please revert.",
+    "language": "en",
+    "expected_profanity": [],
+    "expected_frustration": [],
+    "expected_positive": ["good catch"],
+    "expected_score_min": 0.6,
+    "expected_score_max": 1.2,
+    "note": "Positive GitHub review comment from published gold data"
+  },
+  {
+    "id": "gold-en-github-neg-001",
+    "text": "I'm going to revert this then. I don't like the inconsistency between compilation SDKs.",
+    "language": "en",
+    "expected_profanity": [],
+    "expected_frustration": ["don't like"],
+    "expected_positive": [],
+    "expected_score_min": -1.0,
+    "expected_score_max": -0.4,
+    "note": "Negative GitHub review comment from published gold data"
+  },
+  {
+    "id": "gold-en-github-neg-002",
+    "text": "This spacing looks weird.",
+    "language": "en",
+    "expected_profanity": [],
+    "expected_frustration": ["looks weird"],
+    "expected_positive": [],
+    "expected_score_min": -0.8,
+    "expected_score_max": -0.3,
+    "note": "Short negative GitHub review comment from published gold data"
+  },
+  {
     "id": "gold-en-negation-001",
     "text": "this is not good at all",
     "language": "en",
