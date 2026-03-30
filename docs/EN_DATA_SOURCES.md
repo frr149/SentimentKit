@@ -21,6 +21,12 @@ It is intentionally conservative: a source appearing here does not mean its cont
   Good candidate for English dictionary growth and for extracting short, self-contained golden-expression candidates.
 - Risks / review notes:
   Even with a permissive repo license, individual Stack Overflow source texts still deserve attribution-aware handling when promoted into visible fixtures.
+- Files inspected for the first import pass:
+  - `Senti4SD_GoldStandard_and_DSM/Senti4SD_Train_Test_Partitions/train3098itemPOLARITY.csv`
+  - `Senti4SD_GoldStandard_and_DSM/Senti4SD_Train_Test_Partitions/test1326itemPOLARITY.csv`
+- First imported EN additions derived from this source:
+  - frustration: `doesn't work`, `really hate`, `very annoying`, `really annoying`, `extremely annoying`, `very painful`, `terrible idea`, `extremely frustrating`, `really awful`, `incredibly frustrating`, `absolutely horrible`
+  - positive: `works great`, `good luck`, `excellent tool`, `very helpful`
 
 ### 2. Stack Overflow emotion gold standard
 
