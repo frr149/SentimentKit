@@ -68,16 +68,59 @@ dependencies: [
 ```swift
 import SentimentKit
 
-let result = SentimentKit.analyze("qué coño es esto, no funciona una mierda")
+let analyzer = SentimentAnalyzer()
+
+let result = analyzer.analyze("qué coño es esto, no funciona una mierda")
 // result.score = -2.0
 // result.profanity = ["qué coño", "mierda"]
 // result.frustration = []
-// result.angryNerdIndex = 0.5  (2 expressions / 1 message)
 
-let neutral = SentimentKit.analyze("delete the temp file and run make test")
+let neutral = analyzer.analyze("delete the temp file and run make test")
 // neutral.score = 0.0
 // neutral.profanity = []
-// neutral.angryNerdIndex = 0.0
+```
+
+## Custom dictionaries
+
+Built-in dictionaries are intentionally sparse and conservative. If you need another language or domain-specific vocabulary, bring your own TSV files and merge them into the analyzer config.
+
+```swift
+import SentimentKit
+
+let japaneseProfanity = try ExpressionDictionary(contentsOf: URL(filePath: "/path/to/ja-profanity.tsv"))
+let japanesePositive = try ExpressionDictionary(contentsOf: URL(filePath: "/path/to/ja-positive.tsv"))
+
+var config = SentimentConfig()
+config.additionalDictionaries = [japaneseProfanity, japanesePositive]
+
+let analyzer = SentimentAnalyzer(config: config)
+let result = analyzer.analyze("本当にひどい")
+```
+
+Dictionary format:
+
+```tsv
+# language: ja
+# type: profanity
+くそ	-1.0
+最悪	-1.0
+```
+
+This lets users specialize SentimentKit without waiting for built-in support. The deterministic pipeline treats custom dictionaries exactly like bundled ones.
+
+## Session analysis
+
+```swift
+let session = analyzer.analyzeSession([
+    "perfecto, adelante",
+    "esto es una mierda",
+    "ok",
+    "joder, otra vez",
+])
+
+// session.meanScore
+// session.angryNerdIndex
+// session.patienceLevel
 ```
 
 ## License
@@ -86,6 +129,6 @@ MIT
 
 ## Credits
 
-Built by [Fernando Rodríguez](https://frr.dev) as part of [Tokamak](https://github.com/frr149/tokamak), a quota monitor for Claude Code and Codex.
+Built by [Fernando Rodríguez](https://frr.dev).
 
 Inspired by [VADER](https://github.com/cjhutto/vaderSentiment) (Hutto & Gilbert, 2014) and born out of frustration with NLTagger classifying "borra el fichero temporal" as deeply negative.
