@@ -36,15 +36,16 @@ Message
   │  Handles negation ("not good"), intensifiers ("very bad"),
   │  CAPS, punctuation. Works for Indo-European languages.
   │
-  ├─ Layer 3: CoreML DistilBERT (optional, ~70MB, 12 languages)
-  │  Quantized multilingual model for when rules aren't enough.
-  │  Covers JA, ZH, AR, HI and other non-Indo-European languages.
+  ├─ Layer 3: CoreML DistilBERT (optional, not bundled in v1)
+  │  Multilingual model for when rules aren't enough.
+  │  Conversion tooling lives in Tools/CoreMLConversion/.
+  │  The model artifact is generated locally, not shipped in the repo.
   │
   └─ Layer 4: LLM scorer (optional, requires API)
      For ambiguous cases only. Never generates expressions.
 ```
 
-Each layer is optional. Without CoreML or LLM, SentimentKit works fully offline with keywords + rules for ES/EN/FR/DE/PT/IT.
+Each layer is optional. v1 ships without the CoreML model; the default package works with keywords + VADER + NLTagger fallback.
 
 ## Key features
 
@@ -68,17 +69,108 @@ dependencies: [
 ```swift
 import SentimentKit
 
-let result = SentimentKit.analyze("qué coño es esto, no funciona una mierda")
+let analyzer = SentimentAnalyzer()
+
+let result = analyzer.analyze("qué coño es esto, no funciona una mierda")
 // result.score = -2.0
 // result.profanity = ["qué coño", "mierda"]
 // result.frustration = []
-// result.angryNerdIndex = 0.5  (2 expressions / 1 message)
 
-let neutral = SentimentKit.analyze("delete the temp file and run make test")
+let neutral = analyzer.analyze("delete the temp file and run make test")
 // neutral.score = 0.0
 // neutral.profanity = []
-// neutral.angryNerdIndex = 0.0
 ```
+
+## Custom dictionaries
+
+Built-in dictionaries are intentionally sparse and conservative. If you need another language or domain-specific vocabulary, bring your own TSV files and merge them into the analyzer config.
+
+```swift
+import SentimentKit
+
+let japaneseProfanity = try ExpressionDictionary(contentsOf: URL(filePath: "/path/to/ja-profanity.tsv"))
+let japanesePositive = try ExpressionDictionary(contentsOf: URL(filePath: "/path/to/ja-positive.tsv"))
+
+var config = SentimentConfig()
+config.additionalDictionaries = [japaneseProfanity, japanesePositive]
+
+let analyzer = SentimentAnalyzer(config: config)
+let result = analyzer.analyze("本当にひどい")
+```
+
+Dictionary format:
+
+```tsv
+# language: ja
+# type: profanity
+くそ	-1.0
+最悪	-1.0
+```
+
+This lets users specialize SentimentKit without waiting for built-in support. The deterministic pipeline treats custom dictionaries exactly like bundled ones.
+
+## Session analysis
+
+```swift
+let session = analyzer.analyzeSession([
+    "perfecto, adelante",
+    "esto es una mierda",
+    "ok",
+    "joder, otra vez",
+])
+
+// session.meanScore
+// session.angryNerdIndex
+// session.patienceLevel
+```
+
+## Optional LLM session scoring
+
+The default API stays synchronous and offline-first. If you want an optional remote LLM layer, use the separate async entrypoint.
+
+```swift
+import SentimentKit
+
+let analyzer = SentimentAnalyzer()
+let scorer = try OpenAISentimentScorer()
+
+let session = try await analyzer.analyzeSession([
+    "works now, thanks",
+    "this was painful to debug",
+], using: scorer)
+
+// `session.meanScore` may be refined by the LLM scorer.
+// Expression matches still come only from deterministic layers.
+```
+
+The remote scorer only contributes `meanScore`. It never adds, removes, or invents expressions.
+
+Provider wrappers currently included:
+
+- `OpenAISentimentScorer` using OpenAI's Responses API
+- `AnthropicSentimentScorer` using Anthropic's Messages API
+
+Both wrappers enforce simple request budgets so the optional LLM layer remains explicit and bounded.
+
+## CoreML layer
+
+The CoreML layer is optional and not bundled with the package in v1. If you want to experiment with the multilingual model locally, generate it from the reproducible conversion pipeline:
+
+```bash
+./Tools/CoreMLConversion/convert.sh
+```
+
+To compile the generated package with Apple's toolchain:
+
+```bash
+./Tools/CoreMLConversion/convert.sh --compile
+```
+
+This keeps the SwiftPM package lightweight while preserving a documented path for local model generation.
+
+## Data provenance
+
+The rules for what may enter built-in dictionaries, golden fixtures, or synthetic candidate queues are documented in [docs/DATA_PROVENANCE.md](docs/DATA_PROVENANCE.md).
 
 ## License
 
@@ -86,6 +178,6 @@ MIT
 
 ## Credits
 
-Built by [Fernando Rodríguez](https://frr.dev) as part of [Tokamak](https://github.com/frr149/tokamak), a quota monitor for Claude Code and Codex.
+Built by [Fernando Rodríguez](https://frr.dev).
 
 Inspired by [VADER](https://github.com/cjhutto/vaderSentiment) (Hutto & Gilbert, 2014) and born out of frustration with NLTagger classifying "borra el fichero temporal" as deeply negative.
