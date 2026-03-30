@@ -99,6 +99,50 @@
     "note": "Neutral technical words should not match"
   },
   {
+    "id": "gold-es-002",
+    "text": "qué coño es esto",
+    "language": "es",
+    "expected_profanity": ["qué coño"],
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_score_min": -1.4,
+    "expected_score_max": -0.9,
+    "note": "Approved PRD/README/DocC example, verified from repo seed data"
+  },
+  {
+    "id": "gold-es-pos-001",
+    "text": "perfecto, adelante",
+    "language": "es",
+    "expected_profanity": [],
+    "expected_frustration": [],
+    "expected_positive": ["perfecto", "adelante"],
+    "expected_score_min": 1.2,
+    "expected_score_max": 2.0,
+    "note": "Approved PRD/README/DocC session example, verified from repo seed data"
+  },
+  {
+    "id": "gold-es-neg-002",
+    "text": "esto es una mierda",
+    "language": "es",
+    "expected_profanity": ["mierda"],
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_score_min": -1.2,
+    "expected_score_max": -0.8,
+    "note": "Approved PRD/README/DocC session example, verified from repo seed data"
+  },
+  {
+    "id": "gold-es-neg-003",
+    "text": "joder, otra vez",
+    "language": "es",
+    "expected_profanity": ["joder"],
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_score_min": -1.2,
+    "expected_score_max": -0.8,
+    "note": "Approved PRD/README/DocC session example, verified from repo seed data"
+  },
+  {
     "id": "gold-en-senti4sd-pos-001",
     "text": "Excellent tool! Thanks for making it available.",
     "language": "en",
