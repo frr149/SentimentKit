@@ -3,19 +3,25 @@ import Foundation
 /// Public entry point for sentiment analysis.
 public struct SentimentAnalyzer: Sendable {
     public let config: SentimentConfig
+    private let languageDetector = LanguageDetector()
+    private let nlTaggerScorer = NLTaggerScorer()
+    private let technicalCommandGuard = TechnicalCommandGuard()
 
     public init(config: SentimentConfig = SentimentConfig()) {
         self.config = config
     }
 
     public func analyze(_ message: String) -> MessageAnalysis {
-        guard config.enableKeywords else {
-            return .neutral
-        }
-
         let tokens = MessageTokenizer.tokenize(message)
+        let language = languageDetector.detectMessageLanguage(message)
         let detector = KeywordDetector(dictionaries: BuiltInLexicons.dictionaries + config.additionalDictionaries)
-        let matches = detector.detect(in: tokens)
+        let matches = config.enableKeywords ? detector.detect(in: tokens) : .init(
+            profanity: [],
+            frustration: [],
+            positive: [],
+            score: 0,
+            matches: []
+        )
         let vaderRules = BuiltInLexicons.vaderRules
         let adjusted: (score: Double, intensity: Double) = config.enableVADERRules
             ? vaderRules.apply(to: matches.matches, in: message, tokens: tokens)
@@ -33,23 +39,47 @@ public struct SentimentAnalyzer: Sendable {
         let positive = visibleMatches
             .filter { $0.expression.type == .positive }
             .map(\.expression)
+        let finalScore: Double
+
+        if matches.matches.isEmpty == false {
+            finalScore = max(-2, min(2, adjusted.score))
+        } else if config.enableNLTagger, technicalCommandGuard.shouldSuppressNLTagger(for: message, tokens: tokens) == false,
+                  let nlTaggerScore = nlTaggerScorer.score(message, languageCode: language) {
+            finalScore = max(-2, min(2, nlTaggerScore * config.nlTaggerAttenuation))
+        } else {
+            finalScore = 0
+        }
 
         return MessageAnalysis(
-            score: max(-2, min(2, adjusted.score)),
+            score: finalScore,
             profanity: profanity,
             frustration: frustration,
             positive: positive,
             intensity: adjusted.intensity,
-            language: nil
+            language: language
         )
     }
 
     public func analyzeSession(_ messages: [String]) -> SessionAnalysis {
-        let analyses = messages.map(analyze)
-        return Self.makeSessionAnalysis(from: analyses)
+        let sessionLanguage = languageDetector.detectSessionLanguage(messages)
+        let analyses = messages.map { message in
+            var analysis = analyze(message)
+            if analysis.language == nil {
+                analysis = MessageAnalysis(
+                    score: analysis.score,
+                    profanity: analysis.profanity,
+                    frustration: analysis.frustration,
+                    positive: analysis.positive,
+                    intensity: analysis.intensity,
+                    language: sessionLanguage
+                )
+            }
+            return analysis
+        }
+        return Self.makeSessionAnalysis(from: analyses, sessionLanguage: sessionLanguage)
     }
 
-    static func makeSessionAnalysis(from analyses: [MessageAnalysis]) -> SessionAnalysis {
+    static func makeSessionAnalysis(from analyses: [MessageAnalysis], sessionLanguage: String? = nil) -> SessionAnalysis {
         guard analyses.isEmpty == false else {
             return SessionAnalysis(
                 messages: [],
@@ -92,7 +122,7 @@ public struct SentimentAnalyzer: Sendable {
             angryNerdIndex: Double(expressionCount) / Double(analyses.count),
             patienceLevel: patienceIndex.map { $0 + 1 } ?? 0,
             topExpressions: topExpressions,
-            language: dominantLanguage(in: analyses)
+            language: sessionLanguage ?? dominantLanguage(in: analyses)
         )
     }
 
