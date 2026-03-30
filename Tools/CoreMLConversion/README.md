@@ -8,12 +8,11 @@ Current target model from the PRD:
 
 Workflow:
 
-1. `uv sync`
-2. `uv run python convert_model.py`
-3. Compile the produced `.mlpackage` or `.mlmodel` if needed with `coremlcompiler`
-4. Move the compiled model into the SwiftPM resources once the artifact is validated
+1. `./convert.sh`
+2. Optionally: `./convert.sh --compile`
+3. Review the generated artifact under `artifacts/`
 
-The Swift package is designed to work without the model present. This tooling exists so model conversion is reproducible and reviewable.
+The Swift package is designed to work without the model present. This tooling exists so model conversion is reproducible and reviewable, but v1 does not ship the CoreML artifact in the repo.
 
 Current status:
 
@@ -21,4 +20,8 @@ Current status:
 - generated artifact name: `SentimentKitSentiment.mlpackage`
 - compiled CoreML artifact size observed locally: ~258 MB
 
-Artifacts are intentionally ignored in git for now until distribution strategy is decided.
+Artifacts are intentionally ignored in git. The current decision is:
+
+- keep the conversion pipeline in-repo
+- do not commit the `.mlpackage`
+- do not ship the model as part of the SPM package

@@ -36,15 +36,16 @@ Message
   │  Handles negation ("not good"), intensifiers ("very bad"),
   │  CAPS, punctuation. Works for Indo-European languages.
   │
-  ├─ Layer 3: CoreML DistilBERT (optional, ~70MB, 12 languages)
-  │  Quantized multilingual model for when rules aren't enough.
-  │  Covers JA, ZH, AR, HI and other non-Indo-European languages.
+  ├─ Layer 3: CoreML DistilBERT (optional, not bundled in v1)
+  │  Multilingual model for when rules aren't enough.
+  │  Conversion tooling lives in Tools/CoreMLConversion/.
+  │  The model artifact is generated locally, not shipped in the repo.
   │
   └─ Layer 4: LLM scorer (optional, requires API)
      For ambiguous cases only. Never generates expressions.
 ```
 
-Each layer is optional. Without CoreML or LLM, SentimentKit works fully offline with keywords + rules for ES/EN/FR/DE/PT/IT.
+Each layer is optional. v1 ships without the CoreML model; the default package works with keywords + VADER + NLTagger fallback.
 
 ## Key features
 
@@ -122,6 +123,22 @@ let session = analyzer.analyzeSession([
 // session.angryNerdIndex
 // session.patienceLevel
 ```
+
+## CoreML layer
+
+The CoreML layer is optional and not bundled with the package in v1. If you want to experiment with the multilingual model locally, generate it from the reproducible conversion pipeline:
+
+```bash
+./Tools/CoreMLConversion/convert.sh
+```
+
+To compile the generated package with Apple's toolchain:
+
+```bash
+./Tools/CoreMLConversion/convert.sh --compile
+```
+
+This keeps the SwiftPM package lightweight while preserving a documented path for local model generation.
 
 ## License
 
