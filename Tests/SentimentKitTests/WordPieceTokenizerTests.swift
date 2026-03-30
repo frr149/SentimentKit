@@ -17,7 +17,8 @@ struct WordPieceTokenizerTests {
                 "disappointing": 7,
                 ".": 8,
             ],
-            maximumLength: 8
+            maximumLength: 8,
+            doLowerCase: true
         )
 
         let encoded = tokenizer.encode("This answer is disappointing.")

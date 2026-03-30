@@ -26,6 +26,7 @@ struct WordPieceTokenizer: Sendable {
     let sepToken: String
     let padToken: String
     let maximumLength: Int
+    let doLowerCase: Bool
 
     init(
         vocabulary: [String: Int],
@@ -33,7 +34,8 @@ struct WordPieceTokenizer: Sendable {
         clsToken: String = "[CLS]",
         sepToken: String = "[SEP]",
         padToken: String = "[PAD]",
-        maximumLength: Int = 128
+        maximumLength: Int = 128,
+        doLowerCase: Bool = false
     ) throws {
         self.vocabulary = vocabulary
         self.unknownToken = unknownToken
@@ -41,6 +43,7 @@ struct WordPieceTokenizer: Sendable {
         self.sepToken = sepToken
         self.padToken = padToken
         self.maximumLength = maximumLength
+        self.doLowerCase = doLowerCase
 
         for token in [unknownToken, clsToken, sepToken, padToken] {
             guard vocabulary[token] != nil else {
@@ -64,7 +67,10 @@ struct WordPieceTokenizer: Sendable {
             vocabulary[token] = index
         }
 
-        try self.init(vocabulary: vocabulary, maximumLength: maximumLength)
+        let tokenizerConfigURL = vocabularyURL.deletingLastPathComponent().appendingPathComponent("tokenizer_config.json")
+        let doLowerCase = Self.loadDoLowerCase(from: tokenizerConfigURL) ?? false
+
+        try self.init(vocabulary: vocabulary, maximumLength: maximumLength, doLowerCase: doLowerCase)
     }
 
     func encode(_ text: String) -> EncodedInput {
@@ -162,14 +168,34 @@ struct WordPieceTokenizer: Sendable {
 
             if CharacterSet.punctuationCharacters.contains(scalar) || CharacterSet.symbols.contains(scalar) {
                 flushBuffer()
-                tokens.append(String(scalar).lowercased())
+                tokens.append(normalizeToken(String(scalar)))
                 continue
             }
 
-            buffer.append(String(scalar).lowercased())
+            buffer.append(normalizeToken(String(scalar)))
         }
 
         flushBuffer()
         return tokens.filter { $0.isEmpty == false }
+    }
+
+    private func normalizeToken(_ token: String) -> String {
+        doLowerCase ? token.lowercased() : token
+    }
+
+    private static func loadDoLowerCase(from url: URL) -> Bool? {
+        guard let data = try? Data(contentsOf: url) else {
+            return nil
+        }
+
+        struct TokenizerConfig: Decodable {
+            let doLowerCase: Bool?
+
+            enum CodingKeys: String, CodingKey {
+                case doLowerCase = "do_lower_case"
+            }
+        }
+
+        return try? JSONDecoder().decode(TokenizerConfig.self, from: data).doLowerCase
     }
 }
