@@ -27,6 +27,17 @@ It is intentionally conservative: a source appearing here does not mean its cont
 - First imported EN additions derived from this source:
   - frustration: `doesn't work`, `really hate`, `very annoying`, `really annoying`, `extremely annoying`, `very painful`, `terrible idea`, `extremely frustrating`, `really awful`, `incredibly frustrating`, `absolutely horrible`
   - positive: `works great`, `good luck`, `excellent tool`, `very helpful`
+- Golden messages promoted in the `PROD-684` batch:
+  - `test1326itemPOLARITY.csv` `t508`: `Excellent tool! Thanks for making it available.`
+  - `train3098itemPOLARITY.csv` `t2770`: `Works great !`
+  - `test1326itemPOLARITY.csv` `t224`: `@ThiagoLovizzaro no worries, you have to start somewhere ;) good luck in the future!`
+  - `test1326itemPOLARITY.csv` `t13`: `When I refactor the following line: using Resharper's "Use Object Initializer", I get the following: I really hate this type of formatting because with longer object names and variables it just gets out of control. How can I get Resharper to do the following?`
+  - `test1326itemPOLARITY.csv` `t1725`: `yes I'm having the exact same issue, very annoying!`
+  - `test1326itemPOLARITY.csv` `t246`: `Ok this is really annoying, can't find a solution that works !`
+  - `test1326itemPOLARITY.csv` `t173`: `I have a table that is referenced by a ton of other tables via foreign keys. I am trying to delete a Document record, and according to my execution plan, SQL Server is doing a clustered index scan on every one of the referencing tables. This is very painful.`
+  - `test1326itemPOLARITY.csv` `t4293`: `this is a terrible idea for webapps`
+  - `test1326itemPOLARITY.csv` `t399`: `Can't find any manual about changing width of taglist element size. Taglist element is wider than icons I had set. It looks really awful =( Screenshot:`
+  - `train3098itemPOLARITY.csv` `t190`: `It's HORRIBLE! No, seriously, I don't like it.`
 
 ### 2. Stack Overflow emotion gold standard
 
