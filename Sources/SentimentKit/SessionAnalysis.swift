@@ -28,3 +28,17 @@ public struct SessionAnalysis: Sendable {
         self.language = language
     }
 }
+
+extension SessionAnalysis {
+    func replacingMeanScore(_ meanScore: Double) -> SessionAnalysis {
+        SessionAnalysis(
+            messages: messages,
+            meanScore: meanScore,
+            stddev: stddev,
+            angryNerdIndex: angryNerdIndex,
+            patienceLevel: patienceLevel,
+            topExpressions: topExpressions,
+            language: language
+        )
+    }
+}

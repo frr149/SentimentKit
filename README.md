@@ -124,6 +124,34 @@ let session = analyzer.analyzeSession([
 // session.patienceLevel
 ```
 
+## Optional LLM session scoring
+
+The default API stays synchronous and offline-first. If you want an optional remote LLM layer, use the separate async entrypoint.
+
+```swift
+import SentimentKit
+
+let analyzer = SentimentAnalyzer()
+let scorer = try OpenAISentimentScorer()
+
+let session = try await analyzer.analyzeSession([
+    "works now, thanks",
+    "this was painful to debug",
+], using: scorer)
+
+// `session.meanScore` may be refined by the LLM scorer.
+// Expression matches still come only from deterministic layers.
+```
+
+The remote scorer only contributes `meanScore`. It never adds, removes, or invents expressions.
+
+Provider wrappers currently included:
+
+- `OpenAISentimentScorer` using OpenAI's Responses API
+- `AnthropicSentimentScorer` using Anthropic's Messages API
+
+Both wrappers enforce simple request budgets so the optional LLM layer remains explicit and bounded.
+
 ## CoreML layer
 
 The CoreML layer is optional and not bundled with the package in v1. If you want to experiment with the multilingual model locally, generate it from the reproducible conversion pipeline:
@@ -139,6 +167,10 @@ To compile the generated package with Apple's toolchain:
 ```
 
 This keeps the SwiftPM package lightweight while preserving a documented path for local model generation.
+
+## Data provenance
+
+The rules for what may enter built-in dictionaries, golden fixtures, or synthetic candidate queues are documented in [docs/DATA_PROVENANCE.md](docs/DATA_PROVENANCE.md).
 
 ## License
 

@@ -87,6 +87,21 @@ public struct SentimentAnalyzer: Sendable {
         return Self.makeSessionAnalysis(from: analyses, sessionLanguage: sessionLanguage)
     }
 
+    /// Analyzes a session with the deterministic pipeline first, then lets an optional async scorer
+    /// replace only the session-level `meanScore`.
+    public func analyzeSession(
+        _ messages: [String],
+        using scorer: any SentimentScorer
+    ) async throws -> SessionAnalysis {
+        let baseAnalysis = analyzeSession(messages)
+        guard messages.isEmpty == false else {
+            return baseAnalysis
+        }
+
+        let meanScore = try await scorer.meanScore(for: messages, baseAnalysis: baseAnalysis)
+        return baseAnalysis.replacingMeanScore(max(-2, min(2, meanScore)))
+    }
+
     static func makeSessionAnalysis(from analyses: [MessageAnalysis], sessionLanguage: String? = nil) -> SessionAnalysis {
         guard analyses.isEmpty == false else {
             return SessionAnalysis(
