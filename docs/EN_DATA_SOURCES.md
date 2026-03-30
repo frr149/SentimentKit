@@ -94,6 +94,11 @@ It is intentionally conservative: a source appearing here does not mean its cont
   - `Amazing. Well done.` (ID 780502)
   - `That is just amazing. Thank you.` (ID 467985)
   - `and like remark totally useless without crash line at least` (ID 32438)
+- Golden messages added in the most recent sweep:
+  - `Nice ^_^` (ID 452068)
+  - `Thank you for confirm!` (ID 453789)
+  - `This is just amazing. Thanks for adding this code to use in bukkit.` (ID 2804)
+  - `It seems that this commit has broken again the timers on MacOS (issue 534). They were fixed in 82e9da9fb7fb79bf730d.` (ID 244856)
 
 ### 4. Stack Overflow content license reference
 

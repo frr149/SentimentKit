@@ -351,5 +351,49 @@
     "expected_score_min": -1.2,
     "expected_score_max": -0.2,
     "note": "GitHub gold standard figshare 11604597 (ID 32438), verified-from-literature"
+  },
+  {
+    "id": "gold-en-github-pos-011",
+    "text": "Nice ^_^",
+    "language": "en",
+    "expected_profanity": [],
+    "expected_frustration": [],
+    "expected_positive": ["nice"],
+    "expected_score_min": 0.6,
+    "expected_score_max": 1.3,
+    "note": "GitHub gold standard figshare 11604597 (ID 452068), verified-from-literature"
+  },
+  {
+    "id": "gold-en-github-pos-012",
+    "text": "Thank you for confirm!",
+    "language": "en",
+    "expected_profanity": [],
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_score_min": 0.1,
+    "expected_score_max": 0.5,
+    "note": "GitHub gold standard figshare 11604597 (ID 453789), verified-from-literature"
+  },
+  {
+    "id": "gold-en-github-pos-013",
+    "text": "This is just amazing. Thanks for adding this code to use in bukkit.",
+    "language": "en",
+    "expected_profanity": [],
+    "expected_frustration": [],
+    "expected_positive": ["amazing", "thanks"],
+    "expected_score_min": 1.2,
+    "expected_score_max": 1.8,
+    "note": "GitHub gold standard figshare 11604597 (ID 2804), verified-from-literature"
+  },
+  {
+    "id": "gold-en-github-neg-007",
+    "text": "It seems that this commit has broken again the timers on MacOS (issue 534). They were fixed in 82e9da9fb7fb79bf730d.",
+    "language": "en",
+    "expected_profanity": [],
+    "expected_frustration": ["broken"],
+    "expected_positive": [],
+    "expected_score_min": -1.2,
+    "expected_score_max": -0.5,
+    "note": "GitHub gold standard figshare 11604597 (ID 244856), verified-from-literature"
   }
 ]
