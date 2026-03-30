@@ -10,6 +10,12 @@ struct TechnicalCommandGuard: Sendable {
         "git", "make", "test", "tests", "file", "temp", "process", "cache", "database",
         "operation", "foregroundstyle", "tertiary", "var", "let", "fichero", "temporal",
     ])
+    private let suppressedPhrases = [
+        "restos mortales",
+        "manipulacion",
+        "lo vá matar",
+        "lo vía matar",
+    ]
     private let suppressedTechnicalTerms = Set([
         "kill", "abort", "execute", "dump", "die", "crash", "fatal", "panic", "destroy",
         "nuke", "delete", "borra", "exterminio", "murió", "huelga",
@@ -30,6 +36,10 @@ struct TechnicalCommandGuard: Sendable {
         }
 
         if normalizedTokens.contains(where: suppressedTechnicalTerms.contains) {
+            return true
+        }
+
+        if suppressedPhrases.contains(where: { phrase in message.localizedCaseInsensitiveContains(phrase) }) {
             return true
         }
 
