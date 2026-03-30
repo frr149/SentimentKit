@@ -7,6 +7,7 @@ MODEL_ID = "lxyuan/distilbert-base-multilingual-cased-sentiments-student"
 OUTPUT_DIR = Path(__file__).resolve().parent / "artifacts"
 RAW_OUTPUT_PATH = OUTPUT_DIR / "SentimentKitSentiment.raw.mlpackage"
 QUANTIZED_OUTPUT_PATH = OUTPUT_DIR / "SentimentKitSentiment.mlpackage"
+TOKENIZER_OUTPUT_DIR = OUTPUT_DIR / "SentimentKitSentiment.tokenizer"
 MODEL_AUTHOR = "SentimentKit"
 MODEL_VERSION = "1"
 SHORT_DESCRIPTION = "Quantized multilingual sentiment classifier for SentimentKit."
@@ -40,6 +41,13 @@ def main() -> None:
     base_model = AutoModelForSequenceClassification.from_pretrained(MODEL_ID)
     model = LogitsOnlyModel(base_model)
     model.eval()
+
+    if TOKENIZER_OUTPUT_DIR.exists():
+        import shutil
+
+        shutil.rmtree(TOKENIZER_OUTPUT_DIR)
+    tokenizer.save_pretrained(TOKENIZER_OUTPUT_DIR, legacy_format=True)
+    print(f"Saved tokenizer assets to {TOKENIZER_OUTPUT_DIR}")
 
     example = tokenizer(
         "This answer is disappointing and confusing.",

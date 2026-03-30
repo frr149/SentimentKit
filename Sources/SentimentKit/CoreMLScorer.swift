@@ -14,9 +14,11 @@ enum CoreMLScorerError: Error, Equatable, LocalizedError {
 
 struct CoreMLScorer: Sendable {
     let modelName: String
+    let sequenceLength: Int
 
-    init(modelName: String = "SentimentKitSentiment") {
+    init(modelName: String = "SentimentKitSentiment", sequenceLength: Int = 128) {
         self.modelName = modelName
+        self.sequenceLength = sequenceLength
     }
 
     func modelURL(in bundle: Bundle = .module) -> URL? {
@@ -34,13 +36,101 @@ struct CoreMLScorer: Sendable {
     }
 
     func scoreIfAvailable(_ message: String, languageCode: String?, in bundle: Bundle = .module) -> Double? {
-        let _ = message
         let _ = languageCode
-        guard (try? loadModel(in: bundle)) != nil else {
+        guard let modelURL = modelURL(in: bundle),
+              let model = try? MLModel(contentsOf: modelURL),
+              let tokenizer = try? loadTokenizer(forModelAt: modelURL, in: bundle),
+              let provider = makeFeatureProvider(for: message, tokenizer: tokenizer),
+              let prediction = try? model.prediction(from: provider),
+              let logits = extractLogits(from: prediction) else {
             return nil
         }
 
-        // The model asset is not bundled yet. This returns nil until the converted model lands.
+        return score(fromLogits: logits)
+    }
+
+    private func loadTokenizer(forModelAt modelURL: URL, in bundle: Bundle) throws -> WordPieceTokenizer {
+        if let bundleVocabularyURL = bundle.url(forResource: "vocab", withExtension: "txt", subdirectory: "tokenizer") {
+            return try WordPieceTokenizer(vocabularyURL: bundleVocabularyURL, maximumLength: sequenceLength)
+        }
+
+        let siblingTokenizerURL = modelURL
+            .deletingLastPathComponent()
+            .appendingPathComponent("\(modelName).tokenizer", isDirectory: true)
+            .appendingPathComponent("vocab.txt")
+        return try WordPieceTokenizer(vocabularyURL: siblingTokenizerURL, maximumLength: sequenceLength)
+    }
+
+    private func makeFeatureProvider(for message: String, tokenizer: WordPieceTokenizer) -> MLDictionaryFeatureProvider? {
+        let encoded = tokenizer.encode(message)
+        guard let inputIDs = makeArray(encoded.inputIDs),
+              let attentionMask = makeArray(encoded.attentionMask) else {
+            return nil
+        }
+
+        return try? MLDictionaryFeatureProvider(
+            dictionary: [
+                "input_ids": MLFeatureValue(multiArray: inputIDs),
+                "attention_mask": MLFeatureValue(multiArray: attentionMask),
+            ]
+        )
+    }
+
+    private func makeArray(_ values: [Int32]) -> MLMultiArray? {
+        guard let array = try? MLMultiArray(shape: [1, NSNumber(value: values.count)], dataType: .int32) else {
+            return nil
+        }
+
+        for (index, value) in values.enumerated() {
+            array[index] = NSNumber(value: value)
+        }
+        return array
+    }
+
+    private func extractLogits(from provider: MLFeatureProvider) -> [Double]? {
+        for outputName in provider.featureNames {
+            guard let multiArray = provider.featureValue(for: outputName)?.multiArrayValue else {
+                continue
+            }
+
+            let values = multiArray.toDoubles()
+            if values.count >= 3 {
+                return Array(values.suffix(3))
+            }
+        }
         return nil
+    }
+
+    private func score(fromLogits logits: [Double]) -> Double {
+        let probabilities = softmax(logits)
+        guard probabilities.count >= 3 else {
+            return 0
+        }
+
+        let positive = probabilities[0]
+        let negative = probabilities[2]
+        return max(-2, min(2, (positive - negative) * 2))
+    }
+
+    private func softmax(_ logits: [Double]) -> [Double] {
+        guard let maxLogit = logits.max() else {
+            return []
+        }
+
+        let exponentials = logits.map { Foundation.exp($0 - maxLogit) }
+        let sum = exponentials.reduce(0, +)
+        guard sum > 0 else {
+            return Array(repeating: 0, count: logits.count)
+        }
+
+        return exponentials.map { $0 / sum }
+    }
+}
+
+private extension MLMultiArray {
+    func toDoubles() -> [Double] {
+        (0..<count).map { index in
+            self[index].doubleValue
+        }
     }
 }
