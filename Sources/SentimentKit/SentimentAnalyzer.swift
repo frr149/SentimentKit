@@ -6,6 +6,7 @@ public struct SentimentAnalyzer: Sendable {
     private let languageDetector = LanguageDetector()
     private let nlTaggerScorer = NLTaggerScorer()
     private let technicalCommandGuard = TechnicalCommandGuard()
+    private let coreMLScorer = CoreMLScorer()
 
     public init(config: SentimentConfig = SentimentConfig()) {
         self.config = config
@@ -50,8 +51,15 @@ public struct SentimentAnalyzer: Sendable {
             finalScore = 0
         }
 
+        let maybeCoreMLScore: Double?
+        if config.enableCoreML, tokens.count >= 8, abs(finalScore) < 0.3 {
+            maybeCoreMLScore = coreMLScorer.scoreIfAvailable(message, languageCode: language)
+        } else {
+            maybeCoreMLScore = nil
+        }
+
         return MessageAnalysis(
-            score: finalScore,
+            score: maybeCoreMLScore ?? finalScore,
             profanity: profanity,
             frustration: frustration,
             positive: positive,
