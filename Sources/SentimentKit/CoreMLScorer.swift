@@ -1,5 +1,6 @@
-import CoreML
+@preconcurrency import CoreML
 import Foundation
+import os.lock
 
 enum CoreMLScorerError: Error, Equatable, LocalizedError {
     case missingModel(String)
@@ -13,6 +14,9 @@ enum CoreMLScorerError: Error, Equatable, LocalizedError {
 }
 
 struct CoreMLScorer: Sendable {
+    private static let modelCache = ModelCache()
+    private static let tokenizerCache = TokenizerCache()
+
     let modelName: String
     let sequenceLength: Int
 
@@ -36,6 +40,10 @@ struct CoreMLScorer: Sendable {
     }
 
     func loadModel(at url: URL) throws -> MLModel {
+        if let cached = Self.modelCache.model(for: url) {
+            return cached
+        }
+
         let loadURL: URL
         switch url.pathExtension {
         case "mlmodelc":
@@ -46,7 +54,9 @@ struct CoreMLScorer: Sendable {
             loadURL = url
         }
 
-        return try MLModel(contentsOf: loadURL)
+        let model = try MLModel(contentsOf: loadURL)
+        Self.modelCache.store(model, for: url)
+        return model
     }
 
     func scoreIfAvailable(_ message: String, languageCode: String?, in bundle: Bundle = .module) -> Double? {
@@ -71,15 +81,23 @@ struct CoreMLScorer: Sendable {
     }
 
     private func loadTokenizer(forModelAt modelURL: URL, in bundle: Bundle) throws -> WordPieceTokenizer {
-        if let bundleVocabularyURL = bundle.url(forResource: "vocab", withExtension: "txt", subdirectory: "tokenizer") {
-            return try WordPieceTokenizer(vocabularyURL: bundleVocabularyURL, maximumLength: sequenceLength)
+        if let cached = Self.tokenizerCache.tokenizer(for: modelURL) {
+            return cached
         }
 
-        let siblingTokenizerURL = modelURL
-            .deletingLastPathComponent()
-            .appendingPathComponent("\(modelName).tokenizer", isDirectory: true)
-            .appendingPathComponent("vocab.txt")
-        return try WordPieceTokenizer(vocabularyURL: siblingTokenizerURL, maximumLength: sequenceLength)
+        let tokenizer: WordPieceTokenizer
+        if let bundleVocabularyURL = bundle.url(forResource: "vocab", withExtension: "txt", subdirectory: "tokenizer") {
+            tokenizer = try WordPieceTokenizer(vocabularyURL: bundleVocabularyURL, maximumLength: sequenceLength)
+        } else {
+            let siblingTokenizerURL = modelURL
+                .deletingLastPathComponent()
+                .appendingPathComponent("\(modelName).tokenizer", isDirectory: true)
+                .appendingPathComponent("vocab.txt")
+            tokenizer = try WordPieceTokenizer(vocabularyURL: siblingTokenizerURL, maximumLength: sequenceLength)
+        }
+
+        Self.tokenizerCache.store(tokenizer, for: modelURL)
+        return tokenizer
     }
 
     private func makeFeatureProvider(for message: String, tokenizer: WordPieceTokenizer) -> MLDictionaryFeatureProvider? {
@@ -145,6 +163,38 @@ struct CoreMLScorer: Sendable {
         }
 
         return exponentials.map { $0 / sum }
+    }
+}
+
+private final class ModelCache: @unchecked Sendable {
+    private let lock = OSAllocatedUnfairLock(initialState: [String: MLModel]())
+
+    func model(for url: URL) -> MLModel? {
+        lock.withLock { models in
+            models[url.standardizedFileURL.path]
+        }
+    }
+
+    func store(_ model: MLModel, for url: URL) {
+        lock.withLock { models in
+            models[url.standardizedFileURL.path] = model
+        }
+    }
+}
+
+private final class TokenizerCache: @unchecked Sendable {
+    private let lock = OSAllocatedUnfairLock(initialState: [String: WordPieceTokenizer]())
+
+    func tokenizer(for url: URL) -> WordPieceTokenizer? {
+        lock.withLock { tokenizers in
+            tokenizers[url.standardizedFileURL.path]
+        }
+    }
+
+    func store(_ tokenizer: WordPieceTokenizer, for url: URL) {
+        lock.withLock { tokenizers in
+            tokenizers[url.standardizedFileURL.path] = tokenizer
+        }
     }
 }
 
