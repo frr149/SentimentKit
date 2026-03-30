@@ -502,12 +502,18 @@ Status as of 2026-03-30:
 
 ### Phase 4: LLM scorer (optional layer)
 
-- [ ] `SentimentScorer` protocol
-- [ ] `AnthropicSentimentScorer` implementation (Haiku)
-- [ ] `OpenAISentimentScorer` implementation (GPT-4o-mini)
-- [ ] LLM only contributes meanScore, NEVER expressions
-- [ ] Rate limiting and cost control
-- [ ] Tests with mock LLM responses
+- [x] `SentimentScorer` protocol
+- [x] `AnthropicSentimentScorer` implementation (Haiku)
+- [x] `OpenAISentimentScorer` implementation (GPT-4o-mini)
+- [x] LLM only contributes meanScore, NEVER expressions
+- [x] Rate limiting and cost control
+- [x] Tests with mock LLM responses
+
+Status as of 2026-03-30:
+
+- Phase 4 is already implemented in-tree and covered by dedicated tests with mock HTTP responses.
+- `SentimentAnalyzer.analyzeSession(_:using:)` keeps deterministic expressions, variance, and Angry Nerd metrics untouched; the LLM layer only overrides `meanScore`.
+- The main remaining follow-up after Phases 3 and 4 is hardening and distribution work, not first-time implementation of new scoring layers.
 
 ## 7. Non-goals (v1)
 
