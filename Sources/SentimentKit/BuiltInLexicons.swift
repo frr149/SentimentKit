@@ -64,7 +64,8 @@ enum BuiltInLexicons {
   }()
 
   static let cjkSearcher: CJKSearcher = {
-    let words = loadTSVLines(named: "zh-vader.tsv")
+    let words =
+      loadTSVLines(named: "zh-vader.tsv")
       + loadTSVLines(named: "zh-positive.tsv")
       + loadTSVLines(named: "zh-frustration.tsv")
       + loadTSVLines(named: "zh-profanity.tsv")
@@ -80,7 +81,8 @@ enum BuiltInLexicons {
       return []
     }
 
-    return content
+    return
+      content
       .components(separatedBy: .newlines)
       .map { $0.trimmingCharacters(in: .whitespaces) }
       .filter { !$0.isEmpty && !$0.hasPrefix("#") }

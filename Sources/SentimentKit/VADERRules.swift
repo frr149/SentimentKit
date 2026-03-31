@@ -60,9 +60,9 @@ struct VADERRules: Sendable {
       adjustedScore *= -0.75
     }
 
-    if intensifiers.containsPhrase(before: match.start, in: tokens, maxDistance: 2) {
-      adjustedScore *= 1.3
-    }
+    let intensifierFactor = intensifiers.amplificationFactor(
+      before: match.start, in: tokens, maxDistance: 2)
+    adjustedScore *= intensifierFactor
 
     if diminishers.containsPhrase(before: match.start, in: tokens, maxDistance: 3) {
       adjustedScore *= 0.7

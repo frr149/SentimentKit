@@ -123,9 +123,10 @@ enum FixtureSupport {
   }
 
   static func allBundledExpressionKeys() -> Set<NormalizedExpressionKey> {
-    Set(allBundledExpressions().map {
-      normalizedExpressionKey(text: $0.text, type: $0.type, language: $0.language)
-    })
+    Set(
+      allBundledExpressions().map {
+        normalizedExpressionKey(text: $0.text, type: $0.type, language: $0.language)
+      })
   }
 
   static func allExercisedBundledExpressionKeys() throws -> Set<NormalizedExpressionKey> {
@@ -144,7 +145,8 @@ enum FixtureSupport {
         }
     }
 
-    let exercisedFromMustMatch = expressionFixtures.mustMatch.compactMap { item -> NormalizedExpressionKey? in
+    let exercisedFromMustMatch = expressionFixtures.mustMatch.compactMap {
+      item -> NormalizedExpressionKey? in
       guard let type = ExpressionType(rawValue: item.type) else {
         return nil
       }

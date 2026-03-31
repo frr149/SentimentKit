@@ -3,10 +3,6 @@ import Foundation
 struct CJKSearcher: Sendable {
   let dictionary: Set<String>
 
-  init(dictionary: Set<String>) {
-    self.dictionary = dictionary
-  }
-
   func merge(_ tokens: [String]) -> [String] {
     var result: [String] = []
     var i = 0

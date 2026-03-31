@@ -43,7 +43,8 @@ struct NormalizationLintTests {
       for (index, line) in lines.enumerated() {
         if forbiddenMarkers.contains(where: line.contains) {
           let relativePath = fileURL.path.replacingOccurrences(of: root.path + "/", with: "")
-          violations.append("\(relativePath):\(index + 1): \(line.trimmingCharacters(in: .whitespaces))")
+          violations.append(
+            "\(relativePath):\(index + 1): \(line.trimmingCharacters(in: .whitespaces))")
         }
       }
     }

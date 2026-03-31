@@ -1,12 +1,13 @@
 # language: zh
 # type: intensifiers
-很
-非常
-太
-极
-超
-特别
-十分
-格外
-多么
-真
+# Score is amplification factor (1.0 = no amplification, 1.3 = standard, higher = stronger)
+很	1.3
+非常	1.6
+太	1.7
+极	1.8
+超	1.6
+特别	1.5
+十分	1.4
+格外	1.5
+多么	1.3
+真	1.4

@@ -158,11 +158,9 @@ struct ZHSentimentIntegrationTests {
     #expect(negated.score > 0)
   }
 
-  // BUG: Intensifier 很/非常 should amplify sentiment
-  // Current: "这很坏" = -0.91, "这非常坏" = -0.7
-  // Expected: "这非常坏" should be MORE negative (e.g., -1.2)
-  // Root cause: VADER intensifier detection not amplifying for ZH
-  @Test(.bug("VADER intensifier amplification not working correctly for ZH"))
+  // Intensifier 很/非常 should amplify sentiment
+  // "这非常坏" should be MORE negative than "这很坏" because 非常 is stronger than 很
+  @Test
   func zheHenHuaiVsZheFeiChangHuai() {
     let baseline = SentimentAnalyzer().analyze("这很坏")
     let intensified = SentimentAnalyzer().analyze("这非常坏")
@@ -171,10 +169,23 @@ struct ZHSentimentIntegrationTests {
     #expect(baseline.score < 0)
     #expect(intensified.score < 0)
 
-    // Known bug: intensified (-0.7) is LESS negative than baseline (-0.91)
-    // Expected: intensified should be MORE negative
-    // Disabled until VADER ZH intensifier logic is fixed
-    // #expect(intensified.score < baseline.score, "Known bug: intensifier not amplifying")
+    // intensified should be MORE negative than baseline
+    #expect(intensified.score < baseline.score, "Intensifier 非常 should amplify more than 很")
+  }
+
+  // Intensifier 很/非常 should amplify positive sentiment
+  // "这非常棒" should be MORE positive than "这很棒" because 非常 is stronger than 很
+  @Test
+  func zheHenBangVsZheFeiChangBang() {
+    let baseline = SentimentAnalyzer().analyze("这很棒")
+    let intensified = SentimentAnalyzer().analyze("这非常棒")
+
+    // Both should be positive
+    #expect(baseline.score > 0)
+    #expect(intensified.score > 0)
+
+    // intensified should be MORE positive than baseline
+    #expect(intensified.score > baseline.score, "Intensifier 非常 should amplify more than 很")
   }
 
   // BUG: Great phrase 太好了 should be strongly positive
