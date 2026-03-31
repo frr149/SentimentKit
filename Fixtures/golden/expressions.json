@@ -69,6 +69,8 @@
     { "text": "me cago en tus muertos", "type": "profanity", "language": "es" },
     { "text": "me cago en la puta", "type": "profanity", "language": "es" },
     { "text": "me cago en todo", "type": "profanity", "language": "es" },
+    { "text": "la puta madre", "type": "profanity", "language": "es" },
+    { "text": "hasta los cojones", "type": "profanity", "language": "es" },
     { "text": "dolor de huevos", "type": "profanity", "language": "es" },
     { "text": "me tiene hasta los huevos", "type": "profanity", "language": "es" },
     { "text": "no me jodas", "type": "profanity", "language": "es" },
@@ -96,6 +98,9 @@
     { "text": "idiotez", "type": "profanity", "language": "es" },
     { "text": "cabreo", "type": "profanity", "language": "es" },
     { "text": "cabreo generalizado", "type": "profanity", "language": "es" },
+    { "text": "ni hablar", "type": "frustration", "language": "es" },
+    { "text": "no me convence", "type": "frustration", "language": "es" },
+    { "text": "qué raro", "type": "frustration", "language": "es" },
     { "text": "me parece bien", "type": "positive", "language": "es" },
     { "text": "enhorabuena", "type": "positive", "language": "es" }
   ],
