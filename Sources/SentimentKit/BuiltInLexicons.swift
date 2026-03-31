@@ -30,10 +30,34 @@ enum BuiltInLexicons {
 
   static let vaderRules: VADERRules = {
     (try? VADERRules(
-      negations: PhraseLexicon(resourceNames: ["en-negation.tsv", "es-negation.tsv"]),
-      intensifiers: PhraseLexicon(resourceNames: ["en-intensifiers.tsv", "es-intensifiers.tsv"]),
-      diminishers: PhraseLexicon(resourceNames: ["en-diminishers.tsv", "es-diminishers.tsv"]),
-      conjunctions: PhraseLexicon(resourceNames: ["en-conjunctions.tsv", "es-conjunctions.tsv"])
+      negations: PhraseLexicon(resourceNames: [
+        "en-negation.tsv",
+        "es-negation.tsv",
+        "pt-negation.tsv",
+        "de-negation.tsv",
+        "fr-negation.tsv",
+      ]),
+      intensifiers: PhraseLexicon(resourceNames: [
+        "en-intensifiers.tsv",
+        "es-intensifiers.tsv",
+        "pt-intensifiers.tsv",
+        "de-intensifiers.tsv",
+        "fr-intensifiers.tsv",
+      ]),
+      diminishers: PhraseLexicon(resourceNames: [
+        "en-diminishers.tsv",
+        "es-diminishers.tsv",
+        "pt-diminishers.tsv",
+        "de-diminishers.tsv",
+        "fr-diminishers.tsv",
+      ]),
+      conjunctions: PhraseLexicon(resourceNames: [
+        "en-conjunctions.tsv",
+        "es-conjunctions.tsv",
+        "pt-conjunctions.tsv",
+        "de-conjunctions.tsv",
+        "fr-conjunctions.tsv",
+      ])
     )) ?? .empty
   }()
 }
