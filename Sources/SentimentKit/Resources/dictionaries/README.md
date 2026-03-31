@@ -1,4 +1,13 @@
 Dictionary resources live here.
 
-Phase 1A keeps this directory present so SwiftPM can package `Resources/` cleanly.
-Real TSV dictionaries land in Phase 1B, with golden coverage added in Phase 1D.
+This directory now contains the shipped ES+EN sentiment dictionaries used by the deterministic pipeline.
+
+Coverage is validated in-repo through:
+
+- `Fixtures/golden/messages.json`
+- `Fixtures/golden/expressions.json`
+- `GoldenMessageTests`
+- `GoldenExpressionTests`
+- `DictionaryCoverageTests`
+
+Additions here must stay provenance-backed and must ship with corresponding golden coverage.

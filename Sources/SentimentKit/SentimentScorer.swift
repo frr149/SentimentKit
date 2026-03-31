@@ -2,103 +2,104 @@ import Foundation
 
 /// Session-level scorer used by the optional async LLM layer.
 public protocol SentimentScorer: Sendable {
-    /// Returns a replacement session mean score in the range `-2.0 ... 2.0`.
-    func meanScore(for messages: [String], baseAnalysis: SessionAnalysis) async throws -> Double
+  /// Returns a replacement session mean score in the range `-2.0 ... 2.0`.
+  func meanScore(for messages: [String], baseAnalysis: SessionAnalysis) async throws -> Double
 }
 
 /// Errors produced by optional remote sentiment scorers.
 public enum SentimentScorerError: Error, Equatable, LocalizedError {
-    case missingAPIKey(environmentVariable: String)
-    case tooManyMessages(maximum: Int, actual: Int)
-    case inputTooLarge(maximumCharacters: Int, actualCharacters: Int)
-    case rateLimited(maxRequestsPerMinute: Int)
-    case invalidResponse(provider: String)
-    case invalidScore(provider: String, score: Double)
-    case unexpectedStatusCode(provider: String, statusCode: Int, body: String)
+  case missingAPIKey(environmentVariable: String)
+  case tooManyMessages(maximum: Int, actual: Int)
+  case inputTooLarge(maximumCharacters: Int, actualCharacters: Int)
+  case rateLimited(maxRequestsPerMinute: Int)
+  case invalidResponse(provider: String)
+  case invalidScore(provider: String, score: Double)
+  case unexpectedStatusCode(provider: String, statusCode: Int, body: String)
 
-    public var errorDescription: String? {
-        switch self {
-        case let .missingAPIKey(environmentVariable):
-            return "Missing API key in \(environmentVariable)."
-        case let .tooManyMessages(maximum, actual):
-            return "Too many messages for LLM scoring: \(actual) > \(maximum)."
-        case let .inputTooLarge(maximumCharacters, actualCharacters):
-            return "LLM scoring input too large: \(actualCharacters) > \(maximumCharacters) characters."
-        case let .rateLimited(maxRequestsPerMinute):
-            return "LLM scoring rate limit exceeded: \(maxRequestsPerMinute) requests per minute."
-        case let .invalidResponse(provider):
-            return "Invalid response from \(provider)."
-        case let .invalidScore(provider, score):
-            return "Invalid mean score from \(provider): \(score)."
-        case let .unexpectedStatusCode(provider, statusCode, _):
-            return "Unexpected HTTP status from \(provider): \(statusCode)."
-        }
+  public var errorDescription: String? {
+    switch self {
+    case .missingAPIKey(let environmentVariable):
+      return "Missing API key in \(environmentVariable)."
+    case .tooManyMessages(let maximum, let actual):
+      return "Too many messages for LLM scoring: \(actual) > \(maximum)."
+    case .inputTooLarge(let maximumCharacters, let actualCharacters):
+      return "LLM scoring input too large: \(actualCharacters) > \(maximumCharacters) characters."
+    case .rateLimited(let maxRequestsPerMinute):
+      return "LLM scoring rate limit exceeded: \(maxRequestsPerMinute) requests per minute."
+    case .invalidResponse(let provider):
+      return "Invalid response from \(provider)."
+    case .invalidScore(let provider, let score):
+      return "Invalid mean score from \(provider): \(score)."
+    case .unexpectedStatusCode(let provider, let statusCode, _):
+      return "Unexpected HTTP status from \(provider): \(statusCode)."
     }
+  }
 }
 
 /// Budget and rate-limit policy for optional remote LLM scoring.
 public struct LLMScoringPolicy: Sendable {
-    public var maxMessagesPerRequest: Int
-    public var maxInputCharacters: Int
-    public var maxRequestsPerMinute: Int
-    public var requestTimeout: TimeInterval
-    public var maxOutputTokens: Int
-    public var storeProviderResponses: Bool
+  public var maxMessagesPerRequest: Int
+  public var maxInputCharacters: Int
+  public var maxRequestsPerMinute: Int
+  public var requestTimeout: TimeInterval
+  public var maxOutputTokens: Int
+  public var storeProviderResponses: Bool
 
-    public init(
-        maxMessagesPerRequest: Int = 200,
-        maxInputCharacters: Int = 12_000,
-        maxRequestsPerMinute: Int = 10,
-        requestTimeout: TimeInterval = 20,
-        maxOutputTokens: Int = 128,
-        storeProviderResponses: Bool = false
-    ) {
-        self.maxMessagesPerRequest = maxMessagesPerRequest
-        self.maxInputCharacters = maxInputCharacters
-        self.maxRequestsPerMinute = maxRequestsPerMinute
-        self.requestTimeout = requestTimeout
-        self.maxOutputTokens = maxOutputTokens
-        self.storeProviderResponses = storeProviderResponses
-    }
+  public init(
+    maxMessagesPerRequest: Int = 200,
+    maxInputCharacters: Int = 12_000,
+    maxRequestsPerMinute: Int = 10,
+    requestTimeout: TimeInterval = 20,
+    maxOutputTokens: Int = 128,
+    storeProviderResponses: Bool = false
+  ) {
+    self.maxMessagesPerRequest = maxMessagesPerRequest
+    self.maxInputCharacters = maxInputCharacters
+    self.maxRequestsPerMinute = maxRequestsPerMinute
+    self.requestTimeout = requestTimeout
+    self.maxOutputTokens = maxOutputTokens
+    self.storeProviderResponses = storeProviderResponses
+  }
 }
 
 actor LLMRequestLimiter {
-    private let policy: LLMScoringPolicy
-    private var requestTimes: [Date] = []
+  private let policy: LLMScoringPolicy
+  private var requestTimes: [Date] = []
 
-    init(policy: LLMScoringPolicy) {
-        self.policy = policy
+  init(policy: LLMScoringPolicy) {
+    self.policy = policy
+  }
+
+  func validateAndRecord(messages: [String]) throws {
+    guard messages.count <= policy.maxMessagesPerRequest else {
+      throw SentimentScorerError.tooManyMessages(
+        maximum: policy.maxMessagesPerRequest, actual: messages.count)
     }
 
-    func validateAndRecord(messages: [String]) throws {
-        guard messages.count <= policy.maxMessagesPerRequest else {
-            throw SentimentScorerError.tooManyMessages(maximum: policy.maxMessagesPerRequest, actual: messages.count)
-        }
-
-        let characterCount = messages.reduce(0) { partialResult, message in
-            partialResult + message.count
-        }
-        guard characterCount <= policy.maxInputCharacters else {
-            throw SentimentScorerError.inputTooLarge(
-                maximumCharacters: policy.maxInputCharacters,
-                actualCharacters: characterCount
-            )
-        }
-
-        let now = Date()
-        let cutoff = now.addingTimeInterval(-60)
-        requestTimes.removeAll { $0 < cutoff }
-
-        guard requestTimes.count < policy.maxRequestsPerMinute else {
-            throw SentimentScorerError.rateLimited(maxRequestsPerMinute: policy.maxRequestsPerMinute)
-        }
-
-        requestTimes.append(now)
+    let characterCount = messages.reduce(0) { partialResult, message in
+      partialResult + message.count
     }
+    guard characterCount <= policy.maxInputCharacters else {
+      throw SentimentScorerError.inputTooLarge(
+        maximumCharacters: policy.maxInputCharacters,
+        actualCharacters: characterCount
+      )
+    }
+
+    let now = Date()
+    let cutoff = now.addingTimeInterval(-60)
+    requestTimes.removeAll { $0 < cutoff }
+
+    guard requestTimes.count < policy.maxRequestsPerMinute else {
+      throw SentimentScorerError.rateLimited(maxRequestsPerMinute: policy.maxRequestsPerMinute)
+    }
+
+    requestTimes.append(now)
+  }
 }
 
 enum LLMSentimentPrompt {
-    static let systemInstructions = """
+  static let systemInstructions = """
     You score the overall sentiment of a developer session.
     Return JSON only.
     Never emit expressions or explanation.
@@ -108,37 +109,38 @@ enum LLMSentimentPrompt {
     Technical commands, procedural steps, and code-like instructions should remain neutral unless the session clearly carries sentiment.
     """
 
-    static func input(messages: [String], baseAnalysis: SessionAnalysis) -> String {
-        let numberedMessages = messages.enumerated().map { index, message in
-            "\(index + 1). \(message)"
-        }.joined(separator: "\n")
+  static func input(messages: [String], baseAnalysis: SessionAnalysis) -> String {
+    let numberedMessages = messages.enumerated().map { index, message in
+      "\(index + 1). \(message)"
+    }.joined(separator: "\n")
 
-        return """
-        Deterministic baseline:
-        - meanScore: \(baseAnalysis.meanScore)
-        - angryNerdIndex: \(baseAnalysis.angryNerdIndex)
-        - patienceLevel: \(baseAnalysis.patienceLevel)
-        - language: \(baseAnalysis.language ?? "unknown")
+    return """
+      Deterministic baseline:
+      - meanScore: \(baseAnalysis.meanScore)
+      - angryNerdIndex: \(baseAnalysis.angryNerdIndex)
+      - patienceLevel: \(baseAnalysis.patienceLevel)
+      - language: \(baseAnalysis.language ?? "unknown")
 
-        Task:
-        Return only the corrected session-level JSON meanScore. Do not include commentary.
+      Task:
+      Return only the corrected session-level JSON meanScore. Do not include commentary.
 
-        Messages:
-        \(numberedMessages)
-        """
+      Messages:
+      \(numberedMessages)
+      """
+  }
+
+  static func parseMeanScore(from jsonText: String, provider: String) throws -> Double {
+    guard let data = jsonText.data(using: .utf8),
+      let object = try JSONSerialization.jsonObject(with: data) as? [String: Any],
+      let value = object["meanScore"] as? NSNumber
+    else {
+      throw SentimentScorerError.invalidResponse(provider: provider)
     }
 
-    static func parseMeanScore(from jsonText: String, provider: String) throws -> Double {
-        guard let data = jsonText.data(using: .utf8),
-              let object = try JSONSerialization.jsonObject(with: data) as? [String: Any],
-              let value = object["meanScore"] as? NSNumber else {
-            throw SentimentScorerError.invalidResponse(provider: provider)
-        }
-
-        let score = value.doubleValue
-        guard score.isFinite, (-2.0...2.0).contains(score) else {
-            throw SentimentScorerError.invalidScore(provider: provider, score: score)
-        }
-        return score
+    let score = value.doubleValue
+    guard score.isFinite, (-2.0...2.0).contains(score) else {
+      throw SentimentScorerError.invalidScore(provider: provider, score: score)
     }
+    return score
+  }
 }
