@@ -10,6 +10,7 @@ let package = Package(
     ],
     products: [
         .library(name: "SentimentKit", targets: ["SentimentKit"]),
+        .executable(name: "golden-suggest", targets: ["golden-suggest"]),
     ],
     targets: [
         .target(
@@ -20,6 +21,10 @@ let package = Package(
         ),
         .testTarget(
             name: "SentimentKitTests",
+            dependencies: ["SentimentKit"]
+        ),
+        .executableTarget(
+            name: "golden-suggest",
             dependencies: ["SentimentKit"]
         ),
     ]

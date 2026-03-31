@@ -80,13 +80,13 @@ struct CoreMLScorerTests {
     let scorer = CoreMLScorer()
     let selectedFixtureIDs: Set<String> = [
       "gold-es-001",
-      "gold-es-pos-001",
       "gold-es-frustration-001",
-      "gold-es-neg-003",
-      "gold-en-senti4sd-pos-001",
-      "gold-en-senti4sd-pos-002",
-      "gold-en-senti4sd-neg-002",
-      "gold-en-senti4sd-neg-007",
+      "gold-en-github-pos-001",
+      "gold-en-github-neg-001",
+      "gold-en-github-neg-002",
+      "gold-en-neutral-001",
+      "gold-en-negation-001",
+      "gold-es-002",
     ]
 
     let fixtures = try FixtureSupport.loadGoldenMessages()
