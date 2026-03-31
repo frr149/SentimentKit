@@ -49,4 +49,32 @@ enum FixtureSupport {
     static func allBundledDictionaries() -> [ExpressionDictionary] {
         BuiltInLexicons.dictionaries
     }
+
+    static func allBundledExpressions() -> [SentimentKit.Expression] {
+        allBundledDictionaries().flatMap { dictionary in
+            dictionary.entries.map { entry in
+                SentimentKit.Expression(text: entry.expression, type: dictionary.type, language: dictionary.language)
+            }
+        }
+    }
+
+    static func allExercisedBundledExpressions() throws -> Set<SentimentKit.Expression> {
+        let messages = try loadGoldenMessages()
+        let expressionFixtures = try loadGoldenExpressions()
+
+        let exercisedFromMessages = messages.flatMap { fixture in
+            fixture.expected_profanity.map { SentimentKit.Expression(text: $0, type: .profanity, language: fixture.language) }
+            + fixture.expected_frustration.map { SentimentKit.Expression(text: $0, type: .frustration, language: fixture.language) }
+            + fixture.expected_positive.map { SentimentKit.Expression(text: $0, type: .positive, language: fixture.language) }
+        }
+
+        let exercisedFromMustMatch = expressionFixtures.must_match.compactMap { item -> SentimentKit.Expression? in
+            guard let type = ExpressionType(rawValue: item.type) else {
+                return nil
+            }
+            return SentimentKit.Expression(text: item.text, type: type, language: item.language)
+        }
+
+        return Set(exercisedFromMessages + exercisedFromMustMatch)
+    }
 }
