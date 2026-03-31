@@ -73,3 +73,22 @@ The first `pt` batch should be conservative:
 1. Review SentiLex-PT02 and OpLexicon manually.
 2. Build a candidate queue outside the bundled dictionaries.
 3. Promote a tiny `pt` seed with golden coverage.
+
+## First imported seed
+
+The first imported `pt` seed in this repo is intentionally tiny and only uses
+items that were easy to verify directly inside `lexiconPT_0.1.0`, which bundles
+both `sentiLex_lem_PT02.rda` and `oplexicon_v3.0.rda`.
+
+Imported expressions:
+
+- profanity: `caralho`, `merda`
+- frustration: `horrivel`, `ruim`
+- positive: `excelente`, `genial`
+
+Rationale:
+
+- all six appear directly in the inspected lexicon package
+- all six are short, self-contained, and low-ambiguity
+- we deliberately excluded more doubtful items like `obrigado`, which the source
+  package labels negatively and therefore looks unsuitable for this repo
