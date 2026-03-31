@@ -50,6 +50,32 @@ struct SentimentAnalyzerFoundationTests {
   }
 
   @Test
+  func analyzeUsesGermanSeedDictionariesByDefault() {
+    let analyzer = SentimentAnalyzer()
+
+    let negative = analyzer.analyze("das ist frustrierend und furchtbar")
+    let strongerNegative = analyzer.analyze("das ist katastrophal")
+    let profanity = analyzer.analyze("scheiße, scheisse")
+    let positive = analyzer.analyze("das ist hervorragend, prima und super")
+
+    #expect(negative.language == "de")
+    #expect(negative.frustration.map(\.text) == ["frustrierend", "furchtbar"])
+    #expect(negative.score < 0)
+
+    #expect(strongerNegative.language == nil || strongerNegative.language == "de")
+    #expect(strongerNegative.frustration.map(\.text) == ["katastrophal"])
+    #expect(strongerNegative.score < 0)
+
+    #expect(profanity.language == nil || profanity.language == "de")
+    #expect(profanity.profanity.map(\.text) == ["scheiße", "scheisse"])
+    #expect(profanity.score < 0)
+
+    #expect(positive.language == "de")
+    #expect(positive.positive.map(\.text) == ["hervorragend", "prima", "super"])
+    #expect(positive.score > 0)
+  }
+
+  @Test
   func analyzeUsesInjectedKeywordDictionaries() throws {
     let profanity = try ExpressionDictionary(
       language: "es",

@@ -16,6 +16,12 @@ Why:
 - `de` has a very solid polarity lexicon (`SentiWS`) plus auxiliary resources.
 - `fr` has useful emotion resources, but a weaker immediate fit for the profanity / frustration / positive split used by SentimentKit.
 
+Current status:
+
+- `pt`: first reviewed seed imported
+- `de`: first reviewed seed imported
+- `fr`: documented only, not imported yet
+
 ## Portuguese (`pt`)
 
 Use `pt` in resource names and fixtures. `pt-BR` is the target variety, but `NLLanguageRecognizer` reports Portuguese as `pt`.

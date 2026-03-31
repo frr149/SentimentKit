@@ -2,8 +2,8 @@ Dictionary resources live here.
 
 This directory contains the shipped deterministic dictionaries.
 
-- ES+EN are the active seeded languages.
-- `pt` scaffolding is prepared, but it is intentionally still empty until the first reviewed import lands.
+- ES, EN, PT, and DE are the active seeded languages.
+- `fr` remains documented as a future language, but it is not bundled yet.
 
 Coverage is validated in-repo through:
 
