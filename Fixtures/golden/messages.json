@@ -505,5 +505,71 @@
     "expected_score_min": -1.0,
     "expected_score_max": -0.5,
     "note": "GitHub gold standard figshare 11604597 (ID 53735), verified-from-literature"
+  },
+  {
+    "id": "gold-en-github-pos-019",
+    "text": "This is awesome ;)",
+    "language": "en",
+    "expected_profanity": [],
+    "expected_frustration": [],
+    "expected_positive": ["awesome"],
+    "expected_score_min": 0.8,
+    "expected_score_max": 1.3,
+    "note": "GitHub gold standard figshare 11604597 (ID 314816), verified-from-literature"
+  },
+  {
+    "id": "gold-en-github-pos-020",
+    "text": "nice catch :)",
+    "language": "en",
+    "expected_profanity": [],
+    "expected_frustration": [],
+    "expected_positive": ["nice catch"],
+    "expected_score_min": 0.6,
+    "expected_score_max": 1.0,
+    "note": "GitHub gold standard figshare 11604597 (ID 1661317), verified-from-literature"
+  },
+  {
+    "id": "gold-en-github-pos-021",
+    "text": "`jsonProp` is pure brilliant!",
+    "language": "en",
+    "expected_profanity": [],
+    "expected_frustration": [],
+    "expected_positive": ["brilliant"],
+    "expected_score_min": 0.8,
+    "expected_score_max": 1.4,
+    "note": "GitHub gold standard figshare 11604597 (ID 2216217), verified-from-literature"
+  },
+  {
+    "id": "gold-en-senti4sd-pos-004",
+    "text": "I just have to say this is a brilliant idea, love it! +1",
+    "language": "en",
+    "expected_profanity": [],
+    "expected_frustration": [],
+    "expected_positive": ["brilliant", "love it"],
+    "expected_score_min": 1.2,
+    "expected_score_max": 2.0,
+    "note": "Senti4SD test1326itemPOLARITY.csv t3509, verified-from-literature"
+  },
+  {
+    "id": "gold-en-senti4sd-neg-008",
+    "text": "Oh God, I remember this, it was absolutely horrible. Worse, I can't remember how to fix it offhand.",
+    "language": "en",
+    "expected_profanity": [],
+    "expected_frustration": ["absolutely horrible"],
+    "expected_positive": [],
+    "expected_score_min": -1.2,
+    "expected_score_max": -0.8,
+    "note": "Senti4SD test1326itemPOLARITY.csv t1936, verified-from-literature"
+  },
+  {
+    "id": "gold-en-senti4sd-neg-009",
+    "text": "@wst It doesn't even have the decency to return the same map? That is really terrible.",
+    "language": "en",
+    "expected_profanity": [],
+    "expected_frustration": ["terrible"],
+    "expected_positive": [],
+    "expected_score_min": -1.2,
+    "expected_score_max": -0.7,
+    "note": "Senti4SD test1326itemPOLARITY.csv t255, verified-from-literature"
   }
 ]
