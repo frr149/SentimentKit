@@ -113,7 +113,7 @@ struct SentimentAnalyzerFoundationTests {
     #expect(profanity.score < 0)
 
     #expect(positive.language == "fr")
-    #expect(positive.positive.map(\.text) == ["excellent", "génial", "formidable"])
+    #expect(positive.positive.map(\.text) == ["excellent", "genial", "formidable"])
     #expect(positive.score > 0)
   }
 

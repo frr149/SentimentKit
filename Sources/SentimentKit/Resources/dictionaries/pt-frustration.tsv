@@ -1,7 +1,32 @@
 # language: pt
 # type: frustration
-horrivel	-1.0
-ruim	-1.0
-horrendo	-1.0
-pessimo	-1.0
-terrivel	-1.0
+# Source: SentiLex-PT02, OpLexicon 3.0 (see docs/PT_DATA_SOURCES.md)
+horrivel	-0.7
+ruim	-0.7
+horrendo	-0.7
+pessimo	-0.7
+terrivel	-0.7
+frustrante	-0.7
+irritante	-0.7
+decepcionante	-0.7
+insuportavel	-0.7
+inaceitavel	-0.7
+ridiculo	-0.7
+absurdo	-0.7
+lamentavel	-0.7
+vergonhoso	-0.7
+deploravel	-0.7
+catastrofico	-0.7
+desastroso	-0.7
+miseravel	-0.7
+lastimavel	-0.7
+revoltante	-0.7
+nojento	-0.7
+repugnante	-0.7
+patetico	-0.7
+infortunado	-0.7
+detestavel	-0.7
+odioso	-0.7
+apestoso	-0.7
+asqueroso	-0.7
+execrando	-0.7
