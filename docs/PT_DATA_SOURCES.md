@@ -93,6 +93,16 @@ Rationale:
 - we deliberately excluded more doubtful items like `obrigado`, which the source
   package labels negatively and therefore looks unsuitable for this repo
 
+## Second imported seed
+
+Follow-up additions from the same verified source package:
+
+- frustration: `horrendo`, `pessimo`, `terrivel`
+- positive: `otimo`
+
+These were accepted because both `sentiLex_lem_PT02` and `oplexicon_v3.0`
+expose them as short polarity-bearing items with low contextual ambiguity.
+
 Guardrails added:
 
 - `obrigado`
