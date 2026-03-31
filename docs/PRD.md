@@ -442,7 +442,7 @@ These rules are for Codex/any LLM implementing this PRD:
 ```bash
 make test          # All tests including golden
 make coverage      # Golden messages covered by dictionary (PHANTOM/UNCONSUMED report)
-make lint          # SwiftLint
+make lint          # swift-format lint
 make check         # test + coverage + lint (CI gate)
 ```
 
