@@ -20,7 +20,7 @@ Current status:
 
 - `pt`: first reviewed seed imported
 - `de`: first reviewed seed imported
-- `fr`: documented only, not imported yet
+- `fr`: first reviewed seed imported
 
 ## Portuguese (`pt`)
 
