@@ -571,5 +571,49 @@
     "expected_score_min": -1.2,
     "expected_score_max": -0.7,
     "note": "Senti4SD test1326itemPOLARITY.csv t255, verified-from-literature"
+  },
+  {
+    "id": "gold-es-session-neg-005",
+    "text": "la puta madre... Ni hablar. Revisa primero el backend y me dices qué cosas debemos testar a nivel unitario y tambien qué propiedades deberíamos testar con pbt",
+    "language": "es",
+    "expected_profanity": ["la puta madre"],
+    "expected_frustration": ["ni hablar"],
+    "expected_positive": [],
+    "expected_score_min": -2.0,
+    "expected_score_max": -1.1,
+    "note": "Mined from real Spanish Claude session logs, 2026-03-31 corpus"
+  },
+  {
+    "id": "gold-es-session-neg-006",
+    "text": "es la segunda vez que me pasa esto y estoy hasta los cojones. quiero impedir que vuelva a ocurrir.",
+    "language": "es",
+    "expected_profanity": ["hasta los cojones"],
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_score_min": -1.7,
+    "expected_score_max": -1.0,
+    "note": "Mined from real Spanish Claude session logs, 2026-03-31 corpus"
+  },
+  {
+    "id": "gold-es-session-neg-007",
+    "text": "joder, qué raro...",
+    "language": "es",
+    "expected_profanity": ["joder"],
+    "expected_frustration": ["qué raro"],
+    "expected_positive": [],
+    "expected_score_min": -1.6,
+    "expected_score_max": -0.7,
+    "note": "Mined from real Spanish Claude session logs, 2026-03-31 corpus"
+  },
+  {
+    "id": "gold-es-session-neg-008",
+    "text": "No me convence y me parece peligroso.",
+    "language": "es",
+    "expected_profanity": [],
+    "expected_frustration": ["no me convence"],
+    "expected_positive": [],
+    "expected_score_min": -0.9,
+    "expected_score_max": -0.3,
+    "note": "Mined from real Spanish Claude session logs, 2026-03-31 corpus"
   }
 ]
