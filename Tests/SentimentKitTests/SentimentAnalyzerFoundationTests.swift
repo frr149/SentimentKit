@@ -23,6 +23,27 @@ struct SentimentAnalyzerFoundationTests {
   }
 
   @Test
+  func analyzeUsesPortugueseSeedDictionariesByDefault() {
+    let analyzer = SentimentAnalyzer()
+
+    let negative = analyzer.analyze("isso é ruim e horrivel")
+    let profanity = analyzer.analyze("caralho, merda")
+    let positive = analyzer.analyze("isso é excelente e genial")
+
+    #expect(negative.language == "pt")
+    #expect(negative.frustration.map(\.text) == ["ruim", "horrivel"])
+    #expect(negative.score < 0)
+
+    #expect(profanity.language == nil || profanity.language == "pt")
+    #expect(profanity.profanity.map(\.text) == ["caralho", "merda"])
+    #expect(profanity.score < 0)
+
+    #expect(positive.language == "pt")
+    #expect(positive.positive.map(\.text) == ["excelente", "genial"])
+    #expect(positive.score > 0)
+  }
+
+  @Test
   func analyzeUsesInjectedKeywordDictionaries() throws {
     let profanity = try ExpressionDictionary(
       language: "es",
