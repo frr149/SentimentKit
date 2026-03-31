@@ -115,10 +115,10 @@
     "language": "es",
     "expected_profanity": [],
     "expected_frustration": [],
-    "expected_positive": ["perfecto", "adelante"],
-    "expected_score_min": 1.2,
-    "expected_score_max": 2.0,
-    "note": "Approved PRD/README/DocC session example, verified from repo seed data"
+    "expected_positive": ["adelante"],
+    "expected_score_min": 0.5,
+    "expected_score_max": 1.1,
+    "note": "Repo seed example kept positive via adelante; perfecto removed as workflow acknowledgment"
   },
   {
     "id": "gold-es-neg-002",

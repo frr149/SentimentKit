@@ -70,7 +70,7 @@ struct SessionAnalysisTests {
       "ok",
       "esto es una mierda",
       "joder, otra vez",
-      "perfecto",
+      "perfecto, adelante",
     ])
 
     #expect(session.messages.count == 4)
@@ -81,6 +81,6 @@ struct SessionAnalysisTests {
     #expect(
       session.topExpressions[Expression(text: "joder", type: .profanity, language: "es")] == 1)
     #expect(
-      session.topExpressions[Expression(text: "perfecto", type: .positive, language: "es")] == 1)
+      session.topExpressions[Expression(text: "adelante", type: .positive, language: "es")] == 1)
   }
 }
