@@ -439,5 +439,71 @@
     "expected_score_min": -1.2,
     "expected_score_max": -0.5,
     "note": "GitHub gold standard figshare 11604597 (ID 244856), verified-from-literature"
+  },
+  {
+    "id": "gold-en-github-pos-014",
+    "text": "Great addition, thanks Ben!",
+    "language": "en",
+    "expected_profanity": [],
+    "expected_frustration": [],
+    "expected_positive": ["great", "thanks"],
+    "expected_score_min": 1.0,
+    "expected_score_max": 2.0,
+    "note": "GitHub gold standard figshare 11604597 (ID 3414320), verified-from-literature"
+  },
+  {
+    "id": "gold-en-github-pos-015",
+    "text": "I'll go through it now, thanks for the review :)",
+    "language": "en",
+    "expected_profanity": [],
+    "expected_frustration": [],
+    "expected_positive": ["thanks"],
+    "expected_score_min": 0.5,
+    "expected_score_max": 1.0,
+    "note": "GitHub gold standard figshare 11604597 (ID 2551585), verified-from-literature"
+  },
+  {
+    "id": "gold-en-github-pos-016",
+    "text": "@dmethvin Ah, thanks for that!",
+    "language": "en",
+    "expected_profanity": [],
+    "expected_frustration": [],
+    "expected_positive": ["thanks"],
+    "expected_score_min": 0.5,
+    "expected_score_max": 1.0,
+    "note": "GitHub gold standard figshare 11604597 (ID 2502858), verified-from-literature"
+  },
+  {
+    "id": "gold-en-github-pos-017",
+    "text": "True, now makes sense :)",
+    "language": "en",
+    "expected_profanity": [],
+    "expected_frustration": [],
+    "expected_positive": ["makes sense"],
+    "expected_score_min": 0.4,
+    "expected_score_max": 0.9,
+    "note": "GitHub gold standard figshare 11604597 (ID 1035302), verified-from-literature"
+  },
+  {
+    "id": "gold-en-github-pos-018",
+    "text": "Excellent, thanks! Will get this merged this week.",
+    "language": "en",
+    "expected_profanity": [],
+    "expected_frustration": [],
+    "expected_positive": ["excellent", "thanks"],
+    "expected_score_min": 1.2,
+    "expected_score_max": 2.0,
+    "note": "GitHub gold standard figshare 11604597 (ID 217565), verified-from-literature"
+  },
+  {
+    "id": "gold-en-github-neg-008",
+    "text": "Confirmed, very annoying crash, may happen 3 times per minute",
+    "language": "en",
+    "expected_profanity": [],
+    "expected_frustration": ["very annoying"],
+    "expected_positive": [],
+    "expected_score_min": -1.0,
+    "expected_score_max": -0.5,
+    "note": "GitHub gold standard figshare 11604597 (ID 53735), verified-from-literature"
   }
 ]
