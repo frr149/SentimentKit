@@ -92,3 +92,11 @@ Rationale:
 - all six are short, self-contained, and low-ambiguity
 - we deliberately excluded more doubtful items like `obrigado`, which the source
   package labels negatively and therefore looks unsuitable for this repo
+
+Guardrails added:
+
+- `obrigado`
+- `obrigada`
+
+These are explicitly covered in `must_not_match` so future imports do not
+accidentally treat gratitude as negative sentiment.
