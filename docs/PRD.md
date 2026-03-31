@@ -139,7 +139,8 @@ public struct SentimentConfig: Sendable {
     public var enableKeywords: Bool = true
     public var enableVADERRules: Bool = true
     public var enableNLTagger: Bool = true   // attenuated ×0.5
-    public var enableCoreML: Bool = false    // requires model in bundle
+    public var enableCoreML: Bool = false
+    public var coreMLModelURL: URL? = nil    // optional explicit model path
 
     /// NLTagger attenuation factor (0.0 to 1.0).
     /// Applied when keywords detect nothing. Default 0.5.
@@ -210,6 +211,7 @@ let session = analyzer.analyzeSession(messages)
 ```swift
 var config = SentimentConfig()
 config.enableCoreML = true
+config.coreMLModelURL = URL(filePath: "/path/to/SentimentKitSentiment.mlpackage")
 config.enableNLTagger = false  // disable if not wanted
 let analyzer = SentimentAnalyzer(config: config)
 ```
@@ -479,29 +481,41 @@ Deferred optional follow-up work:
 
 ### Phase 2: NLTagger integration
 
-- [ ] `NLTaggerScorer`: wraps NLTagger as attenuated secondary signal
-- [ ] Language detection via `NLLanguageRecognizer`
-- [ ] Integration into pipeline Stage 3
-- [ ] Tests verifying attenuation works correctly
-- [ ] Tests verifying NeutralCommandTests still pass with NLTagger enabled
+- [x] `NLTaggerScorer`: wraps NLTagger as attenuated secondary signal
+- [x] Language detection via `NLLanguageRecognizer`
+- [x] Integration into pipeline Stage 3
+- [x] Tests verifying attenuation works correctly
+- [x] Tests verifying NeutralCommandTests still pass with NLTagger enabled
+
+Status as of 2026-03-30:
+
+- Phase 2 is already implemented in-tree and validated by dedicated tests.
+- `NLTagger` remains a last-resort fallback only: it runs only when deterministic dictionaries find no signal.
+- The next incomplete implementation phase is Phase 3 (`CoreMLScorer` as an optional layer).
 
 ### Phase 3: CoreML DistilBERT (optional layer)
 
-- [ ] Convert `lxyuan/distilbert-base-multilingual-cased-sentiments-student` to CoreML with INT8 quantization
+- [x] Convert `lxyuan/distilbert-base-multilingual-cased-sentiments-student` to CoreML with INT8 quantization
 - [ ] `CoreMLScorer`: loads model on-demand, runs inference
 - [ ] Integration into pipeline Stage 4
 - [ ] Tests for 12 languages
 - [ ] On-Demand Resources support (model downloaded separately)
-- [ ] Fallback: if model not available, pipeline works without it
+- [x] Fallback: if model not available, pipeline works without it
 
 ### Phase 4: LLM scorer (optional layer)
 
-- [ ] `SentimentScorer` protocol
-- [ ] `AnthropicSentimentScorer` implementation (Haiku)
-- [ ] `OpenAISentimentScorer` implementation (GPT-4o-mini)
-- [ ] LLM only contributes meanScore, NEVER expressions
-- [ ] Rate limiting and cost control
-- [ ] Tests with mock LLM responses
+- [x] `SentimentScorer` protocol
+- [x] `AnthropicSentimentScorer` implementation (Haiku)
+- [x] `OpenAISentimentScorer` implementation (GPT-4o-mini)
+- [x] LLM only contributes meanScore, NEVER expressions
+- [x] Rate limiting and cost control
+- [x] Tests with mock LLM responses
+
+Status as of 2026-03-30:
+
+- Phase 4 is already implemented in-tree and covered by dedicated tests with mock HTTP responses.
+- `SentimentAnalyzer.analyzeSession(_:using:)` keeps deterministic expressions, variance, and Angry Nerd metrics untouched; the LLM layer only overrides `meanScore`.
+- The main remaining follow-up after Phases 3 and 4 is hardening and distribution work, not first-time implementation of new scoring layers.
 
 ## 7. Non-goals (v1)
 
