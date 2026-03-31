@@ -11,7 +11,7 @@ enum MessageTokenizer {
     let pieces = message.split { character in
       character.unicodeScalars.allSatisfy { isSeparator($0) }
     }
-      .flatMap { expandCJK(String($0)) }
+    .flatMap { expandCJK(String($0)) }
 
     let rawTokens = pieces.compactMap { piece -> String? in
       let raw = String(piece)
