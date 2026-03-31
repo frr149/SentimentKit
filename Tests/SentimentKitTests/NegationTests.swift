@@ -58,4 +58,111 @@ struct NegationTests {
 
     #expect(result.score < 0)
   }
+
+  // MARK: - Portuguese VADER tests
+
+  @Test
+  func portugueseNegationFlipaNegativeToPositive() {
+    let baseline = SentimentAnalyzer().analyze("o resultado está horrivel")
+    let negated = SentimentAnalyzer().analyze("o resultado não está horrivel")
+
+    #expect(baseline.score < 0)
+    #expect(negated.score > baseline.score)
+    #expect(negated.score > 0)
+  }
+
+  @Test
+  func portugueseIntensifierAmplifiesNegative() {
+    let baseline = SentimentAnalyzer().analyze("o resultado está ruim")
+    let intensified = SentimentAnalyzer().analyze("o resultado está muito ruim")
+
+    #expect(intensified.score < baseline.score)
+  }
+
+  @Test
+  func portugueseDiminisherAttenuatesNegative() {
+    let baseline = SentimentAnalyzer().analyze("o resultado está horrivel")
+    let diminished = SentimentAnalyzer().analyze("o resultado está um pouco horrivel")
+
+    #expect(diminished.score > baseline.score)
+  }
+
+  @Test
+  func portugueseConjunctionWeightsSecondClause() {
+    let result = SentimentAnalyzer().analyze(
+      "o design está excelente mas o resultado está horrivel")
+
+    #expect(result.score < 0)
+  }
+
+  // MARK: - German VADER tests
+
+  @Test
+  func germanNegationFlipaNegativeToPositive() {
+    let baseline = SentimentAnalyzer().analyze("das ist furchtbar")
+    let negated = SentimentAnalyzer().analyze("das ist nicht furchtbar")
+
+    #expect(baseline.score < 0)
+    #expect(negated.score > baseline.score)
+    #expect(negated.score > 0)
+  }
+
+  @Test
+  func germanIntensifierAmplifiesNegative() {
+    let baseline = SentimentAnalyzer().analyze("das ist furchtbar")
+    let intensified = SentimentAnalyzer().analyze("das ist sehr furchtbar")
+
+    #expect(intensified.score < baseline.score)
+  }
+
+  @Test
+  func germanDiminisherAttenuatesNegative() {
+    let baseline = SentimentAnalyzer().analyze("das ist furchtbar")
+    let diminished = SentimentAnalyzer().analyze("das ist etwas furchtbar")
+
+    #expect(diminished.score > baseline.score)
+  }
+
+  @Test
+  func germanConjunctionWeightsSecondClause() {
+    let result = SentimentAnalyzer().analyze(
+      "das ist hervorragend aber das ist furchtbar")
+
+    #expect(result.score < 0)
+  }
+
+  // MARK: - French VADER tests
+
+  @Test
+  func frenchNegationFlipaNegativeToPositive() {
+    let baseline = SentimentAnalyzer().analyze("c'est horrible")
+    let negated = SentimentAnalyzer().analyze("ce n'est pas horrible")
+
+    #expect(baseline.score < 0)
+    #expect(negated.score > baseline.score)
+    #expect(negated.score > 0)
+  }
+
+  @Test
+  func frenchIntensifierAmplifiesNegative() {
+    let baseline = SentimentAnalyzer().analyze("c'est horrible")
+    let intensified = SentimentAnalyzer().analyze("c'est très horrible")
+
+    #expect(intensified.score < baseline.score)
+  }
+
+  @Test
+  func frenchDiminisherAttenuatesNegative() {
+    let baseline = SentimentAnalyzer().analyze("c'est horrible")
+    let diminished = SentimentAnalyzer().analyze("c'est un peu horrible")
+
+    #expect(diminished.score > baseline.score)
+  }
+
+  @Test
+  func frenchConjunctionWeightsSecondClause() {
+    let result = SentimentAnalyzer().analyze("c'est excellent mais c'est horrible")
+
+    #expect(result.score < 0)
+  }
 }
