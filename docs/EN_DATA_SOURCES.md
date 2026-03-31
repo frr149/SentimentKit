@@ -106,6 +106,13 @@ It is intentionally conservative: a source appearing here does not mean its cont
   - `True, now makes sense :)` (ID 1035302)
   - `Excellent, thanks! Will get this merged this week.` (ID 217565)
   - `Confirmed, very annoying crash, may happen 3 times per minute` (ID 53735)
+- Golden messages added in the current PHANTOM-reduction sweep:
+  - `This is awesome ;)` (ID 314816)
+  - `nice catch :)` (ID 1661317)
+  - `` `jsonProp` is pure brilliant! `` (ID 2216217)
+  - `I just have to say this is a brilliant idea, love it! +1` (Senti4SD `t3509`)
+  - `Oh God, I remember this, it was absolutely horrible. Worse, I can't remember how to fix it offhand.` (Senti4SD `t1936`)
+  - `@wst It doesn't even have the decency to return the same map? That is really terrible.` (Senti4SD `t255`)
 
 ### 4. Stack Overflow content license reference
 
