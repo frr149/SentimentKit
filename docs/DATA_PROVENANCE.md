@@ -153,12 +153,12 @@ Generic consumer-sentiment datasets are out of scope as seed data. They are high
 
 ## Next-language policy
 
-For the next language beyond ES+EN, prefer Portuguese (`pt` in resource names, even if the user-facing target is pt-BR).
+For the first additional languages beyond ES+EN, use this order: Portuguese first, then German.
 
 Why:
 
 1. Portuguese currently has the best available external-source stack for a conservative seed.
-2. French and German both have useful lexicons, but weaker immediate fit for the profanity / frustration / positive split we use here.
+2. German has a stronger immediate lexicon fit than French once Portuguese is in place.
 3. Internal session data should not be assumed unless it has actually been verified for that language.
 
 ## Translation policy
