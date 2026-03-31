@@ -1,0 +1,9 @@
+# language: zh
+# type: vader - CJKSearcher dictionary
+# Only multi-char expressions NOT in negation/intensifiers/sentiment dicts
+# This enables greedy match for sentiment words like 太好了
+
+# Multi-char sentiment expressions
+太好了
+一帆风顺
+了不起

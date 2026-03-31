@@ -36,6 +36,7 @@ enum BuiltInLexicons {
         "pt-negation.tsv",
         "de-negation.tsv",
         "fr-negation.tsv",
+        "zh-negation.tsv",
       ]),
       intensifiers: PhraseLexicon(resourceNames: [
         "en-intensifiers.tsv",
@@ -43,6 +44,7 @@ enum BuiltInLexicons {
         "pt-intensifiers.tsv",
         "de-intensifiers.tsv",
         "fr-intensifiers.tsv",
+        "zh-intensifiers.tsv",
       ]),
       diminishers: PhraseLexicon(resourceNames: [
         "en-diminishers.tsv",
@@ -60,4 +62,32 @@ enum BuiltInLexicons {
       ])
     )) ?? .empty
   }()
+
+  static let cjkSearcher: CJKSearcher = {
+    let words = loadTSVLines(named: "zh-vader.tsv")
+      + loadTSVLines(named: "zh-positive.tsv")
+      + loadTSVLines(named: "zh-frustration.tsv")
+      + loadTSVLines(named: "zh-profanity.tsv")
+      + loadTSVLines(named: "zh-negation.tsv")
+      + loadTSVLines(named: "zh-intensifiers.tsv")
+    return CJKSearcher(dictionary: Set(words))
+  }()
+
+  private static func loadTSVLines(named resourceName: String) -> [String] {
+    guard let url = Bundle.module.url(forResource: resourceName, withExtension: nil),
+      let content = try? String(contentsOf: url, encoding: .utf8)
+    else {
+      return []
+    }
+
+    return content
+      .components(separatedBy: .newlines)
+      .map { $0.trimmingCharacters(in: .whitespaces) }
+      .filter { !$0.isEmpty && !$0.hasPrefix("#") }
+      .compactMap { line in
+        let parts = line.components(separatedBy: "\t")
+        return parts.first?.trimmingCharacters(in: .whitespaces)
+      }
+      .filter { !$0.isEmpty }
+  }
 }

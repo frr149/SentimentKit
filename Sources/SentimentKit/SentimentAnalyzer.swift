@@ -13,8 +13,8 @@ public struct SentimentAnalyzer: Sendable {
   }
 
   public func analyze(_ message: String) -> MessageAnalysis {
-    let tokens = MessageTokenizer.tokenize(message)
     let language = languageDetector.detectMessageLanguage(message)
+    let tokens = MessageTokenizer.tokenize(message, language: language)
     let dictionaryCandidates =
       BuiltInLexicons.dictionaries.map { ($0, allowCrossLanguage: false) }
       + config.additionalDictionaries.map { ($0, allowCrossLanguage: true) }
