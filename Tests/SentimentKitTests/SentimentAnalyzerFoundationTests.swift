@@ -50,6 +50,27 @@ struct SentimentAnalyzerFoundationTests {
   }
 
   @Test
+  func analyzeUsesChineseSeedDictionariesByDefault() {
+    let analyzer = SentimentAnalyzer()
+
+    let positive = analyzer.analyze("祝你在新的工作岗位上一帆风顺，大展宏图！")
+    let frustration = analyzer.analyze("露娜公园传来得噪声真是糟糕透了。")
+    let profanity = analyzer.analyze("让这个混蛋滚出加拿大。")
+
+    #expect(positive.language == "zh")
+    #expect(positive.positive.map(\.text) == ["一帆风顺"])
+    #expect(positive.score > 0)
+
+    #expect(frustration.language == "zh")
+    #expect(frustration.frustration.map(\.text) == ["糟糕"])
+    #expect(frustration.score < 0)
+
+    #expect(profanity.language == nil || profanity.language == "zh")
+    #expect(profanity.profanity.map(\.text) == ["混蛋"])
+    #expect(profanity.score < 0)
+  }
+
+  @Test
   func analyzeUsesGermanSeedDictionariesByDefault() {
     let analyzer = SentimentAnalyzer()
 
@@ -67,7 +88,7 @@ struct SentimentAnalyzerFoundationTests {
     #expect(strongerNegative.score < 0)
 
     #expect(profanity.language == nil || profanity.language == "de")
-    #expect(profanity.profanity.map(\.text) == ["scheiße", "scheisse"])
+    #expect(profanity.profanity.map(\.text) == ["scheiße", "scheiße"])
     #expect(profanity.score < 0)
 
     #expect(positive.language == "de")

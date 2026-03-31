@@ -128,7 +128,19 @@
     { "text": "no me convence", "type": "frustration", "language": "es" },
     { "text": "qué raro", "type": "frustration", "language": "es" },
     { "text": "me parece bien", "type": "positive", "language": "es" },
-    { "text": "enhorabuena", "type": "positive", "language": "es" }
+    { "text": "enhorabuena", "type": "positive", "language": "es" },
+    { "text": "一帆风顺", "type": "positive", "language": "zh" },
+    { "text": "开心", "type": "positive", "language": "zh" },
+    { "text": "完美", "type": "positive", "language": "zh" },
+    { "text": "优秀", "type": "positive", "language": "zh" },
+    { "text": "糟糕", "type": "frustration", "language": "zh" },
+    { "text": "烦死", "type": "frustration", "language": "zh" },
+    { "text": "烦躁", "type": "frustration", "language": "zh" },
+    { "text": "失望", "type": "frustration", "language": "zh" },
+    { "text": "去死", "type": "profanity", "language": "zh" },
+    { "text": "滚蛋", "type": "profanity", "language": "zh" },
+    { "text": "贱人", "type": "profanity", "language": "zh" },
+    { "text": "混蛋", "type": "profanity", "language": "zh" }
   ],
   "must_not_match": [
     { "text": "borra", "note": "command, not profanity" },

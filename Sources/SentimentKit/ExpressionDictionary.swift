@@ -47,7 +47,7 @@ public struct ExpressionDictionary: Sendable, Equatable {
 
     var seen = Set<String>()
     for entry in entries {
-      let normalizedExpression = Self.normalize(entry.expression)
+      let normalizedExpression = Self.normalize(entry.expression, language: normalizedLanguage)
       guard normalizedExpression.isEmpty == false else {
         throw ExpressionDictionaryError.invalidEntry(
           line: 0, reason: "expression must not be empty")
@@ -180,10 +180,7 @@ public struct ExpressionDictionary: Sendable, Equatable {
     return (language, type, entries)
   }
 
-  private static func normalize(_ expression: String) -> String {
-    expression
-      .lowercased()
-      .split(whereSeparator: \.isWhitespace)
-      .joined(separator: " ")
+  private static func normalize(_ expression: String, language: String) -> String {
+    TextNormalization.normalizeExpression(expression, language: language)
   }
 }

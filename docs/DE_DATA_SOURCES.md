@@ -45,3 +45,23 @@ Rationale:
 - all seven appear directly in the inspected SentiWS archive
 - all seven are short and clearly affective
 - we deliberately excluded technical or workflow-adjacent terms even when the source scored them
+
+## First imported golden messages
+
+The first `de` full-message fixtures come from:
+
+- dataset: `cardiffnlp/tweet_sentiment_multilingual`
+- source URL:
+  - `https://huggingface.co/datasets/cardiffnlp/tweet_sentiment_multilingual`
+
+Imported rows:
+
+- `gold-de-cardiff-pos-001`: `german/train.jsonl` row 477
+- `gold-de-cardiff-pos-002`: `german/train.jsonl` row 975
+- `gold-de-cardiff-neg-001`: `german/train.jsonl` row 202
+
+Rationale:
+
+- all three are short and manually reviewable
+- each one contains an exact bundled expression
+- this first batch hardens `positive` and `profanity` immediately while we continue looking for stronger `frustration` fixtures

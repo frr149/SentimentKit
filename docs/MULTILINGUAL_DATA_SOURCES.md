@@ -117,3 +117,10 @@ For any of these languages:
 2. Prefer profanity + frustration before broad positive vocabulary.
 3. Keep workflow acknowledgments out unless they prove clearly affective in real examples.
 4. Treat public lexicons as candidate sources, not auto-imported truth.
+
+## Chinese (`zh`)
+
+### Candidate sources
+
+- NTUSD word-lists (positive + negative) originally published by the Natural Language Processing Lab at National Taiwan University. The data is mirrored in the `Chinese_Hate_Speech-Baseline-` repository and underpins our new deterministic dictionaries; see `docs/ZH_DATA_SOURCES.md`.
+- We plan to complement the lexicons with short manual fixtures aligned to the same words so Stage 1 stays deterministic.

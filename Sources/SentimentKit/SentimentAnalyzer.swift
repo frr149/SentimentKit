@@ -15,11 +15,13 @@ public struct SentimentAnalyzer: Sendable {
   public func analyze(_ message: String) -> MessageAnalysis {
     let tokens = MessageTokenizer.tokenize(message)
     let language = languageDetector.detectMessageLanguage(message)
-    let detector = KeywordDetector(
-      dictionaries: BuiltInLexicons.dictionaries + config.additionalDictionaries)
+    let dictionaryCandidates =
+      BuiltInLexicons.dictionaries.map { ($0, allowCrossLanguage: false) }
+      + config.additionalDictionaries.map { ($0, allowCrossLanguage: true) }
+    let detector = KeywordDetector(dictionaries: dictionaryCandidates)
     let matches =
       config.enableKeywords
-      ? detector.detect(in: tokens)
+      ? detector.detect(in: tokens, language: language)
       : .init(
         profanity: [],
         frustration: [],

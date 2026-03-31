@@ -46,3 +46,24 @@ Rationale:
 - all eight appear directly in the inspected polarity data
 - all eight are short and clearly affective
 - we deliberately excluded weaker workflow acknowledgments like `merci`
+
+## First imported golden messages
+
+The first `fr` full-message fixtures come from:
+
+- dataset: `cardiffnlp/tweet_sentiment_multilingual`
+- source URL:
+  - `https://huggingface.co/datasets/cardiffnlp/tweet_sentiment_multilingual`
+
+Imported rows:
+
+- `gold-fr-cardiff-pos-001`: `french/test.jsonl` row 417
+- `gold-fr-cardiff-pos-002`: `french/train.jsonl` row 399
+- `gold-fr-cardiff-neg-001`: `french/train.jsonl` row 484
+- `gold-fr-cardiff-neg-002`: `french/train.jsonl` row 328
+
+Rationale:
+
+- all four are short enough to review line by line
+- all four contain exact bundled expressions
+- they harden `positive`, `frustration`, and `profanity`

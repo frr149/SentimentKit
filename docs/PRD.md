@@ -21,7 +21,7 @@ Message (String)
   │  Result cached for the session. Reliable for phrases >= 5 words.
   │
   ├─ Stage 1: Keyword detector (deterministic, always runs)
-  │  Pattern matching against curated dictionaries.
+  │  Pattern matching against curated dictionaries (currently ES, EN, PT, DE, FR, ZH).
   │  Output: profanity[], frustration[], positive[], keyword_score
   │
   ├─ Stage 2: VADER-inspired rules (deterministic, always runs)

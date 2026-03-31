@@ -51,6 +51,22 @@ struct ExpressionDictionaryTests {
   }
 
   @Test
+  func rejectsDuplicateExpressionsAcrossDiacriticAndUnicodeForms() {
+    let decomposedOtimo = "o\u{0301}timo"
+
+    #expect(throws: ExpressionDictionaryError.duplicateExpression(decomposedOtimo)) {
+      try ExpressionDictionary(
+        language: "pt",
+        type: .positive,
+        entries: [
+          .init(expression: "ótimo", score: 1.0),
+          .init(expression: decomposedOtimo, score: 1.0),
+        ]
+      )
+    }
+  }
+
+  @Test
   func loadsDictionaryFromFileURL() throws {
     let temporaryURL = FileManager.default.temporaryDirectory
       .appending(path: UUID().uuidString)
