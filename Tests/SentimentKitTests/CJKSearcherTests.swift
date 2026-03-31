@@ -144,8 +144,8 @@ struct ZHSentimentIntegrationTests {
     #expect(result.positive.isEmpty == false)
   }
 
-  // BUG: Negation with 不 should flip sentiment
-  @Test(.bug("VADER negation not working for ZH - 不 not detected before sentiment word"))
+  // Negation with 不 should flip sentiment
+  @Test
   func zheBuShiHuaiShouldBePositive() {
     let baseline = SentimentAnalyzer().analyze("这是坏")
     let negated = SentimentAnalyzer().analyze("这不是坏")
