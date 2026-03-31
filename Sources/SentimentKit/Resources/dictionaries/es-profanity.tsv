@@ -1,5 +1,6 @@
 # language: es
 # type: profanity
+# Note: Includes common English loanwords used in Spanish colloquial speech
 me cago en tus muertos	-1.5
 me cago en la puta	-1.5
 me cago en todo	-1.4
@@ -24,6 +25,7 @@ hostia	-1.0
 hostias	-1.0
 mierda	-1.0
 puta	-1.0
+puto	-1.0
 putos	-1.0
 cabrón	-0.8
 gilipollas	-0.9
@@ -35,3 +37,6 @@ coñazo	-0.9
 idiotez	-0.7
 cabreo	-0.8
 cabreo generalizado	-1.0
+# English loanwords common in Spanish colloquial speech
+fucking	-1.0
+fuck	-1.0
