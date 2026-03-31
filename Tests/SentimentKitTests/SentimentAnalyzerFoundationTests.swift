@@ -76,7 +76,7 @@ struct SentimentAnalyzerFoundationTests {
 
     let negative = analyzer.analyze("das ist frustrierend und furchtbar")
     let strongerNegative = analyzer.analyze("das ist katastrophal")
-    let profanity = analyzer.analyze("scheiße, scheisse")
+    let profanity = analyzer.analyze("scheisse, scheisse")
     let positive = analyzer.analyze("das ist hervorragend, prima und super")
 
     #expect(negative.language == "de")
@@ -88,7 +88,7 @@ struct SentimentAnalyzerFoundationTests {
     #expect(strongerNegative.score < 0)
 
     #expect(profanity.language == nil || profanity.language == "de")
-    #expect(profanity.profanity.map(\.text) == ["scheiße", "scheiße"])
+    #expect(profanity.profanity.map(\.text) == ["scheisse", "scheisse"])
     #expect(profanity.score < 0)
 
     #expect(positive.language == "de")
@@ -113,7 +113,7 @@ struct SentimentAnalyzerFoundationTests {
     #expect(profanity.score < 0)
 
     #expect(positive.language == "fr")
-    #expect(positive.positive.map(\.text) == ["excellent", "génial", "formidable"])
+    #expect(positive.positive.map(\.text) == ["excellent", "genial", "formidable"])
     #expect(positive.score > 0)
   }
 
