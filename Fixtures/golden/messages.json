@@ -115,10 +115,10 @@
     "language": "es",
     "expected_profanity": [],
     "expected_frustration": [],
-    "expected_positive": ["perfecto", "adelante"],
-    "expected_score_min": 1.2,
-    "expected_score_max": 2.0,
-    "note": "Approved PRD/README/DocC session example, verified from repo seed data"
+    "expected_positive": ["adelante"],
+    "expected_score_min": 0.5,
+    "expected_score_max": 1.1,
+    "note": "Repo seed example kept positive via adelante; perfecto removed as workflow acknowledgment"
   },
   {
     "id": "gold-es-neg-002",
@@ -571,5 +571,203 @@
     "expected_score_min": -1.2,
     "expected_score_max": -0.7,
     "note": "Senti4SD test1326itemPOLARITY.csv t255, verified-from-literature"
+  },
+  {
+    "id": "gold-es-session-neg-005",
+    "text": "la puta madre... Ni hablar. Revisa primero el backend y me dices qué cosas debemos testar a nivel unitario y tambien qué propiedades deberíamos testar con pbt",
+    "language": "es",
+    "expected_profanity": ["la puta madre"],
+    "expected_frustration": ["ni hablar"],
+    "expected_positive": [],
+    "expected_score_min": -2.0,
+    "expected_score_max": -1.1,
+    "note": "Mined from real Spanish Claude session logs, 2026-03-31 corpus"
+  },
+  {
+    "id": "gold-es-session-neg-006",
+    "text": "es la segunda vez que me pasa esto y estoy hasta los cojones. quiero impedir que vuelva a ocurrir.",
+    "language": "es",
+    "expected_profanity": ["hasta los cojones"],
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_score_min": -1.7,
+    "expected_score_max": -1.0,
+    "note": "Mined from real Spanish Claude session logs, 2026-03-31 corpus"
+  },
+  {
+    "id": "gold-es-session-neg-007",
+    "text": "joder, qué raro...",
+    "language": "es",
+    "expected_profanity": ["joder"],
+    "expected_frustration": ["qué raro"],
+    "expected_positive": [],
+    "expected_score_min": -1.6,
+    "expected_score_max": -0.7,
+    "note": "Mined from real Spanish Claude session logs, 2026-03-31 corpus"
+  },
+  {
+    "id": "gold-es-session-neg-008",
+    "text": "No me convence y me parece peligroso.",
+    "language": "es",
+    "expected_profanity": [],
+    "expected_frustration": ["no me convence"],
+    "expected_positive": [],
+    "expected_score_min": -0.9,
+    "expected_score_max": -0.3,
+    "note": "Mined from real Spanish Claude session logs, 2026-03-31 corpus"
+  },
+  {
+    "id": "gold-pt-cardiff-pos-001",
+    "text": "Infelizmente só assisti ao programa hoje. Foi ótimo ! #MasterChefBr",
+    "language": "pt",
+    "expected_profanity": [],
+    "expected_frustration": [],
+    "expected_positive": ["otimo"],
+    "expected_score_min": 0.7,
+    "expected_score_max": 1.2,
+    "note": "cardiffnlp/tweet_sentiment_multilingual portuguese/train.jsonl row 375, verified-from-literature"
+  },
+  {
+    "id": "gold-pt-cardiff-pos-002",
+    "text": "Assistindo #conversacombial com o #padrefabiodemelo. Excelente #talkshow. Entrevista inteligência e com humor na medida certa.",
+    "language": "pt",
+    "expected_profanity": [],
+    "expected_frustration": [],
+    "expected_positive": ["excelente"],
+    "expected_score_min": 0.7,
+    "expected_score_max": 1.2,
+    "note": "cardiffnlp/tweet_sentiment_multilingual portuguese/train.jsonl row 780, verified-from-literature"
+  },
+  {
+    "id": "gold-pt-cardiff-neg-001",
+    "text": "Esse #Encontro tá ruim demais. Não tem nada atrativo, não fazem matérias interessantes, os convidados quase não falam de si... Péssimo!",
+    "language": "pt",
+    "expected_profanity": [],
+    "expected_frustration": ["ruim", "pessimo"],
+    "expected_positive": [],
+    "expected_score_min": -2.0,
+    "expected_score_max": -1.2,
+    "note": "cardiffnlp/tweet_sentiment_multilingual portuguese/train.jsonl row 1603, verified-from-literature"
+  },
+  {
+    "id": "gold-pt-cardiff-neg-002",
+    "text": "Bicho o cara falou um monte de merda em rede nacional, coragem né? Tem gente que tem muita coragem mesmo #Encontro",
+    "language": "pt",
+    "expected_profanity": ["merda"],
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_score_min": -1.2,
+    "expected_score_max": -0.6,
+    "note": "cardiffnlp/tweet_sentiment_multilingual portuguese/train.jsonl row 151, verified-from-literature"
+  },
+  {
+    "id": "gold-de-cardiff-pos-001",
+    "text": "@user Sieht super aus. Ende. 😉",
+    "language": "de",
+    "expected_profanity": [],
+    "expected_frustration": [],
+    "expected_positive": ["super"],
+    "expected_score_min": 0.7,
+    "expected_score_max": 1.2,
+    "note": "cardiffnlp/tweet_sentiment_multilingual german/train.jsonl row 477, verified-from-literature"
+  },
+  {
+    "id": "gold-de-cardiff-pos-002",
+    "text": "@user Das kann man ja hervorragend lernen. \"Navigieren\" muss halt echt gelernt sein - ich lasse mich von Sue Bryce inspirieren :)",
+    "language": "de",
+    "expected_profanity": [],
+    "expected_frustration": [],
+    "expected_positive": ["hervorragend"],
+    "expected_score_min": 0.7,
+    "expected_score_max": 1.2,
+    "note": "cardiffnlp/tweet_sentiment_multilingual german/train.jsonl row 975, verified-from-literature"
+  },
+  {
+    "id": "gold-de-cardiff-neg-001",
+    "text": "Oder vielleicht liegt's auch einfach an mir. Vielleicht bin ich einfach so abgrundtief scheiße.",
+    "language": "de",
+    "expected_profanity": ["scheiße"],
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_score_min": -1.4,
+    "expected_score_max": -0.6,
+    "note": "cardiffnlp/tweet_sentiment_multilingual german/train.jsonl row 202, verified-from-literature"
+  },
+  {
+    "id": "gold-fr-cardiff-pos-001",
+    "text": "Excellent article sur la question du changement climatique dans les églises US. Cf commentaires aussi http via @user",
+    "language": "fr",
+    "expected_profanity": [],
+    "expected_frustration": [],
+    "expected_positive": ["excellent"],
+    "expected_score_min": 0.7,
+    "expected_score_max": 1.2,
+    "note": "cardiffnlp/tweet_sentiment_multilingual french/test.jsonl row 417, verified-from-literature"
+  },
+  {
+    "id": "gold-fr-cardiff-pos-002",
+    "text": "J'ai un José Bové en écologie, c'est génial...",
+    "language": "fr",
+    "expected_profanity": [],
+    "expected_frustration": [],
+    "expected_positive": ["génial"],
+    "expected_score_min": 0.7,
+    "expected_score_max": 1.2,
+    "note": "cardiffnlp/tweet_sentiment_multilingual french/train.jsonl row 399, verified-from-literature"
+  },
+  {
+    "id": "gold-fr-cardiff-neg-001",
+    "text": "Ségolène #Royal: “Une parti des revenus de l’#écotaxe serait allée à une entreprise privée italienne”  #écologie #eelv super ta défense #nul",
+    "language": "fr",
+    "expected_profanity": [],
+    "expected_frustration": ["nul"],
+    "expected_positive": [],
+    "expected_score_min": -1.2,
+    "expected_score_max": -0.5,
+    "note": "cardiffnlp/tweet_sentiment_multilingual french/train.jsonl row 484, verified-from-literature"
+  },
+  {
+    "id": "gold-fr-cardiff-neg-002",
+    "text": "Depuis cet été de merde, je ne crois plus au réchauffement climatique. Du moins pas en France.",
+    "language": "fr",
+    "expected_profanity": ["merde"],
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_score_min": -1.2,
+    "expected_score_max": -0.6,
+    "note": "cardiffnlp/tweet_sentiment_multilingual french/train.jsonl row 328, verified-from-literature"
+  },
+  {
+    "id": "gold-zh-chengyu-pos-001",
+    "text": "祝你在新的工作岗位上一帆风顺，大展宏图！",
+    "language": "zh",
+    "expected_profanity": [],
+    "expected_frustration": [],
+    "expected_positive": ["一帆风顺"],
+    "expected_score_min": 0.9,
+    "expected_score_max": 1.3,
+    "note": "meitian-chengyu.com example sentence for \"一帆风顺\", verified-from-literature"
+  },
+  {
+    "id": "gold-zh-jiyushe-neg-001",
+    "text": "露娜公园传来得噪声真是糟糕透了。",
+    "language": "zh",
+    "expected_profanity": [],
+    "expected_frustration": ["糟糕"],
+    "expected_positive": [],
+    "expected_score_min": -0.9,
+    "expected_score_max": -0.5,
+    "note": "jiyushe.com example sentence, verified-from-literature"
+  },
+  {
+    "id": "gold-zh-jiyushe-profanity-001",
+    "text": "让这个混蛋滚出加拿大。",
+    "language": "zh",
+    "expected_profanity": ["混蛋"],
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_score_min": -1.3,
+    "expected_score_max": -0.8,
+    "note": "jiyushe.com example sentence \"让这个混蛋滚出加拿大\""
   }
 ]

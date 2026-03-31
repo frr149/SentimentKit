@@ -21,20 +21,27 @@ struct KeywordDetector: Sendable {
     let type: ExpressionType
     let language: String
     let tokens: [String]
+    let allowCrossLanguage: Bool
   }
 
   private let candidates: [Candidate]
 
   init(dictionaries: [ExpressionDictionary]) {
+    self.init(dictionaries: dictionaries.map { ($0, allowCrossLanguage: false) })
+  }
+
+  init(dictionaries: [(ExpressionDictionary, allowCrossLanguage: Bool)]) {
     self.candidates =
       dictionaries
-      .flatMap { dictionary in
+      .flatMap { dictionary, allowCrossLanguage in
         dictionary.entries.map { entry in
           Candidate(
             entry: entry,
             type: dictionary.type,
             language: dictionary.language,
-            tokens: MessageTokenizer.tokenize(entry.expression).map(\.normalized)
+            tokens: MessageTokenizer.tokenize(entry.expression, language: dictionary.language).map(
+              \.normalized),
+            allowCrossLanguage: allowCrossLanguage
           )
         }
       }
@@ -48,7 +55,7 @@ struct KeywordDetector: Sendable {
   }
 
   func detect(in message: String, language: String? = nil) -> KeywordMatches {
-    detect(in: MessageTokenizer.tokenize(message), language: language)
+    detect(in: MessageTokenizer.tokenize(message, language: language), language: language)
   }
 
   func detect(in messageTokens: [MessageToken], language: String? = nil) -> KeywordMatches {
@@ -61,7 +68,7 @@ struct KeywordDetector: Sendable {
         return true
       }
 
-      return candidate.language == language
+      return candidate.language == language || candidate.allowCrossLanguage
     }
 
     var occupiedTokenIndexes = Set<Int>()

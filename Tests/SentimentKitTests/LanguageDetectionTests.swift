@@ -18,6 +18,27 @@ struct LanguageDetectionTests {
   }
 
   @Test
+  func portugueseMessageDetectsPortuguese() {
+    let result = SentimentAnalyzer().analyze("isso não funciona bem e estou bastante frustrado")
+
+    #expect(result.language == "pt")
+  }
+
+  @Test
+  func germanMessageDetectsGerman() {
+    let result = SentimentAnalyzer().analyze("das ist wirklich furchtbar und super nervig")
+
+    #expect(result.language == "de")
+  }
+
+  @Test
+  func frenchMessageDetectsFrench() {
+    let result = SentimentAnalyzer().analyze("c'est vraiment horrible mais parfois génial")
+
+    #expect(result.language == "fr")
+  }
+
+  @Test
   func mixedSessionUsesDominantLanguage() {
     let analyzer = SentimentAnalyzer()
     let session = analyzer.analyzeSession([

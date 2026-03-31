@@ -151,6 +151,16 @@ For English expansion, prefer sources in this order:
 
 Generic consumer-sentiment datasets are out of scope as seed data. They are high-volume but wrong-domain, and they reproduce the same bias that makes `NLTagger` unreliable on technical text.
 
+## Next-language policy
+
+For the first additional languages beyond ES+EN, use this order: Portuguese first, then German.
+
+Why:
+
+1. Portuguese currently has the best available external-source stack for a conservative seed.
+2. German has a stronger immediate lexicon fit than French once Portuguese is in place.
+3. Internal session data should not be assumed unless it has actually been verified for that language.
+
 ## Translation policy
 
 LLM translation from ES to EN is allowed only as candidate generation.
