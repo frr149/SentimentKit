@@ -18,6 +18,9 @@ enum BuiltInLexicons {
       "fr-profanity.tsv",
       "fr-frustration.tsv",
       "fr-positive.tsv",
+      "zh-profanity.tsv",
+      "zh-frustration.tsv",
+      "zh-positive.tsv",
     ]
 
     return resourceNames.compactMap { resourceName in

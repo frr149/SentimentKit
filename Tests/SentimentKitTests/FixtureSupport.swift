@@ -2,6 +2,12 @@ import Foundation
 
 @testable import SentimentKit
 
+struct NormalizedExpressionKey: Hashable {
+  let text: String
+  let type: ExpressionType
+  let language: String
+}
+
 struct GoldenMessageFixture: Decodable {
   let id: String
   let text: String
@@ -77,6 +83,18 @@ enum FixtureSupport {
     }
   }
 
+  static func normalizedExpressionKey(
+    text: String,
+    type: ExpressionType,
+    language: String
+  ) -> NormalizedExpressionKey {
+    NormalizedExpressionKey(
+      text: TextNormalization.normalizeExpression(text, language: language),
+      type: type,
+      language: language
+    )
+  }
+
   static func allExercisedBundledExpressions() throws -> Set<SentimentKit.Expression> {
     let messages = try loadGoldenMessages()
     let expressionFixtures = try loadGoldenExpressions()
@@ -99,6 +117,38 @@ enum FixtureSupport {
         return nil
       }
       return SentimentKit.Expression(text: item.text, type: type, language: item.language)
+    }
+
+    return Set(exercisedFromMessages + exercisedFromMustMatch)
+  }
+
+  static func allBundledExpressionKeys() -> Set<NormalizedExpressionKey> {
+    Set(allBundledExpressions().map {
+      normalizedExpressionKey(text: $0.text, type: $0.type, language: $0.language)
+    })
+  }
+
+  static func allExercisedBundledExpressionKeys() throws -> Set<NormalizedExpressionKey> {
+    let messages = try loadGoldenMessages()
+    let expressionFixtures = try loadGoldenExpressions()
+
+    let exercisedFromMessages = messages.flatMap { fixture in
+      fixture.expectedProfanity.map {
+        normalizedExpressionKey(text: $0, type: .profanity, language: fixture.language)
+      }
+        + fixture.expectedFrustration.map {
+          normalizedExpressionKey(text: $0, type: .frustration, language: fixture.language)
+        }
+        + fixture.expectedPositive.map {
+          normalizedExpressionKey(text: $0, type: .positive, language: fixture.language)
+        }
+    }
+
+    let exercisedFromMustMatch = expressionFixtures.mustMatch.compactMap { item -> NormalizedExpressionKey? in
+      guard let type = ExpressionType(rawValue: item.type) else {
+        return nil
+      }
+      return normalizedExpressionKey(text: item.text, type: type, language: item.language)
     }
 
     return Set(exercisedFromMessages + exercisedFromMustMatch)

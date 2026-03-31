@@ -13,11 +13,20 @@ struct LanguageDetector: Sendable {
 
     let recognizer = NLLanguageRecognizer()
     recognizer.processString(message)
-    return recognizer.dominantLanguage?.rawValue
+    return normalizedLanguageCode(recognizer.dominantLanguage?.rawValue)
   }
 
   func detectSessionLanguage(_ messages: [String]) -> String? {
     let sample = messages.prefix(sessionSampleSize).joined(separator: "\n")
     return detectMessageLanguage(sample)
+  }
+
+  private func normalizedLanguageCode(_ code: String?) -> String? {
+    guard let code else {
+      return nil
+    }
+
+    let parts = code.split(separator: "-", maxSplits: 1, omittingEmptySubsequences: true)
+    return parts.first.map { String($0) }
   }
 }

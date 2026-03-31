@@ -110,3 +110,24 @@ Guardrails added:
 
 These are explicitly covered in `must_not_match` so future imports do not
 accidentally treat gratitude as negative sentiment.
+
+## First imported golden messages
+
+The first `pt` full-message fixtures come from:
+
+- dataset: `cardiffnlp/tweet_sentiment_multilingual`
+- source URL:
+  - `https://huggingface.co/datasets/cardiffnlp/tweet_sentiment_multilingual`
+
+Imported rows:
+
+- `gold-pt-cardiff-pos-001`: `portuguese/train.jsonl` row 375
+- `gold-pt-cardiff-pos-002`: `portuguese/train.jsonl` row 780
+- `gold-pt-cardiff-neg-001`: `portuguese/train.jsonl` row 1603
+- `gold-pt-cardiff-neg-002`: `portuguese/train.jsonl` row 151
+
+Rationale:
+
+- all four are short enough to review manually
+- all four contain exact bundled expressions
+- they improve coverage for `positive`, `frustration`, and `profanity`
