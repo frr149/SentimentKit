@@ -5,10 +5,61 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from dataclasses import dataclass, asdict
 from pathlib import Path
 from typing import Iterator
+
+
+SPANISH_HINTS = {
+    "el",
+    "la",
+    "los",
+    "las",
+    "de",
+    "del",
+    "que",
+    "esto",
+    "esta",
+    "está",
+    "hay",
+    "para",
+    "porque",
+    "por",
+    "otra",
+    "otra vez",
+    "quiero",
+    "haz",
+    "dime",
+    "revisa",
+    "mira",
+    "vale",
+    "bien",
+    "joder",
+    "mierda",
+    "coño",
+    "cojones",
+    "gracias",
+    "perfecto",
+}
+
+ENGLISH_HINTS = {
+    "the",
+    "this",
+    "that",
+    "with",
+    "from",
+    "please",
+    "thanks",
+    "thank",
+    "good",
+    "great",
+    "work",
+    "fix",
+    "review",
+    "issue",
+}
 
 
 @dataclass
@@ -18,6 +69,7 @@ class CodexMessageRecord:
     timestamp: str
     source: str
     cwd: str
+    language: str
     content: str
 
 
@@ -35,6 +87,24 @@ def parse_args() -> argparse.Namespace:
         help="Only include sessions whose cwd contains this substring.",
     )
     parser.add_argument(
+        "--language",
+        choices=("es", "en", "unknown"),
+        default=None,
+        help="Only include records matching this detected language.",
+    )
+    parser.add_argument(
+        "--assume-language",
+        choices=("es", "en", "unknown"),
+        default=None,
+        help="Override language detection and mark every kept record with this language.",
+    )
+    parser.add_argument(
+        "--min-length",
+        type=int,
+        default=8,
+        help="Minimum content length after cleanup.",
+    )
+    parser.add_argument(
         "--limit",
         type=int,
         default=200,
@@ -47,6 +117,29 @@ def parse_args() -> argparse.Namespace:
         help="Output format.",
     )
     return parser.parse_args()
+
+
+def detect_language(text: str) -> str:
+    lowered = f" {text.lower()} "
+    es_score = 0
+    en_score = 0
+
+    if re.search(r"[áéíóúñ¿¡]", lowered):
+        es_score += 2
+
+    for hint in SPANISH_HINTS:
+        if f" {hint} " in lowered:
+            es_score += 1
+
+    for hint in ENGLISH_HINTS:
+        if f" {hint} " in lowered:
+            en_score += 1
+
+    if es_score > en_score and es_score >= 1:
+        return "es"
+    if en_score > es_score and en_score >= 1:
+        return "en"
+    return "unknown"
 
 
 def load_thread_names(root: Path) -> dict[str, str]:
@@ -64,7 +157,35 @@ def load_thread_names(root: Path) -> dict[str, str]:
     return mapping
 
 
-def iter_history(root: Path, thread_names: dict[str, str]) -> Iterator[CodexMessageRecord]:
+def load_session_cwds(root: Path) -> dict[str, str]:
+    mapping: dict[str, str] = {}
+    sessions_root = root / "sessions"
+    if not sessions_root.exists():
+        return mapping
+    for path in sorted(sessions_root.rglob("*.jsonl")):
+        try:
+            with path.open() as handle:
+                for line in handle:
+                    line = line.strip()
+                    if not line:
+                        continue
+                    obj = json.loads(line)
+                    if obj.get("type") != "session_meta":
+                        continue
+                    payload = obj.get("payload") or {}
+                    session_id = payload.get("id")
+                    cwd = payload.get("cwd")
+                    if session_id and cwd:
+                        mapping[session_id] = cwd
+                    break
+        except OSError:
+            continue
+    return mapping
+
+
+def iter_history(
+    root: Path, thread_names: dict[str, str], session_cwds: dict[str, str]
+) -> Iterator[CodexMessageRecord]:
     history = root / "history.jsonl"
     if not history.exists():
         return
@@ -80,7 +201,8 @@ def iter_history(root: Path, thread_names: dict[str, str]) -> Iterator[CodexMess
                 thread_name=thread_names.get(session_id, ""),
                 timestamp=str(obj.get("ts", "")),
                 source="history",
-                cwd="",
+                cwd=session_cwds.get(session_id, ""),
+                language="unknown",
                 content=obj.get("text", "").strip(),
             )
 
@@ -110,14 +232,25 @@ def iter_sessions(root: Path, thread_names: dict[str, str]) -> Iterator[CodexMes
                         timestamp=obj.get("timestamp", ""),
                         source="session_event",
                         cwd=cwd,
+                        language="unknown",
                         content=str(payload.get("message", "")).strip(),
                     )
 
 
-def keep(record: CodexMessageRecord, cwd_pattern: str | None) -> bool:
-    if not record.content:
+def keep(
+    record: CodexMessageRecord,
+    cwd_pattern: str | None,
+    language: str | None,
+    assume_language: str | None,
+    min_length: int,
+) -> bool:
+    if not record.content or len(record.content.strip()) < min_length:
         return False
     if cwd_pattern and cwd_pattern not in record.cwd:
+        return False
+    detected = assume_language or detect_language(record.content)
+    record.language = detected
+    if language and detected != language:
         return False
     return True
 
@@ -133,7 +266,7 @@ def write_jsonl(records: Iterator[CodexMessageRecord], limit: int) -> int:
 
 
 def write_tsv(records: Iterator[CodexMessageRecord], limit: int) -> int:
-    print("session_id\tthread_name\ttimestamp\tsource\tcwd\tcontent")
+    print("session_id\tthread_name\ttimestamp\tsource\tcwd\tlanguage\tcontent")
     count = 0
     for record in records:
         safe = [
@@ -142,6 +275,7 @@ def write_tsv(records: Iterator[CodexMessageRecord], limit: int) -> int:
             record.timestamp,
             record.source,
             record.cwd.replace("\t", " ").replace("\n", " "),
+            record.language,
             record.content.replace("\t", " ").replace("\n", " "),
         ]
         print("\t".join(safe))
@@ -154,11 +288,21 @@ def write_tsv(records: Iterator[CodexMessageRecord], limit: int) -> int:
 def main() -> int:
     args = parse_args()
     thread_names = load_thread_names(args.root)
+    session_cwds = load_session_cwds(args.root)
     records = (
         record
-        for source in (iter_history(args.root, thread_names), iter_sessions(args.root, thread_names))
+        for source in (
+            iter_history(args.root, thread_names, session_cwds),
+            iter_sessions(args.root, thread_names),
+        )
         for record in source
-        if keep(record, args.cwd_pattern)
+        if keep(
+            record,
+            args.cwd_pattern,
+            args.language,
+            args.assume_language,
+            args.min_length,
+        )
     )
     writer = write_jsonl if args.format == "jsonl" else write_tsv
     count = writer(records, args.limit)

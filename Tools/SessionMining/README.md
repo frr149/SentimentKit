@@ -38,8 +38,17 @@ python3 Tools/SessionMining/analyze_claude_usage.py \
 ```bash
 python3 Tools/SessionMining/extract_codex_messages.py \
   --cwd-pattern SentimentKit \
+  --language es \
   --limit 50 \
   --format tsv
+```
+
+## Mine Spanish sentiment candidates
+
+```bash
+python3 Tools/SessionMining/mine_spanish_candidates.py \
+  /tmp/sentimentkit_claude_es_detected.jsonl \
+  /tmp/sentimentkit_codex_es_detected.jsonl
 ```
 
 ## Codex analytics
@@ -68,3 +77,5 @@ python3 Tools/SessionMining/analyze_codex_usage.py \
   fully Spanish.
 - Language detection is heuristic and intentionally simple when you do use it.
   Treat output as a review queue, not as auto-approved golden data.
+- Codex extraction now supports the same `--language`, `--assume-language`, and
+  `--min-length` filters as the Claude extractor.

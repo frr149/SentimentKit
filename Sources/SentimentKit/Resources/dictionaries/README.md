@@ -1,6 +1,8 @@
 Dictionary resources live here.
 
-This directory now contains the shipped ES+EN sentiment dictionaries used by the deterministic pipeline.
+This directory contains the shipped deterministic dictionaries.
+
+- ES, EN, PT, DE, and FR are the active seeded languages.
 
 Coverage is validated in-repo through:
 

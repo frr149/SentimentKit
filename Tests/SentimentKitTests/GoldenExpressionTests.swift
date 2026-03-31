@@ -10,11 +10,13 @@ struct GoldenExpressionTests {
 
     for entry in fixture.mustMatch {
       let expressionType = try #require(ExpressionType(rawValue: entry.type))
-      let exists = dictionaries.contains { dictionary in
-        dictionary.language == entry.language
-          && dictionary.type == expressionType
-          && dictionary.entries.contains { $0.expression == entry.text }
-      }
+      let exists = FixtureSupport.allBundledExpressionKeys().contains(
+        FixtureSupport.normalizedExpressionKey(
+          text: entry.text,
+          type: expressionType,
+          language: entry.language
+        )
+      )
 
       #expect(exists, "Missing approved expression: \(entry.text)")
     }
@@ -28,7 +30,10 @@ struct GoldenExpressionTests {
 
     for entry in fixture.mustNotMatch {
       let exists = dictionaries.contains { dictionary in
-        dictionary.entries.contains { $0.expression == entry.text }
+        dictionary.entries.contains {
+          TextNormalization.normalizeExpression($0.expression, language: dictionary.language)
+            == TextNormalization.normalizeExpression(entry.text, language: dictionary.language)
+        }
       }
       #expect(exists == false, "Forbidden dictionary entry present: \(entry.text)")
 
