@@ -6,6 +6,7 @@ public struct SentimentConfig: Sendable {
     public var enableVADERRules: Bool
     public var enableNLTagger: Bool
     public var enableCoreML: Bool
+    public var coreMLModelURL: URL?
     public var nlTaggerAttenuation: Double
     public var additionalDictionaries: [ExpressionDictionary]
 
@@ -14,6 +15,7 @@ public struct SentimentConfig: Sendable {
         enableVADERRules: Bool = true,
         enableNLTagger: Bool = true,
         enableCoreML: Bool = false,
+        coreMLModelURL: URL? = nil,
         nlTaggerAttenuation: Double = 0.5,
         additionalDictionaries: [ExpressionDictionary] = []
     ) {
@@ -21,6 +23,7 @@ public struct SentimentConfig: Sendable {
         self.enableVADERRules = enableVADERRules
         self.enableNLTagger = enableNLTagger
         self.enableCoreML = enableCoreML
+        self.coreMLModelURL = coreMLModelURL
         self.nlTaggerAttenuation = nlTaggerAttenuation
         self.additionalDictionaries = additionalDictionaries
     }
