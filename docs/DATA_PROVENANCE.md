@@ -151,6 +151,16 @@ For English expansion, prefer sources in this order:
 
 Generic consumer-sentiment datasets are out of scope as seed data. They are high-volume but wrong-domain, and they reproduce the same bias that makes `NLTagger` unreliable on technical text.
 
+## Next-language policy
+
+For the next language beyond ES+EN, prefer Portuguese (`pt` in resource names, even if the user-facing target is pt-BR).
+
+Why:
+
+1. Portuguese currently has the best available external-source stack for a conservative seed.
+2. French and German both have useful lexicons, but weaker immediate fit for the profanity / frustration / positive split we use here.
+3. Internal session data should not be assumed unless it has actually been verified for that language.
+
 ## Translation policy
 
 LLM translation from ES to EN is allowed only as candidate generation.
