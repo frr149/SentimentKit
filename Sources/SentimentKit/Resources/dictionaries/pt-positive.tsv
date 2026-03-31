@@ -1,5 +1,32 @@
 # language: pt
 # type: positive
+# Source: SentiLex-PT02, OpLexicon 3.0 (see docs/PT_DATA_SOURCES.md)
 excelente	1.0
 genial	1.0
 otimo	1.0
+maravilhoso	1.0
+fantastico	1.0
+brilhante	1.0
+incrivel	1.0
+perfeito	1.0
+espetacular	1.0
+adoravel	1.0
+magnifico	1.0
+sensacional	1.0
+impressionante	1.0
+extraordinario	1.0
+fenomenal	1.0
+surpreendente	1.0
+encantador	1.0
+gratificante	1.0
+animador	1.0
+promissor	1.0
+formidavel	1.0
+esplendido	1.0
+notavel	1.0
+soberbo	1.0
+sublime	1.0
+estupendo	1.0
+maravilha	1.0
+show	1.0
+beleza	1.0
