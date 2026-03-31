@@ -99,6 +99,13 @@ It is intentionally conservative: a source appearing here does not mean its cont
   - `Thank you for confirm!` (ID 453789)
   - `This is just amazing. Thanks for adding this code to use in bukkit.` (ID 2804)
   - `It seems that this commit has broken again the timers on MacOS (issue 534). They were fixed in 82e9da9fb7fb79bf730d.` (ID 244856)
+- Golden messages added in the current follow-up sweep:
+  - `Great addition, thanks Ben!` (ID 3414320)
+  - `I'll go through it now, thanks for the review :)` (ID 2551585)
+  - `@dmethvin Ah, thanks for that!` (ID 2502858)
+  - `True, now makes sense :)` (ID 1035302)
+  - `Excellent, thanks! Will get this merged this week.` (ID 217565)
+  - `Confirmed, very annoying crash, may happen 3 times per minute` (ID 53735)
 
 ### 4. Stack Overflow content license reference
 
