@@ -13,9 +13,16 @@ Approval source:
 
 Current entries covered by this note:
 
+- `en-frustration`: `frustrating`
+- `en-frustration`: `nonsense`
 - `en-profanity`: `what the fuck`
 - `en-profanity`: `for fuck s sake`
 - `en-profanity`: `what the hell`
+- `en-profanity`: `shit`
+- `en-profanity`: `damn`
+- `en-profanity`: `bullshit`
+- `en-profanity`: `wtf`
+- `en-profanity`: `ffs`
 
 Normalization note:
 
