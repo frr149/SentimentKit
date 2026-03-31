@@ -710,7 +710,7 @@
     "language": "fr",
     "expected_profanity": [],
     "expected_frustration": [],
-    "expected_positive": ["génial"],
+    "expected_positive": ["genial"],
     "expected_score_min": 0.7,
     "expected_score_max": 1.2,
     "note": "cardiffnlp/tweet_sentiment_multilingual french/train.jsonl row 399, verified-from-literature"

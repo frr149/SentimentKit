@@ -1,4 +1,23 @@
 # language: pt
 # type: profanity
+# Source: SentiLex-PT02, OpLexicon 3.0, common usage (see docs/PT_DATA_SOURCES.md)
 caralho	-1.0
 merda	-1.0
+foda-se	-1.0
+porra	-1.0
+filho da puta	-1.2
+vai se foder	-1.2
+cuzao	-1.0
+arrombado	-1.0
+desgracado	-1.0
+puta que pariu	-1.2
+cacete	-1.0
+bosta	-1.0
+otario	-1.0
+babaca	-1.0
+imbecil	-1.0
+viado	-1.0
+boquete	-1.0
+buceta	-1.0
+pau	-1.0
+pila	-1.0

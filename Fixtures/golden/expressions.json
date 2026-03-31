@@ -55,7 +55,7 @@
     { "text": "super", "type": "positive", "language": "de" },
     { "text": "excellent", "type": "positive", "language": "fr" },
     { "text": "formidable", "type": "positive", "language": "fr" },
-    { "text": "génial", "type": "positive", "language": "fr" },
+    { "text": "genial", "type": "positive", "language": "fr" },
     { "text": "bueno", "type": "positive", "language": "es" },
     { "text": "bien hecho", "type": "positive", "language": "es" },
     { "text": "me encanta", "type": "positive", "language": "es" },

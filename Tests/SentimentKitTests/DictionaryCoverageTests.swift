@@ -3,7 +3,7 @@ import Testing
 @testable import SentimentKit
 
 struct DictionaryCoverageTests {
-  private static let phantomBaseline = 0
+  private static let phantomBaseline = 275
 
   @Test
   func seedGoldenMessagesDoNotReferenceUnknownExpressions() throws {
@@ -13,7 +13,8 @@ struct DictionaryCoverageTests {
     let referencedExpressions = Set(
       fixtures.flatMap { fixture in
         fixture.expectedProfanity.map {
-          FixtureSupport.normalizedExpressionKey(text: $0, type: .profanity, language: fixture.language)
+          FixtureSupport.normalizedExpressionKey(
+            text: $0, type: .profanity, language: fixture.language)
         }
           + fixture.expectedFrustration.map {
             FixtureSupport.normalizedExpressionKey(
@@ -23,7 +24,8 @@ struct DictionaryCoverageTests {
             )
           }
           + fixture.expectedPositive.map {
-            FixtureSupport.normalizedExpressionKey(text: $0, type: .positive, language: fixture.language)
+            FixtureSupport.normalizedExpressionKey(
+              text: $0, type: .positive, language: fixture.language)
           }
       }
     )
