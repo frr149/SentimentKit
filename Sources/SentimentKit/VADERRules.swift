@@ -1,88 +1,81 @@
 import Foundation
 
 struct VADERRules: Sendable {
-    static let empty = VADERRules(
-        negations: PhraseLexicon(phrases: []),
-        intensifiers: PhraseLexicon(phrases: []),
-        diminishers: PhraseLexicon(phrases: []),
-        conjunctions: PhraseLexicon(phrases: [])
-    )
+  static let empty = VADERRules(
+    negations: PhraseLexicon(phrases: []),
+    intensifiers: PhraseLexicon(phrases: []),
+    diminishers: PhraseLexicon(phrases: []),
+    conjunctions: PhraseLexicon(phrases: [])
+  )
 
-    let negations: PhraseLexicon
-    let intensifiers: PhraseLexicon
-    let diminishers: PhraseLexicon
-    let conjunctions: PhraseLexicon
+  let negations: PhraseLexicon
+  let intensifiers: PhraseLexicon
+  let diminishers: PhraseLexicon
+  let conjunctions: PhraseLexicon
 
-    init(
-        negations: PhraseLexicon,
-        intensifiers: PhraseLexicon,
-        diminishers: PhraseLexicon,
-        conjunctions: PhraseLexicon
-    ) {
-        self.negations = negations
-        self.intensifiers = intensifiers
-        self.diminishers = diminishers
-        self.conjunctions = conjunctions
+  func apply(to matches: [KeywordMatch], in message: String, tokens: [MessageToken]) -> (
+    score: Double, intensity: Double
+  ) {
+    guard matches.isEmpty == false else {
+      return (0, 0)
     }
 
-    func apply(to matches: [KeywordMatch], in message: String, tokens: [MessageToken]) -> (score: Double, intensity: Double) {
-        guard matches.isEmpty == false else {
-            return (0, 0)
-        }
+    let conjunctionStart = conjunctions.lastMatchStart(in: tokens)
+    var score = 0.0
+    var intensity = 0.0
 
-        let conjunctionStart = conjunctions.lastMatchStart(in: tokens)
-        var score = 0.0
-        var intensity = 0.0
-
-        for match in matches {
-            let adjustedScore = adjustedScore(for: match, tokens: tokens, conjunctionStart: conjunctionStart)
-            if tokens[match.start...match.end].allSatisfy(\.isAllCaps) {
-                intensity += 0.2
-            }
-            score += adjustedScore
-        }
-
-        let exclamationBoost = min(0.4, Double(message.filter { $0 == "!" }.count) * 0.1)
-        if exclamationBoost > 0 {
-            score *= 1 + exclamationBoost
-            intensity += exclamationBoost
-        }
-
-        if message.contains("?") {
-            score *= 0.9
-            intensity += 0.05
-        }
-
-        return (score, min(1, intensity))
+    for match in matches {
+      let adjustedScore = adjustedScore(
+        for: match, tokens: tokens, conjunctionStart: conjunctionStart)
+      if tokens[match.start...match.end].allSatisfy(\.isAllCaps) {
+        intensity += 0.2
+      }
+      score += adjustedScore
     }
 
-    func isNegated(_ match: KeywordMatch, tokens: [MessageToken]) -> Bool {
-        negations.containsPhrase(before: match.start, in: tokens, maxDistance: 2)
+    let exclamationBoost = min(0.4, Double(message.filter { $0 == "!" }.count) * 0.1)
+    if exclamationBoost > 0 {
+      score *= 1 + exclamationBoost
+      intensity += exclamationBoost
     }
 
-    private func adjustedScore(for match: KeywordMatch, tokens: [MessageToken], conjunctionStart: Int?) -> Double {
-        var adjustedScore = match.score
-
-        if isNegated(match, tokens: tokens) {
-            adjustedScore *= -0.75
-        }
-
-        if intensifiers.containsPhrase(before: match.start, in: tokens, maxDistance: 2) {
-            adjustedScore *= 1.3
-        }
-
-        if diminishers.containsPhrase(before: match.start, in: tokens, maxDistance: 3) {
-            adjustedScore *= 0.7
-        }
-
-        if let conjunctionStart, match.start > conjunctionStart {
-            adjustedScore *= 1.5
-        }
-
-        if tokens[match.start...match.end].allSatisfy(\.isAllCaps) {
-            adjustedScore *= 1.2
-        }
-
-        return adjustedScore
+    if message.contains("?") {
+      score *= 0.9
+      intensity += 0.05
     }
+
+    return (score, min(1, intensity))
+  }
+
+  func isNegated(_ match: KeywordMatch, tokens: [MessageToken]) -> Bool {
+    negations.containsPhrase(before: match.start, in: tokens, maxDistance: 2)
+  }
+
+  private func adjustedScore(
+    for match: KeywordMatch, tokens: [MessageToken], conjunctionStart: Int?
+  ) -> Double {
+    var adjustedScore = match.score
+
+    if isNegated(match, tokens: tokens) {
+      adjustedScore *= -0.75
+    }
+
+    if intensifiers.containsPhrase(before: match.start, in: tokens, maxDistance: 2) {
+      adjustedScore *= 1.3
+    }
+
+    if diminishers.containsPhrase(before: match.start, in: tokens, maxDistance: 3) {
+      adjustedScore *= 0.7
+    }
+
+    if let conjunctionStart, match.start > conjunctionStart {
+      adjustedScore *= 1.5
+    }
+
+    if tokens[match.start...match.end].allSatisfy(\.isAllCaps) {
+      adjustedScore *= 1.2
+    }
+
+    return adjustedScore
+  }
 }

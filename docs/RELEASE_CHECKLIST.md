@@ -7,9 +7,11 @@ Release process for publishing SentimentKit as a Swift package.
 - verify the working tree is clean
 - run `swift test`
 - run `make check`
+- verify `swift-format` is installed locally (`brew install swift-format`) so `make lint` cannot silently skip
 - confirm README examples still match the public API
 - confirm DocC overview and getting-started pages still match the public API
 - confirm `docs/DATA_PROVENANCE.md` and `docs/EN_DATA_SOURCES.md` reflect the latest imported data
+- confirm `DictionaryCoverageTests` still reports the expected `PHANTOM` baseline and zero `UNCONSUMED`
 
 ## Versioning
 
