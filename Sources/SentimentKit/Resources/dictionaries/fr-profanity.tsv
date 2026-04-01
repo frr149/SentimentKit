@@ -21,3 +21,31 @@ faux cul	-1.0
 bite	-1.0
 couille	-1.0
 con	-1.0
+# Quebec French — Sacres (religious profanity)
+tabarnac	-1.5
+tabarnak	-1.5
+câlice	-1.4
+ostie	-1.3
+osti	-1.3
+crisse	-1.2
+ciboire	-1.1
+sacrament	-1.1
+maudit	-0.8
+maudite	-0.8
+# Quebec French — Sacre combinations (intensified)
+câlice de tabarnac	-1.7
+ostie de crisse	-1.5
+# Quebec French — Non-sacre profanity
+niaiseux	-0.9
+niaiseuse	-0.9
+epais	-0.8
+epaisse	-0.8
+cave	-0.9
+colon	-0.8
+mongol	-1.0
+# Metropolitan French — additional expressions
+fait chier	-0.9
+nique ta mere	-1.5
+ta gueule	-0.8
+ferme-la	-0.7
+casse-toi	-0.7

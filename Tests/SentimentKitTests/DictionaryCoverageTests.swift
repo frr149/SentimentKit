@@ -3,7 +3,7 @@ import Testing
 @testable import SentimentKit
 
 struct DictionaryCoverageTests {
-  private static let phantomBaseline = 322
+  private static let phantomBaseline = 346
 
   @Test
   func seedGoldenMessagesDoNotReferenceUnknownExpressions() throws {
