@@ -53,14 +53,14 @@ Each layer is optional. v1 ships without the CoreML model; the default package w
 - **Built for developer text**: neutral technical commands ("delete file", "run tests", "commit") score 0, not -0.8.
 - **Deterministic first**: keyword matching and VADER rules produce the same result every time. ML is only used when deterministic layers give no signal.
 - **Adversarially tested**: golden data fixtures with exact-match assertions. PHANTOM detection (dictionary entries that never match real data) and UNCONSUMED detection (real expressions missing from dictionaries).
-- **Multilingual**: ES + EN keywords, Indo-European VADER rules, 12-language CoreML. Extensible with lexicon files.
+- **Multilingual**: 8 languages with built-in dictionaries (ES, EN, PT, DE, FR, ZH, JA, KO), Indo-European VADER rules, 12-language CoreML. Extensible with custom lexicon files.
 
 ## Installation
 
 ```swift
 // Package.swift
 dependencies: [
-    .package(url: "https://github.com/frr149/SentimentKit.git", from: "0.1.0"),
+    .package(url: "https://github.com/frr149/SentimentKit.git", from: "1.0.0"),
 ]
 ```
 
@@ -83,7 +83,7 @@ let neutral = analyzer.analyze("delete the temp file and run make test")
 
 ## Custom dictionaries
 
-Built-in dictionaries are intentionally sparse and conservative. If you need another language or domain-specific vocabulary, bring your own TSV files and merge them into the analyzer config.
+Built-in dictionaries cover ES, EN, PT, DE, FR, ZH, JA, and KO. For additional languages or domain-specific vocabulary, bring your own TSV files and merge them into the analyzer config.
 
 ```swift
 import SentimentKit
@@ -191,7 +191,15 @@ This keeps the SwiftPM package lightweight while preserving a documented path fo
 
 ## Data provenance
 
-The rules for what may enter built-in dictionaries, golden fixtures, or synthetic candidate queues are documented in [docs/DATA_PROVENANCE.md](docs/DATA_PROVENANCE.md).
+The rules for what may enter built-in dictionaries, golden fixtures, or synthetic candidate queues are documented in [AGENTS.md](AGENTS.md) (anti-hallucination rules).
+
+Golden messages source datasets:
+- ES/EN/PT/DE/FR: [cardiffnlp/tweet_sentiment_multilingual](https://huggingface.co/datasets/cardiffnlp/tweet_sentiment_multilingual) (CC BY-SA 3.0)
+- ZH: [sepidmnorozy/Chinese_sentiment](https://huggingface.co/datasets/sepidmnorozy/Chinese_sentiment)
+
+## Golden messages
+
+144 golden fixtures with exact-match assertions: ES (35), EN (35), PT (20), DE (19), FR (20), ZH (15). JA/KO dictionaries are included but golden fixtures are pending provenance-first sourcing.
 
 ## License
 
