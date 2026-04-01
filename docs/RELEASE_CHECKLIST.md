@@ -15,7 +15,7 @@ Release process for publishing SentimentKit as a Swift package.
 
 ## Versioning
 
-- choose the next semantic version tag, for example `0.1.0`
+- choose the next semantic version tag, for example `1.0.0`
 - update any release notes or changelog material
 - create and push the git tag
 
@@ -24,6 +24,7 @@ Release process for publishing SentimentKit as a Swift package.
 - create a GitHub Release from the pushed tag
 - summarize the main user-visible changes
 - call out any optional layers that are not bundled, especially CoreML
+- do not claim benchmarked CoreML latency or accuracy improvements unless those numbers are published in the repo
 - link to the PR and relevant issues when useful
 
 ## Swift package distribution

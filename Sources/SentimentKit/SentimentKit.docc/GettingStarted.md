@@ -90,6 +90,19 @@ let analyzer = SentimentAnalyzer(config: config)
 
 The tokenizer directory `SentimentKitSentiment.tokenizer/` must live next to the `.mlpackage`. If either artifact is missing, SentimentKit falls back to the deterministic pipeline.
 
+Even when enabled, CoreML is only consulted for longer ambiguous messages. In the current implementation that means:
+
+- the message has at least 8 tokens
+- the pre-CoreML score is still near neutral (`abs(score) < 0.3`)
+
+This keeps the deterministic layers in charge for obvious cases and uses the model only as a tie-breaker.
+
+Current validation status:
+
+- fallback when the model is missing is covered by tests
+- local model integration is covered by smoke tests
+- benchmark-grade latency and accuracy comparisons are not published yet
+
 ## Data Policy
 
 Built-in dictionaries and golden fixtures follow the provenance rules documented in `docs/DATA_PROVENANCE.md` in the repository.
