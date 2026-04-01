@@ -25,12 +25,10 @@ struct VADERRules: Sendable {
     var intensity = 0.0
 
     for match in matches {
-      let adjustedScore = adjustedScore(
+      let result = adjustedScore(
         for: match, tokens: tokens, conjunctionStart: conjunctionStart)
-      if tokens[match.start...match.end].allSatisfy(\.isAllCaps) {
-        intensity += 0.2
-      }
-      score += adjustedScore
+      score += result.score
+      intensity += result.capsIntensity
     }
 
     let exclamationBoost = min(0.4, Double(message.filter { $0 == "!" }.count) * 0.1)
@@ -53,7 +51,7 @@ struct VADERRules: Sendable {
 
   private func adjustedScore(
     for match: KeywordMatch, tokens: [MessageToken], conjunctionStart: Int?
-  ) -> Double {
+  ) -> (score: Double, capsIntensity: Double) {
     var adjustedScore = match.score
 
     if isNegated(match, tokens: tokens) {
@@ -72,10 +70,11 @@ struct VADERRules: Sendable {
       adjustedScore *= 1.5
     }
 
-    if tokens[match.start...match.end].allSatisfy(\.isAllCaps) {
+    let isAllCaps = tokens[match.start...match.end].allSatisfy(\.isAllCaps)
+    if isAllCaps {
       adjustedScore *= 1.2
     }
 
-    return adjustedScore
+    return (adjustedScore, isAllCaps ? 0.2 : 0.0)
   }
 }

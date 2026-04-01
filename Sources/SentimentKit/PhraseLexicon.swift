@@ -33,39 +33,29 @@ struct PhraseLexicon: Sendable {
   }
 
   func containsPhrase(before startIndex: Int, in tokens: [MessageToken], maxDistance: Int) -> Bool {
-    guard startIndex > 0 else {
-      return false
-    }
-
-    for phrase in phrases {
-      let phraseLength = phrase.count
-      guard phraseLength > 0, startIndex - phraseLength >= 0 else {
-        continue
-      }
-
-      let lowerBound = max(0, startIndex - maxDistance)
-      let upperBound = startIndex - phraseLength
-      guard lowerBound <= upperBound else {
-        continue
-      }
-
-      for candidateStart in lowerBound...upperBound {
-        let candidateEnd = candidateStart + phraseLength
-        let candidate = tokens[candidateStart..<candidateEnd].map(\.normalized)
-        if candidate == phrase {
-          return true
-        }
-      }
-    }
-
-    return false
+    findPhrase(before: startIndex, in: tokens, maxDistance: maxDistance) != nil
   }
 
   func amplificationFactor(
     before startIndex: Int, in tokens: [MessageToken], maxDistance: Int
   ) -> Double {
-    guard startIndex > 0, let scores else {
+    guard let scores else {
       return 1.0
+    }
+
+    guard let matched = findPhrase(before: startIndex, in: tokens, maxDistance: maxDistance) else {
+      return 1.0
+    }
+
+    let phraseKey = matched.joined(separator: " ")
+    return scores[phraseKey] ?? 1.3
+  }
+
+  private func findPhrase(before startIndex: Int, in tokens: [MessageToken], maxDistance: Int)
+    -> [String]?
+  {
+    guard startIndex > 0 else {
+      return nil
     }
 
     for phrase in phrases {
@@ -84,13 +74,12 @@ struct PhraseLexicon: Sendable {
         let candidateEnd = candidateStart + phraseLength
         let candidate = tokens[candidateStart..<candidateEnd].map(\.normalized)
         if candidate == phrase {
-          let phraseKey = phrase.joined(separator: " ")
-          return scores[phraseKey] ?? 1.3
+          return phrase
         }
       }
     }
 
-    return 1.0
+    return nil
   }
 
   func lastMatchStart(in tokens: [MessageToken]) -> Int? {

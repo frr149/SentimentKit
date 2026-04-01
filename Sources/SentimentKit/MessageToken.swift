@@ -13,11 +13,7 @@ enum MessageTokenizer {
     }
     .flatMap { expandCJK(String($0)) }
 
-    let rawTokens = pieces.compactMap { piece -> String? in
-      let raw = String(piece)
-      let normalized = TextNormalization.normalizeToken(raw, language: language)
-      return normalized.isEmpty ? nil : raw
-    }
+    let rawTokens = pieces.map { String($0) }
 
     let mergedTokens = applyCJKSearch(rawTokens, language: language)
 

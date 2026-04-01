@@ -7,21 +7,22 @@ public struct SentimentAnalyzer: Sendable {
   private let nlTaggerScorer = NLTaggerScorer()
   private let technicalCommandGuard = TechnicalCommandGuard()
   private let coreMLScorer = CoreMLScorer()
+  private let keywordDetector: KeywordDetector
 
   public init(config: SentimentConfig = SentimentConfig()) {
     self.config = config
+    let dictionaryCandidates: [(ExpressionDictionary, allowCrossLanguage: Bool)] =
+      BuiltInLexicons.dictionaries.map { ($0, allowCrossLanguage: false) }
+      + config.additionalDictionaries.map { ($0, allowCrossLanguage: true) }
+    self.keywordDetector = KeywordDetector(dictionaries: dictionaryCandidates)
   }
 
   public func analyze(_ message: String) -> MessageAnalysis {
     let language = languageDetector.detectMessageLanguage(message)
     let tokens = MessageTokenizer.tokenize(message, language: language)
-    let dictionaryCandidates =
-      BuiltInLexicons.dictionaries.map { ($0, allowCrossLanguage: false) }
-      + config.additionalDictionaries.map { ($0, allowCrossLanguage: true) }
-    let detector = KeywordDetector(dictionaries: dictionaryCandidates)
     let matches =
       config.enableKeywords
-      ? detector.detect(in: tokens, language: language)
+      ? keywordDetector.detect(in: tokens, language: language)
       : .init(
         profanity: [],
         frustration: [],
