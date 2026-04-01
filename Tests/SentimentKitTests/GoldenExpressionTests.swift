@@ -42,4 +42,29 @@ struct GoldenExpressionTests {
       #expect(result.profanity.isEmpty && result.frustration.isEmpty && result.positive.isEmpty)
     }
   }
+
+  @Test
+  func spanishProfanityCulturalExpressionsClassifyCorrectly() {
+    let analyzer = SentimentAnalyzer()
+
+    // Positive cultural expressions with profanity
+    let dePutaMadre = analyzer.analyze("esto es de puta madre")
+    #expect(dePutaMadre.score > 1.0, "de puta madre should be strongly positive")
+    #expect(dePutaMadre.positive.contains(where: { $0.text == "de puta madre" }))
+    #expect(dePutaMadre.profanity.isEmpty, "de puta madre should not trigger profanity")
+
+    let oleTusCojones = analyzer.analyze("olé tus cojones")
+    #expect(oleTusCojones.score > 1.0, "olé tus cojones should be strongly positive")
+    #expect(oleTusCojones.positive.contains(where: { $0.text == "olé tus cojones" }))
+    #expect(oleTusCojones.profanity.isEmpty, "olé tus cojones should not trigger profanity")
+
+    // Insults should still be negative
+    let tuPutaMadre = analyzer.analyze("tu puta madre")
+    #expect(tuPutaMadre.score < 0, "tu puta madre should be negative")
+    #expect(tuPutaMadre.profanity.isEmpty == false, "tu puta madre should trigger profanity")
+
+    let laPutMadre = analyzer.analyze("la puta madre")
+    #expect(laPutMadre.score < 0, "la puta madre should be negative")
+    #expect(laPutMadre.profanity.isEmpty == false, "la puta madre should trigger profanity")
+  }
 }
