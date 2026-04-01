@@ -1,0 +1,34 @@
+# language: ko
+# type: positive
+# Source: Korean sentiment lexicons (KNU), common usage
+# See docs/KO_DATA_SOURCES.md for provenance
+좋다	1.0
+좋	1.0
+훌륭하다	1.0
+훌륭	1.0
+최고	1.0
+완벽하다	1.0
+완벽	1.0
+멋지다	1.0
+멋	1.0
+예쁘다	1.0
+예쁘	1.0
+아름답다	1.0
+아름답	1.0
+훌륭	1.0
+대박	1.0
+짱	1.0
+최고다	1.0
+좋아요	1.0
+감사합니다	1.0
+감사	1.0
+고맙습니다	1.0
+고맙	1.0
+잘했다	1.0
+성공	1.0
+행복하다	1.0
+행복	1.0
+기쁘다	1.0
+기쁘	1.0
+즐겁다	1.0
+즐겁	1.0
