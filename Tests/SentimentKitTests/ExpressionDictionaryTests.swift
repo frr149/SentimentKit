@@ -100,4 +100,5 @@ struct ExpressionDictionaryTests {
     #expect(dictionary.type == .profanity)
     #expect(dictionary.entries.contains { $0.expression == "joder" })
   }
+
 }

@@ -37,7 +37,7 @@ Message
   │  CAPS, punctuation. Works for Indo-European languages.
   │
   ├─ Layer 3: CoreML DistilBERT (optional, not bundled in v1)
-  │  Multilingual model for when rules aren't enough.
+  │  Multilingual model for long ambiguous messages only.
   │  Conversion tooling lives in Tools/CoreMLConversion/.
   │  The model artifact is generated locally, not shipped in the repo.
   │
@@ -46,6 +46,7 @@ Message
 ```
 
 Each layer is optional. v1 ships without the CoreML model; the default package works with keywords + VADER + NLTagger fallback.
+CoreML is only consulted when you explicitly enable it and the deterministic pipeline still produces an ambiguous result on a longer message.
 
 ## Key features
 
@@ -180,12 +181,31 @@ config.coreMLModelURL = URL(filePath: "/path/to/SentimentKitSentiment.mlpackage"
 let analyzer = SentimentAnalyzer(config: config)
 ```
 
+When CoreML is enabled, it is still not part of the hot path for every message. The analyzer only asks CoreML for a score when all of these are true:
+
+- `enableCoreML == true`
+- the tokenized message has at least 8 tokens
+- the pre-CoreML score is still ambiguous (`abs(score) < 0.3`)
+
+That keeps the deterministic path as the default and reserves the model for borderline cases.
+
 Current status of distribution:
 
 - there is no hosted model URL yet
 - the package must keep working when the model is absent
 - the generated model must stay next to its tokenizer directory: `SentimentKitSentiment.tokenizer/`
 - if either artifact is missing, SentimentKit falls back to the deterministic pipeline
+
+What is validated today:
+
+- the package falls back cleanly when the model or tokenizer is missing
+- a locally generated model produces directionally correct positive/negative scores in smoke tests
+- the analyzer integrates with an explicit local model path without breaking the deterministic pipeline
+
+What is not claimed yet:
+
+- no benchmark-backed latency numbers are published in the repo
+- no final accuracy/F1 comparison between deterministic-only and deterministic+CoreML is published yet
 
 This keeps the SwiftPM package lightweight while preserving a documented path for local model generation and integration testing before distribution is finalized.
 

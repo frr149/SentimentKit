@@ -1,10 +1,9 @@
-import Testing
 import Foundation
+import Testing
 
 @testable import SentimentKit
 
 struct DictionaryNormalizationLintTests {
-
   @Test
   func allDictionaryEntriesArePreNormalized() throws {
     // Dictionary TSV files must store entries in their normalized form.
@@ -101,4 +100,5 @@ struct DictionaryNormalizationLintTests {
     print("✅ All \(phraseLexiconFiles.count) PhraseLexicon files will be normalized on load")
     print("   Total entries: \(totalEntries)")
   }
+
 }
