@@ -3,29 +3,45 @@
 # Source: Korean sentiment lexicons, common usage
 # See docs/KO_DATA_SOURCES.md for provenance
 # Note: Korean profanity varies in intensity and context
+# Includes common abbreviations and intensifiers
 씨발	-1.0
+씨발놈	-1.0
+씨발련	-1.0
+씨팔	-1.0
 씹	-1.0
 개새끼	-1.2
+개새키	-1.2
 병신	-1.0
+병신새끼	-1.0
 지랄	-1.0
+지랄한다	-1.0
 꺼져	-1.0
+꺼지라고	-1.0
 엿	-1.0
+엿먹어	-1.0
 놈	-0.8
 년	-0.8
 미친	-0.8
 미친놈	-1.0
 미친년	-1.0
+미쳤어	-0.8
 젠장	-1.0
+젠장할	-1.0
 망할	-0.8
-망	-0.7
-망함	-0.8
+망할놈	-1.0
+망할	-0.8
 좆	-1.0
-좇	-1.0
+좆같다	-1.0
+좌식	-1.0
+느금마	-1.0
 느금	-1.0
-느	-0.5
 빌어먹을	-1.0
 빌어먹	-1.0
 엿같다	-1.0
 엿같	-1.0
 더럽다	-0.8
 더럽	-0.8
+썩었다	-0.8
+쓰레기	-1.0
+쓰레기같	-1.0
+지랄맞	-0.8

@@ -2,13 +2,20 @@
 # type: frustration
 # Source: Japanese polarity dictionaries (PN Table), common usage
 # See docs/JA_DATA_SOURCES.md for provenance
+# Includes stem forms for i-adjectives and common variants
+最悪	-0.7
 最悪	-0.7
 悪い	-0.7
 悪	-0.7
+悪く	-0.7
 ひどい	-0.7
 酷い	-0.7
+酷	-0.7
+ひどく	-0.7
+酷く	-0.7
 下手	-0.7
 下手	-0.7
+残念	-0.7
 残念	-0.7
 不満	-0.7
 腹立	-0.7
@@ -17,17 +24,26 @@
 苛々	-0.7
 苛立	-0.7
 ストレス	-0.7
-困る	-0.7
 困	-0.7
+困る	-0.7
 迷惑	-0.7
 面倒	-0.7
 面倒くさい	-0.7
+面倒くさ	-0.7
 ダメ	-0.7
 駄目	-0.7
 無理	-0.7
 嫌	-0.7
 嫌い	-0.7
+嫌	-0.7
 辛い	-0.7
 辛	-0.7
+辛く	-0.7
 苦しい	-0.7
 苦	-0.7
+苦しく	-0.7
+つまらない	-0.7
+つまらな	-0.7
+つまんない	-0.7
+不愉快	-0.7
+不快	-0.7

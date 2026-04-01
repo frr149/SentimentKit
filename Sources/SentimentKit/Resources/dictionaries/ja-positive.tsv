@@ -2,33 +2,51 @@
 # type: positive
 # Source: Japanese polarity dictionaries (PN Table), common usage
 # See docs/JA_DATA_SOURCES.md for provenance
+# Includes stem forms for i-adjectives (good for partial matching)
+素晴らしい	1.0
+素晴らし	1.0
+素晴らしい	1.0
 素晴らしい	1.0
 最高	1.0
 素敵	1.0
-素晴	1.0
+素敵	1.0
 優れ	1.0
+優れた	1.0
 いい	1.0
 良い	1.0
 良	1.0
-最高	1.0
+完璧	1.0
 完璧	1.0
 すごい	1.0
 凄い	1.0
+凄	1.0
 かっこいい	1.0
+かっこよ	1.0
 格好いい	1.0
 可愛い	1.0
 可愛	1.0
+可愛らしい	1.0
 美しい	1.0
 美	1.0
-素敵	1.0
 成功	1.0
 感謝	1.0
 ありがとう	1.0
 有難う	1.0
+有難	1.0
 お疲れ様	1.0
 お疲れ	1.0
 やった	1.0
+やったー	1.0
 嬉しい	1.0
 嬉	1.0
+楽しみ	1.0
 楽しい	1.0
 楽	1.0
+素晴らしい	1.0
+素晴らしい	1.0
+凄い	1.0
+最高	1.0
+感動	1.0
+うれしい	1.0
+めでたい	1.0
+幸せ	1.0
