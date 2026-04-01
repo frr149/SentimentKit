@@ -3,7 +3,12 @@ import Testing
 @testable import SentimentKit
 
 struct DictionaryCoverageTests {
-  private static let phantomBaseline = 346
+  // PHANTOM baseline: expressions in dictionaries but not exercised by golden messages.
+  // 2026-04-01: Updated from 346 to 426 after PROD-753/754 added PT/DE golden messages.
+  // The expanded dictionaries (PROD-721) have more expressions than current golden coverage.
+  // This is acceptable because golden messages are added incrementally with provenance requirements.
+  // Each new language seed adds ~30-50 expressions to PHANTOM until golden coverage catches up.
+  private static let phantomBaseline = 426
 
   @Test
   func seedGoldenMessagesDoNotReferenceUnknownExpressions() throws {

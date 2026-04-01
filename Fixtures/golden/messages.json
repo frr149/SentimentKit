@@ -123,7 +123,7 @@
     "expected_score_max": -0.9,
     "note": "Approved PRD/README/DocC example, verified from repo seed data"
   },
-{
+  {
     "id": "gold-fr-positive-003",
     "text": "Je suis absolument ravi de cette implémentation.",
     "language": "fr",
@@ -133,5 +133,2540 @@
     "expected_score_min": 0.25,
     "expected_score_max": 0.55,
     "note": "FR: ravi not in dictionary - neutral"
+  },
+  {
+    "id": "gold-pt-cardiff-pos-001",
+    "text": "Que maravilha kkkkkkkkkkkkkkkk #TheNoite",
+    "language": "pt",
+    "expected_profanity": [],
+    "expected_frustration": [],
+    "expected_positive": [
+      "maravilha"
+    ],
+    "expected_score_min": 0.6,
+    "expected_score_max": 1.2,
+    "note": "PT positive from cardiffnlp/tweet_sentiment_multilingual train row 338",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 338,
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  {
+    "id": "gold-pt-cardiff-pos-002",
+    "text": "O cabelo dá Ana está maravilhoso #MaisVoce",
+    "language": "pt",
+    "expected_profanity": [],
+    "expected_frustration": [],
+    "expected_positive": [
+      "maravilhoso"
+    ],
+    "expected_score_min": 0.6,
+    "expected_score_max": 1.2,
+    "note": "PT positive from cardiffnlp/tweet_sentiment_multilingual train row 11",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 11,
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  {
+    "id": "gold-pt-cardiff-pos-003",
+    "text": "Essa diversidade de Ingedientes do Pará é espetacular #MasterChefBR",
+    "language": "pt",
+    "expected_profanity": [],
+    "expected_frustration": [],
+    "expected_positive": [
+      "espetacular"
+    ],
+    "expected_score_min": 0.6,
+    "expected_score_max": 1.2,
+    "note": "PT positive from cardiffnlp/tweet_sentiment_multilingual train row 71",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 71,
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  {
+    "id": "gold-pt-cardiff-fru-001",
+    "text": "O #Encontro promovendo pseudociência. LAMENTAVEL!",
+    "language": "pt",
+    "expected_profanity": [],
+    "expected_frustration": [
+      "lamentavel"
+    ],
+    "expected_positive": [],
+    "expected_score_min": -1.0,
+    "expected_score_max": -0.4,
+    "note": "PT frustration from cardiffnlp/tweet_sentiment_multilingual train row 606",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 606,
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  {
+    "id": "gold-pt-cardiff-fru-002",
+    "text": "É muito vergonhoso ver que os participantes não conhecem quase nada da culinária do Norte!",
+    "language": "pt",
+    "expected_profanity": [],
+    "expected_frustration": [
+      "vergonhoso"
+    ],
+    "expected_positive": [],
+    "expected_score_min": -1.1,
+    "expected_score_max": -0.6,
+    "note": "PT frustration from cardiffnlp/tweet_sentiment_multilingual train row 846",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 846,
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  {
+    "id": "gold-pt-cardiff-fru-003",
+    "text": "#MasterChefBR é uma falta de absurdo essa Miriam ter ficado...",
+    "language": "pt",
+    "expected_profanity": [],
+    "expected_frustration": [
+      "absurdo"
+    ],
+    "expected_positive": [],
+    "expected_score_min": -1.0,
+    "expected_score_max": -0.4,
+    "note": "PT frustration from cardiffnlp/tweet_sentiment_multilingual train row 1323",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 1323,
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  {
+    "id": "gold-pt-cardiff-pro-001",
+    "text": "De boa, a gente tem que falar sério nesse momento: que porra é essa no #masterchefbr de exigir uma prova usando CALDO KNOR?",
+    "language": "pt",
+    "expected_profanity": [
+      "porra"
+    ],
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_score_min": -1.4,
+    "expected_score_max": -0.8,
+    "note": "PT profanity from cardiffnlp/tweet_sentiment_multilingual train row 87",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 87,
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  {
+    "id": "gold-pt-cardiff-pro-002",
+    "text": "Ai que bosta, de novo matéria de frango a passarinho, pula para os convidados caramba.",
+    "language": "pt",
+    "expected_profanity": [
+      "bosta"
+    ],
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_score_min": -1.2,
+    "expected_score_max": -0.7,
+    "note": "PT profanity from cardiffnlp/tweet_sentiment_multilingual train row 63",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 63,
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  {
+    "id": "gold-de-cardiff-pos-001",
+    "text": "Sieben künstlerische Projekträume ausgezeichnet",
+    "language": "de",
+    "expected_profanity": [],
+    "expected_frustration": [],
+    "expected_positive": [
+      "ausgezeichnet"
+    ],
+    "expected_score_min": 0.85,
+    "expected_score_max": 1.15,
+    "note": "DE positive from cardiffnlp/tweet_sentiment_multilingual train row 10",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 10,
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  {
+    "id": "gold-de-cardiff-pos-002",
+    "text": "Draußen grau und regnerisch. Perfekt für 5 Folgen Shopping Queen.",
+    "language": "de",
+    "expected_profanity": [],
+    "expected_frustration": [],
+    "expected_positive": [
+      "perfekt"
+    ],
+    "expected_score_min": 0.85,
+    "expected_score_max": 1.15,
+    "note": "DE positive from cardiffnlp/tweet_sentiment_multilingual train row 233",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 233,
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  {
+    "id": "gold-de-cardiff-pos-003",
+    "text": "@user Aber die Seite schaut echt toll aus",
+    "language": "de",
+    "expected_profanity": [],
+    "expected_frustration": [],
+    "expected_positive": [
+      "toll"
+    ],
+    "expected_score_min": 1.8,
+    "expected_score_max": 2.1,
+    "note": "DE positive from cardiffnlp/tweet_sentiment_multilingual train row 332",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 332,
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  {
+    "id": "gold-de-cardiff-fru-001",
+    "text": "Normal bin ich ja ned der mensch dwer sich beschwert wegen dem essen aber diese Pizza von Joeys...boah wie ekelhaft",
+    "language": "de",
+    "expected_profanity": [],
+    "expected_frustration": [
+      "ekelhaft"
+    ],
+    "expected_positive": [],
+    "expected_score_min": -1.2,
+    "expected_score_max": -0.9,
+    "note": "DE frustration from cardiffnlp/tweet_sentiment_multilingual train row 0",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 0,
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  {
+    "id": "gold-de-cardiff-fru-002",
+    "text": "@user Entsetzlich",
+    "language": "de",
+    "expected_profanity": [],
+    "expected_frustration": [
+      "entsetzlich"
+    ],
+    "expected_positive": [],
+    "expected_score_min": -0.85,
+    "expected_score_max": -0.55,
+    "note": "DE frustration from cardiffnlp/tweet_sentiment_multilingual train row 570",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 570,
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  {
+    "id": "gold-de-cardiff-pro-001",
+    "text": "Ach Scheiss drauf, dann eben nich",
+    "language": "de",
+    "expected_profanity": [
+      "scheiss"
+    ],
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_score_min": -1.15,
+    "expected_score_max": -0.85,
+    "note": "DE profanity from cardiffnlp/tweet_sentiment_multilingual train row 6",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 6,
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  {
+    "id": "gold-de-cardiff-pro-002",
+    "text": "@user seit monaten geht der mist hier wieder los",
+    "language": "de",
+    "expected_profanity": [
+      "mist"
+    ],
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_score_min": -1.15,
+    "expected_score_max": -0.85,
+    "note": "DE profanity from cardiffnlp/tweet_sentiment_multilingual train row 90",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 90,
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  {
+    "id": "gold-fr-cardiff-pos-001",
+    "text": "L'incroyable univers du géant Google en une carte interactive",
+    "language": "fr",
+    "expected_profanity": [],
+    "expected_frustration": [],
+    "expected_positive": [
+      "incroyable"
+    ],
+    "expected_score_min": 0.85,
+    "expected_score_max": 1.15,
+    "note": "FR positive from cardiffnlp/tweet_sentiment_multilingual train row 221",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 221,
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  {
+    "id": "gold-fr-cardiff-pos-002",
+    "text": "Le monde extraordinaire des champignons",
+    "language": "fr",
+    "expected_profanity": [],
+    "expected_frustration": [],
+    "expected_positive": [
+      "extraordinaire"
+    ],
+    "expected_score_min": 0.85,
+    "expected_score_max": 1.15,
+    "note": "FR positive from cardiffnlp/tweet_sentiment_multilingual train row 272",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 272,
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  {
+    "id": "gold-fr-cardiff-pos-003",
+    "text": "Superbe article sur les maisons écologiques",
+    "language": "fr",
+    "expected_profanity": [],
+    "expected_frustration": [],
+    "expected_positive": [
+      "superbe"
+    ],
+    "expected_score_min": 0.85,
+    "expected_score_max": 1.15,
+    "note": "FR positive from cardiffnlp/tweet_sentiment_multilingual train row 302",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 302,
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  {
+    "id": "gold-fr-cardiff-fru-001",
+    "text": "Honteux, dégoutant, mais pots de vin",
+    "language": "fr",
+    "expected_profanity": [],
+    "expected_frustration": [
+      "honteux",
+      "degoutant"
+    ],
+    "expected_positive": [],
+    "expected_score_min": -1.55,
+    "expected_score_max": -1.25,
+    "note": "FR frustration from cardiffnlp/tweet_sentiment_multilingual train row 1578",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 1578,
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  {
+    "id": "gold-fr-cardiff-fru-002",
+    "text": "dysfonctionnement inacceptable dans le parc national",
+    "language": "fr",
+    "expected_profanity": [],
+    "expected_frustration": [
+      "inacceptable"
+    ],
+    "expected_positive": [],
+    "expected_score_min": -0.85,
+    "expected_score_max": -0.55,
+    "note": "FR frustration from cardiffnlp/tweet_sentiment_multilingual train row 324",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 324,
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  {
+    "id": "gold-fr-cardiff-pro-001",
+    "text": "Depuis cet été de merde, je ne crois plus au réchauffement climatique.",
+    "language": "fr",
+    "expected_profanity": [
+      "merde"
+    ],
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_score_min": -1.15,
+    "expected_score_max": -0.85,
+    "note": "FR profanity from cardiffnlp/tweet_sentiment_multilingual train row 327",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 327,
+      "license": "CC BY-SA 3.0"
+    }
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [
+      "show"
+    ],
+    "expected_profanity": [],
+    "expected_score_max": 1.15,
+    "expected_score_min": 0.85,
+    "id": "gold-pt-cardiff-001-009",
+    "language": "pt",
+    "text": "Terça (16), séries e Talk Show da GLOBO marcaram:  #MisterBrau 20.7 #OsDiasEramAssim 15.1 #ConversaComBial 8.2 #RushMedicinaVIP 6.3",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 103,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "PT positive from cardiffnlp/tweet_sentiment_multilingual train row 103"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [
+      "maravilhoso"
+    ],
+    "expected_profanity": [],
+    "expected_score_max": 1.65,
+    "expected_score_min": 1.35,
+    "id": "gold-pt-cardiff-001-010",
+    "language": "pt",
+    "text": "tenho que ir dormir mas o #MasterChefBR tá maravilhoso hoje",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 134,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "PT positive from cardiffnlp/tweet_sentiment_multilingual train row 134"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [
+      "brilhante"
+    ],
+    "expected_profanity": [],
+    "expected_score_max": 1.15,
+    "expected_score_min": 0.85,
+    "id": "gold-pt-cardiff-001-011",
+    "language": "pt",
+    "text": "#thenoite 🎶🎼Se essa rua fosse minha...eu mandava ladrilhar...🎼🎶 Com pedrinhas de brilhante Só pro meu am♥r passar...🎶🎼 Bons tempos",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 139,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "PT positive from cardiffnlp/tweet_sentiment_multilingual train row 139"
+  },
+  {
+    "expected_frustration": [
+      "lamentavel"
+    ],
+    "expected_positive": [],
+    "expected_profanity": [],
+    "expected_score_max": -0.77,
+    "expected_score_min": -1.07,
+    "id": "gold-pt-cardiff-001-012",
+    "language": "pt",
+    "text": "O #Encontro promovendo pseudociência. LAMENTAVEL! #SandyNoEncontro #QuartaDetremuraSDV #QuartaComFenixSDV",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 606,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "PT frustration from cardiffnlp/tweet_sentiment_multilingual train row 606"
+  },
+  {
+    "expected_frustration": [
+      "vergonhoso"
+    ],
+    "expected_positive": [],
+    "expected_profanity": [],
+    "expected_score_max": -0.85,
+    "expected_score_min": -1.15,
+    "id": "gold-pt-cardiff-001-013",
+    "language": "pt",
+    "text": "É muito vergonhoso ver que os participantes não conhecem quase nada da culinária do Norte!  #MasterChefBR",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 846,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "PT frustration from cardiffnlp/tweet_sentiment_multilingual train row 846"
+  },
+  {
+    "expected_frustration": [
+      "absurdo"
+    ],
+    "expected_positive": [],
+    "expected_profanity": [],
+    "expected_score_max": -0.55,
+    "expected_score_min": -0.85,
+    "id": "gold-pt-cardiff-001-014",
+    "language": "pt",
+    "text": "#MasterChefBR é uma falta de absurdo essa Miriam ter ficado... Sem técnica, sem criatividade e comida feia",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 1323,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "PT frustration from cardiffnlp/tweet_sentiment_multilingual train row 1323"
+  },
+  {
+    "expected_frustration": [
+      "ruim",
+      "pessimo"
+    ],
+    "expected_positive": [],
+    "expected_profanity": [],
+    "expected_score_max": -1.39,
+    "expected_score_min": -1.69,
+    "id": "gold-pt-cardiff-001-015",
+    "language": "pt",
+    "text": "Esse #Encontro tá ruim demais. Não tem nada atrativo, não fazem matérias interessantes, os convidados quase não falam de si... Péssimo!",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 1602,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "PT frustration from cardiffnlp/tweet_sentiment_multilingual train row 1602"
+  },
+  {
+    "expected_frustration": [
+      "ruim"
+    ],
+    "expected_positive": [],
+    "expected_profanity": [],
+    "expected_score_max": -0.76,
+    "expected_score_min": -1.06,
+    "id": "gold-pt-cardiff-001-016",
+    "language": "pt",
+    "text": "#MaisVoce , eu já tomei esse milkshake da Kombosa e não gostei. Principalmente do atendimento deles, muito ruim.",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 1641,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "PT frustration from cardiffnlp/tweet_sentiment_multilingual train row 1641"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_profanity": [
+      "porra"
+    ],
+    "expected_score_max": -1.05,
+    "expected_score_min": -1.35,
+    "id": "gold-pt-cardiff-001-017",
+    "language": "pt",
+    "text": "Q MANCADA ASSUSTAR AS TIAS DA FAXINA KKKKKKKKKKKKKKKKKK PORRA #TheNoite",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 24,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "PT profanity from cardiffnlp/tweet_sentiment_multilingual train row 24"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_profanity": [
+      "caralho"
+    ],
+    "expected_score_max": -0.85,
+    "expected_score_min": -1.15,
+    "id": "gold-pt-cardiff-001-018",
+    "language": "pt",
+    "text": "Canta pra caralho cala a boca vai toma no cu bicho #ConversaComBial",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 39,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "PT profanity from cardiffnlp/tweet_sentiment_multilingual train row 39"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_profanity": [
+      "bosta"
+    ],
+    "expected_score_max": -0.85,
+    "expected_score_min": -1.15,
+    "id": "gold-pt-cardiff-001-019",
+    "language": "pt",
+    "text": "Ai que bosta, de novo matéria de frango a passarinho, pula para os convidados caramba.   #MaisVoce",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 63,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "PT profanity from cardiffnlp/tweet_sentiment_multilingual train row 63"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_profanity": [
+      "merda"
+    ],
+    "expected_score_max": -1.15,
+    "expected_score_min": -1.45,
+    "id": "gold-pt-cardiff-001-020",
+    "language": "pt",
+    "text": "#TheNoite Matheus Ceará só fala merda slk. Kkkkkkkkkkmk",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 148,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "PT profanity from cardiffnlp/tweet_sentiment_multilingual train row 148"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [
+      "ausgezeichnet"
+    ],
+    "expected_profanity": [],
+    "expected_score_max": 1.15,
+    "expected_score_min": 0.85,
+    "id": "gold-de-cardiff-001-008",
+    "language": "de",
+    "text": "Sieben künstlerische Projekträume ausgezeichnet http #Berlin",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 10,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "DE positive from cardiffnlp/tweet_sentiment_multilingual train row 10"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [
+      "perfekt"
+    ],
+    "expected_profanity": [],
+    "expected_score_max": 1.15,
+    "expected_score_min": 0.85,
+    "id": "gold-de-cardiff-001-009",
+    "language": "de",
+    "text": "Transfer angeblich perfekt - Real zahlt 99 Millionen Euro für Gareth Bale http",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 79,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "DE positive from cardiffnlp/tweet_sentiment_multilingual train row 79"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [
+      "perfekt"
+    ],
+    "expected_profanity": [],
+    "expected_score_max": 1.15,
+    "expected_score_min": 0.85,
+    "id": "gold-de-cardiff-001-010",
+    "language": "de",
+    "text": "Draußen grau &amp; regnerisch. Perfekt für 5 Folgen Shopping Queen. 👍",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 233,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "DE positive from cardiffnlp/tweet_sentiment_multilingual train row 233"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [
+      "super"
+    ],
+    "expected_profanity": [],
+    "expected_score_max": 1.25,
+    "expected_score_min": 0.95,
+    "id": "gold-de-cardiff-001-011",
+    "language": "de",
+    "text": "RT @user: Super: #Gysi klarer Gewinner bei ARD #ueberzeugtuns zur #btw13 mit 45,3 %! http",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 281,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "DE positive from cardiffnlp/tweet_sentiment_multilingual train row 281"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [
+      "toll"
+    ],
+    "expected_profanity": [],
+    "expected_score_max": 1.15,
+    "expected_score_min": 0.85,
+    "id": "gold-de-cardiff-001-012",
+    "language": "de",
+    "text": "Heute 7h 1min und 54s Videoday geschaut war voll toll Y-Titty beste Leben. #ytitty #haltdeinmaul #videoday #videoday2013",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 296,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "DE positive from cardiffnlp/tweet_sentiment_multilingual train row 296"
+  },
+  {
+    "expected_frustration": [
+      "peinlich"
+    ],
+    "expected_positive": [],
+    "expected_profanity": [],
+    "expected_score_max": -0.55,
+    "expected_score_min": -0.85,
+    "id": "gold-de-cardiff-001-013",
+    "language": "de",
+    "text": "@user @user hab ich auch gedacht auf den letzten Fotos echt süss.olly murs muss die Hose in Stuttgart geplatzt sein, peinlich",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 478,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "DE frustration from cardiffnlp/tweet_sentiment_multilingual train row 478"
+  },
+  {
+    "expected_frustration": [
+      "miserabel"
+    ],
+    "expected_positive": [],
+    "expected_profanity": [],
+    "expected_score_max": -0.9,
+    "expected_score_min": -1.2,
+    "id": "gold-de-cardiff-001-014",
+    "language": "de",
+    "text": "@user Dort hätte sich das Drehbuch schon fast von alleine schreiben lassen können, wurde aber wohl miserabel umgesetzt.",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 900,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "DE frustration from cardiffnlp/tweet_sentiment_multilingual train row 900"
+  },
+  {
+    "expected_frustration": [
+      "deprimierend"
+    ],
+    "expected_positive": [],
+    "expected_profanity": [],
+    "expected_score_max": -0.55,
+    "expected_score_min": -0.85,
+    "id": "gold-de-cardiff-001-015",
+    "language": "de",
+    "text": "RT @user: Deprimierend... #king #kings #queen #queens #könig #königin #herrscher #ungerecht #unfair #life #leben… http",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 1077,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "DE frustration from cardiffnlp/tweet_sentiment_multilingual train row 1077"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_profanity": [
+      "mist"
+    ],
+    "expected_score_max": -0.75,
+    "expected_score_min": -1.05,
+    "id": "gold-de-cardiff-001-016",
+    "language": "de",
+    "text": "@user seit monaten geht der mist hier wieder los.....warum blos?",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 90,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "DE profanity from cardiffnlp/tweet_sentiment_multilingual train row 90"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_profanity": [
+      "arsch"
+    ],
+    "expected_score_max": -0.95,
+    "expected_score_min": -1.25,
+    "id": "gold-de-cardiff-001-017",
+    "language": "de",
+    "text": "Weltbild zerstört: Tageziel erreicht! RT @user: Mein ganzes Weltbild ist jetzt im Arsch.",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 108,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "DE profanity from cardiffnlp/tweet_sentiment_multilingual train row 108"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_profanity": [
+      "arsch"
+    ],
+    "expected_score_max": -0.85,
+    "expected_score_min": -1.15,
+    "id": "gold-de-cardiff-001-018",
+    "language": "de",
+    "text": "Für'n Arsch. Echt.",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 120,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "DE profanity from cardiffnlp/tweet_sentiment_multilingual train row 120"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_profanity": [
+      "verdammt"
+    ],
+    "expected_score_max": -0.85,
+    "expected_score_min": -1.15,
+    "id": "gold-de-cardiff-001-019",
+    "language": "de",
+    "text": "@user nice. verdammt nice. danke. ich hätte mich echt geärgert, wäre mir das entgangen.",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 143,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "DE profanity from cardiffnlp/tweet_sentiment_multilingual train row 143"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [
+      "incroyable"
+    ],
+    "expected_profanity": [],
+    "expected_score_max": 1.25,
+    "expected_score_min": 0.95,
+    "id": "gold-fr-cardiff-001-008",
+    "language": "fr",
+    "text": "“@FlorianP123: L'incroyable univers du géant Google en une carte interactive ! via@JeanBoileau http http",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 221,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "FR positive from cardiffnlp/tweet_sentiment_multilingual train row 221"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [
+      "extraordinaire"
+    ],
+    "expected_profanity": [],
+    "expected_score_max": 1.15,
+    "expected_score_min": 0.85,
+    "id": "gold-fr-cardiff-001-009",
+    "language": "fr",
+    "text": "[Lorraine (Développement Durable)] Le monde extraordinaire des champignons http",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 272,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "FR positive from cardiffnlp/tweet_sentiment_multilingual train row 272"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [
+      "excellente"
+    ],
+    "expected_profanity": [],
+    "expected_score_max": 1.15,
+    "expected_score_min": 0.85,
+    "id": "gold-fr-cardiff-001-010",
+    "language": "fr",
+    "text": "Le recul de l écologie punitive est une excellente chose pour l avenir du Pays.",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 506,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "FR positive from cardiffnlp/tweet_sentiment_multilingual train row 506"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [
+      "incroyable"
+    ],
+    "expected_profanity": [],
+    "expected_score_max": 1.25,
+    "expected_score_min": 0.95,
+    "id": "gold-fr-cardiff-001-011",
+    "language": "fr",
+    "text": "L'incroyable univers du géant #Google en une carte interactive ! via @user http http",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 512,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "FR positive from cardiffnlp/tweet_sentiment_multilingual train row 512"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [
+      "au top"
+    ],
+    "expected_profanity": [],
+    "expected_score_max": 1.15,
+    "expected_score_min": 0.85,
+    "id": "gold-fr-cardiff-001-012",
+    "language": "fr",
+    "text": "Les panneaux photovoltaïques de Malmedy au top http",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 626,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "FR positive from cardiffnlp/tweet_sentiment_multilingual train row 626"
+  },
+  {
+    "expected_frustration": [
+      "inacceptable"
+    ],
+    "expected_positive": [],
+    "expected_profanity": [],
+    "expected_score_max": -0.55,
+    "expected_score_min": -0.85,
+    "id": "gold-fr-cardiff-001-013",
+    "language": "fr",
+    "text": "Protection de la biodiversité : dysfonctionnement inacceptable dans le cur du parc nation http",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 324,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "FR frustration from cardiffnlp/tweet_sentiment_multilingual train row 324"
+  },
+  {
+    "expected_frustration": [
+      "nul"
+    ],
+    "expected_positive": [],
+    "expected_profanity": [],
+    "expected_score_max": -0.55,
+    "expected_score_min": -0.85,
+    "id": "gold-fr-cardiff-001-014",
+    "language": "fr",
+    "text": "Ségolène #Royal: “Une parti des revenus de l’#écotaxe serait allée à une entreprise privée italienne”  #écologie #eelv super ta défense #nul",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 483,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "FR frustration from cardiffnlp/tweet_sentiment_multilingual train row 483"
+  },
+  {
+    "expected_frustration": [
+      "honteux",
+      "degoutant"
+    ],
+    "expected_positive": [],
+    "expected_profanity": [],
+    "expected_score_max": -1.25,
+    "expected_score_min": -1.55,
+    "id": "gold-fr-cardiff-001-015",
+    "language": "fr",
+    "text": "Honteux, dégoutant, mais pots de vin =&gt; TransCanada: la Cour rejette la requête des écologistes http via @user",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 1578,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "FR frustration from cardiffnlp/tweet_sentiment_multilingual train row 1578"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_profanity": [
+      "merde"
+    ],
+    "expected_score_max": -0.85,
+    "expected_score_min": -1.15,
+    "id": "gold-fr-cardiff-001-016",
+    "language": "fr",
+    "text": "Depuis cet été de merde, je ne crois plus au réchauffement climatique. Du moins pas en France.",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 327,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "FR profanity from cardiffnlp/tweet_sentiment_multilingual train row 327"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_profanity": [
+      "merde"
+    ],
+    "expected_score_max": -0.85,
+    "expected_score_min": -1.15,
+    "id": "gold-fr-cardiff-001-017",
+    "language": "fr",
+    "text": "RT “@LeDevoir: #TransCanada: la Cour rejette la requête en injonction des écologistes http #coulepascheznous #merde",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 345,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "FR profanity from cardiffnlp/tweet_sentiment_multilingual train row 345"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_profanity": [
+      "merde"
+    ],
+    "expected_score_max": -0.95,
+    "expected_score_min": -1.25,
+    "id": "gold-fr-cardiff-001-018",
+    "language": "fr",
+    "text": "@user Merde j'ai supprimé le tweet XD C'était un oral d'écologie !",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 426,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "FR profanity from cardiffnlp/tweet_sentiment_multilingual train row 426"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_profanity": [
+      "maudit"
+    ],
+    "expected_score_max": -0.65,
+    "expected_score_min": -0.95,
+    "id": "gold-fr-cardiff-001-019",
+    "language": "fr",
+    "text": "@user maudit réchauffement planétaire. .",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 1170,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "FR profanity from cardiffnlp/tweet_sentiment_multilingual train row 1170"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_profanity": [
+      "con"
+    ],
+    "expected_score_max": -0.55,
+    "expected_score_min": -0.85,
+    "id": "gold-fr-cardiff-001-020",
+    "language": "fr",
+    "text": "“ Un vautour royal, espèce menacée originaire d'Amérique centrale et du sud, au zoo de LA http  Il a l'air un peu con...",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 1203,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "FR profanity from cardiffnlp/tweet_sentiment_multilingual train row 1203"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [
+      "成功"
+    ],
+    "expected_profanity": [],
+    "expected_score_max": 1.15,
+    "expected_score_min": 0.85,
+    "id": "gold-zh-sepidmnorozy-positive-001",
+    "language": "zh",
+    "text": "書 中的 內容 總結 起來 就是 ： 20 歲 的 女生 要 學會 圓滑 處世 ， 要 懂得 為 自己 “ 著想 ” ， 這樣 才能 創造 出 一個 成功 的 人生 也許 正是 因為 它 所 要求 的 圓滑 處世 是 我 做 不到 的 ， 所以 我 不太 喜歡 這本書",
+    "source": {
+      "dataset": "sepidmnorozy/Chinese_sentiment",
+      "split": "train",
+      "row": 37,
+      "license": "Unknown"
+    },
+    "note": "ZH positive from sepidmnorozy/Chinese_sentiment train row 37"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [
+      "完美"
+    ],
+    "expected_profanity": [],
+    "expected_score_max": 1.15,
+    "expected_score_min": 0.85,
+    "id": "gold-zh-sepidmnorozy-positive-002",
+    "language": "zh",
+    "text": "2 酒店 裝修 號稱 前衛 與 古典 之 完美 結合 ， 不過 我 個人 覺得 華而不實 。",
+    "source": {
+      "dataset": "sepidmnorozy/Chinese_sentiment",
+      "split": "train",
+      "row": 67,
+      "license": "Unknown"
+    },
+    "note": "ZH positive from sepidmnorozy/Chinese_sentiment train row 67"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [
+      "完美"
+    ],
+    "expected_profanity": [],
+    "expected_score_max": 1.15,
+    "expected_score_min": 0.85,
+    "id": "gold-zh-sepidmnorozy-positive-003",
+    "language": "zh",
+    "text": "整 機 配置 均衡 ， 就是 內存 稍 小 ， 京 東 要是 能 再送 個 內存 就 完美 了 ^ _ ^",
+    "source": {
+      "dataset": "sepidmnorozy/Chinese_sentiment",
+      "split": "train",
+      "row": 75,
+      "license": "Unknown"
+    },
+    "note": "ZH positive from sepidmnorozy/Chinese_sentiment train row 75"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [
+      "愉快"
+    ],
+    "expected_profanity": [],
+    "expected_score_max": 1.75,
+    "expected_score_min": 1.45,
+    "id": "gold-zh-sepidmnorozy-positive-004",
+    "language": "zh",
+    "text": "幾次 入 住 該 酒店 都 給 我 一種 “ 顧客 是 上帝 \" 的 感覺 ， 尤其是 每次 check in 時 , 接待 員 萬 鵬 先生 給予 細緻 周到 的 服務 , 讓 我們 心情 非常 愉快 。 這 也是 我們 每次 來 南京 都 喜歡 住 該 酒店 的 原因 。 我 嘸 向 朋友 談 了 在 酒店 的 情況 , 他們 也 表示 下次 要 住 該 酒店 嘗試 一次 .",
+    "source": {
+      "dataset": "sepidmnorozy/Chinese_sentiment",
+      "split": "train",
+      "row": 116,
+      "license": "Unknown"
+    },
+    "note": "ZH positive from sepidmnorozy/Chinese_sentiment train row 116"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [
+      "棒"
+    ],
+    "expected_profanity": [],
+    "expected_score_max": 1.15,
+    "expected_score_min": 0.85,
+    "id": "gold-zh-sepidmnorozy-positive-005",
+    "language": "zh",
+    "text": "剛 收到 貨 ， 從 發貨 到 收到 很快 ， 機 子 很好 ， 沒有 什麼 磨損 。 而且 配置 都 如 產品 介紹 所 說 。 可以說是 相當 棒 ！",
+    "source": {
+      "dataset": "sepidmnorozy/Chinese_sentiment",
+      "split": "train",
+      "row": 122,
+      "license": "Unknown"
+    },
+    "note": "ZH positive from sepidmnorozy/Chinese_sentiment train row 122"
+  },
+  {
+    "expected_frustration": [
+      "失望"
+    ],
+    "expected_positive": [],
+    "expected_profanity": [],
+    "expected_score_max": -0.76,
+    "expected_score_min": -1.06,
+    "id": "gold-zh-sepidmnorozy-frustration-006",
+    "language": "zh",
+    "text": "我 跟 本 就 沒有 收到 這本書 ， 你們 網站 到底是 怎麼 一回事 。 買 了 本書 到了 現在 還沒有 收到 。 我 真的 很 失望 ， 書 都沒有 收到 叫 我 寫 什麼 評論 。 多 的 不想 說了 ， 就是 一句話 ， 我在 你們 那裡 買 了 這本書 ， 到 現在 我 都沒有 還沒有 收到 書 。",
+    "source": {
+      "dataset": "sepidmnorozy/Chinese_sentiment",
+      "split": "train",
+      "row": 46,
+      "license": "Unknown"
+    },
+    "note": "ZH frustration from sepidmnorozy/Chinese_sentiment train row 46"
+  },
+  {
+    "expected_frustration": [
+      "失望"
+    ],
+    "expected_positive": [],
+    "expected_profanity": [],
+    "expected_score_max": -0.55,
+    "expected_score_min": -0.85,
+    "id": "gold-zh-sepidmnorozy-frustration-007",
+    "language": "zh",
+    "text": "可惜的是 入 南 油 後 就 極度 失望 ， 房間 是 夠大 ， 但 裝飾 老 土 和 低 質量 ( 我 住 的是 豪華 二人 套房 ) ， 不 推薦 住 這個 酒店 ！ ！",
+    "source": {
+      "dataset": "sepidmnorozy/Chinese_sentiment",
+      "split": "train",
+      "row": 114,
+      "license": "Unknown"
+    },
+    "note": "ZH frustration from sepidmnorozy/Chinese_sentiment train row 114"
+  },
+  {
+    "expected_frustration": [
+      "失望"
+    ],
+    "expected_positive": [],
+    "expected_profanity": [],
+    "expected_score_max": -0.76,
+    "expected_score_min": -1.06,
+    "id": "gold-zh-sepidmnorozy-frustration-008",
+    "language": "zh",
+    "text": "補充 點 評 2008 年 8 月 1 日 ： 建議 大家 不要 去 青島 海底 世界 ， 離 海景 花園 很 近 的 極地 世界 就 很好 玩了 ， 去 過 極地 再去 海底 會 很 失望 大 ： )",
+    "source": {
+      "dataset": "sepidmnorozy/Chinese_sentiment",
+      "split": "train",
+      "row": 196,
+      "license": "Unknown"
+    },
+    "note": "ZH frustration from sepidmnorozy/Chinese_sentiment train row 196"
+  },
+  {
+    "expected_frustration": [
+      "失望"
+    ],
+    "expected_positive": [],
+    "expected_profanity": [],
+    "expected_score_max": -0.76,
+    "expected_score_min": -1.06,
+    "id": "gold-zh-sepidmnorozy-frustration-009",
+    "language": "zh",
+    "text": "很 失望 ， 書 的 內容 亂糟糟 ， 一點 意思 都沒有 。 整個 一個 精神病 醫院 ， 哪裡 像 個 心理 診所 。 看 後 大腦 空白 ， 心情 一點 都不 輕鬆 。 想看 書 消遣 的 朋友 這本書 絕對 不是 最佳 選擇 。",
+    "source": {
+      "dataset": "sepidmnorozy/Chinese_sentiment",
+      "split": "train",
+      "row": 208,
+      "license": "Unknown"
+    },
+    "note": "ZH frustration from sepidmnorozy/Chinese_sentiment train row 208"
+  },
+  {
+    "expected_frustration": [
+      "失望"
+    ],
+    "expected_positive": [],
+    "expected_profanity": [],
+    "expected_score_max": -0.76,
+    "expected_score_min": -1.06,
+    "id": "gold-zh-sepidmnorozy-frustration-010",
+    "language": "zh",
+    "text": "第一次 買 書 就 遭遇 了 這樣 的 待遇 , 來回 打電話 , 發 郵件 , 往 回 寄 包裹 . 還 不想 給 我 報銷 郵費 ! ! 真是 對 當當 失望 到底 了 !",
+    "source": {
+      "dataset": "sepidmnorozy/Chinese_sentiment",
+      "split": "train",
+      "row": 493,
+      "license": "Unknown"
+    },
+    "note": "ZH frustration from sepidmnorozy/Chinese_sentiment train row 493"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_profanity": [
+      "操"
+    ],
+    "expected_score_max": -0.85,
+    "expected_score_min": -1.15,
+    "id": "gold-zh-sepidmnorozy-profanity-011",
+    "language": "zh",
+    "text": "2 . 多媒體 觸摸 按鈕 很有 新意 ， 也 方便 操作",
+    "source": {
+      "dataset": "sepidmnorozy/Chinese_sentiment",
+      "split": "train",
+      "row": 72,
+      "license": "Unknown"
+    },
+    "note": "ZH profanity from sepidmnorozy/Chinese_sentiment train row 72"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_profanity": [
+      "操"
+    ],
+    "expected_score_max": -0.85,
+    "expected_score_min": -1.15,
+    "id": "gold-zh-sepidmnorozy-profanity-012",
+    "language": "zh",
+    "text": "散熱 不錯 ， 質感 也可以 ， 硬件 配置 體現 了 一個 e （ easy ） 字 ， 能 省 則 省 ； 預 裝 的 操作 系統 也是 免費 的 ， 這 很好 ， 為 消費者 省錢 ， 回來 裝 個 XP 也 很 方面 ， 一樣 好用 。",
+    "source": {
+      "dataset": "sepidmnorozy/Chinese_sentiment",
+      "split": "train",
+      "row": 140,
+      "license": "Unknown"
+    },
+    "note": "ZH profanity from sepidmnorozy/Chinese_sentiment train row 140"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_profanity": [
+      "垃圾"
+    ],
+    "expected_score_max": -0.85,
+    "expected_score_min": -1.15,
+    "id": "gold-zh-sepidmnorozy-profanity-013",
+    "language": "zh",
+    "text": "內容 一般 般 ; 印刷 製作 很 惡劣 , 不知 用 的 什麼 垃圾 紙 墨 , 很 臭 , 惡臭 , 根本 不得 近 身 . . .",
+    "source": {
+      "dataset": "sepidmnorozy/Chinese_sentiment",
+      "split": "train",
+      "row": 197,
+      "license": "Unknown"
+    },
+    "note": "ZH profanity from sepidmnorozy/Chinese_sentiment train row 197"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_profanity": [
+      "垃圾"
+    ],
+    "expected_score_max": -0.95,
+    "expected_score_min": -1.25,
+    "id": "gold-zh-sepidmnorozy-profanity-014",
+    "language": "zh",
+    "text": "房間 陳舊 , 服務 差 , 設備 也 陳舊 . 垃圾 酒店 !",
+    "source": {
+      "dataset": "sepidmnorozy/Chinese_sentiment",
+      "split": "train",
+      "row": 291,
+      "license": "Unknown"
+    },
+    "note": "ZH profanity from sepidmnorozy/Chinese_sentiment train row 291"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_profanity": [
+      "垃圾"
+    ],
+    "expected_score_max": -1.45,
+    "expected_score_min": -1.75,
+    "id": "gold-zh-sepidmnorozy-profanity-015",
+    "language": "zh",
+    "text": "非常 垃圾 的 書 ， 本 中的 單詞 很多 很不 常用 ， 並且 記憶 方法 比 說明 評論 中的 相差 很 遠 。 且 沒有 音標 讀音 等 。",
+    "source": {
+      "dataset": "sepidmnorozy/Chinese_sentiment",
+      "split": "train",
+      "row": 444,
+      "license": "Unknown"
+    },
+    "note": "ZH profanity from sepidmnorozy/Chinese_sentiment train row 444"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [
+      "mola"
+    ],
+    "expected_profanity": [],
+    "expected_score_max": 0.95,
+    "expected_score_min": 0.65,
+    "id": "gold-es-cardiff-positive-006",
+    "language": "es",
+    "text": "Esto de estar feliz mola",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 2,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "ES positive from cardiffnlp/tweet_sentiment_multilingual train row 2"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [
+      "bueno"
+    ],
+    "expected_profanity": [],
+    "expected_score_max": 0.92,
+    "expected_score_min": 0.62,
+    "id": "gold-es-cardiff-positive-007",
+    "language": "es",
+    "text": "Se que la pena de muerte no es algo bueno . Pero que diablos podemos hacer con los violadores ! Yo no le veo otra salida",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 33,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "ES positive from cardiffnlp/tweet_sentiment_multilingual train row 33"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [
+      "gracias"
+    ],
+    "expected_profanity": [],
+    "expected_score_max": 0.85,
+    "expected_score_min": 0.55,
+    "id": "gold-es-cardiff-positive-008",
+    "language": "es",
+    "text": "@user Impresionante. Una pena que hoy no pueda hacer una foto del atardecer.. P.d Gracias guapiño",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 36,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "ES positive from cardiffnlp/tweet_sentiment_multilingual train row 36"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [
+      "gracias"
+    ],
+    "expected_profanity": [],
+    "expected_score_max": 0.85,
+    "expected_score_min": 0.55,
+    "id": "gold-es-cardiff-positive-009",
+    "language": "es",
+    "text": "@user, vaya, felicidades atrasadas y muchas gracias",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 41,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "ES positive from cardiffnlp/tweet_sentiment_multilingual train row 41"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [
+      "me gusta"
+    ],
+    "expected_profanity": [],
+    "expected_score_max": 0.35,
+    "expected_score_min": 0.05,
+    "id": "gold-es-cardiff-positive-010",
+    "language": "es",
+    "text": "Me gusta mucho ir a Chepén y estar con la familia de Kike. Lo que no me gusta es tener que trabajar el lunes siguiente",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 61,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "ES positive from cardiffnlp/tweet_sentiment_multilingual train row 61"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [
+      "bueno",
+      "gracias"
+    ],
+    "expected_profanity": [],
+    "expected_score_max": 1.85,
+    "expected_score_min": 1.55,
+    "id": "gold-es-cardiff-positive-011",
+    "language": "es",
+    "text": "Bueno,gracias a algunos(casi gratis) por confiar su salud en mi(un año más) no se enfermen mucho este año pues, jaja mentira, saludos",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 62,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "ES positive from cardiffnlp/tweet_sentiment_multilingual train row 62"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [
+      "gracias"
+    ],
+    "expected_profanity": [],
+    "expected_score_max": 0.92,
+    "expected_score_min": 0.62,
+    "id": "gold-es-cardiff-positive-012",
+    "language": "es",
+    "text": "@user gracias Manuel por este arte de recoger mi texto en tu revista  Un abrazo grande!",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 86,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "ES positive from cardiffnlp/tweet_sentiment_multilingual train row 86"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [
+      "gracias"
+    ],
+    "expected_profanity": [],
+    "expected_score_max": 0.91,
+    "expected_score_min": 0.61,
+    "id": "gold-es-cardiff-positive-013",
+    "language": "es",
+    "text": "@user @user ¿Será solo digital entonces? ¡Perfecto! De verdad muchísimas gracias Un abrazo desde Costa Rica. ¡Pura vida!",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 104,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "ES positive from cardiffnlp/tweet_sentiment_multilingual train row 104"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [
+      "gracias"
+    ],
+    "expected_profanity": [],
+    "expected_score_max": 0.85,
+    "expected_score_min": 0.55,
+    "id": "gold-es-cardiff-positive-014",
+    "language": "es",
+    "text": "Bueeeeno... no me siento bien. Gracias playlist por cagarme peor",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 129,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "ES positive from cardiffnlp/tweet_sentiment_multilingual train row 129"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [
+      "enhorabuena"
+    ],
+    "expected_profanity": [],
+    "expected_score_max": 1.14,
+    "expected_score_min": 0.84,
+    "id": "gold-es-cardiff-positive-015",
+    "language": "es",
+    "text": "@user ¡Enhorabuena! Eres la ganadora del sorteo,escríbenos por mensaje privado para darte el premio",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 170,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "ES positive from cardiffnlp/tweet_sentiment_multilingual train row 170"
+  },
+  {
+    "expected_frustration": [
+      "basura"
+    ],
+    "expected_positive": [],
+    "expected_profanity": [],
+    "expected_score_max": -0.55,
+    "expected_score_min": -0.85,
+    "id": "gold-es-cardiff-frustration-016",
+    "language": "es",
+    "text": "Soy la peor basura del mundo porque, justo hoy Andrea tenía que verme con otra mujer, que mal me sentí.",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 192,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "ES frustration from cardiffnlp/tweet_sentiment_multilingual train row 192"
+  },
+  {
+    "expected_frustration": [
+      "horrible"
+    ],
+    "expected_positive": [],
+    "expected_profanity": [],
+    "expected_score_max": -1.15,
+    "expected_score_min": -1.45,
+    "id": "gold-es-cardiff-frustration-017",
+    "language": "es",
+    "text": "Me voy mañana para la playa, confiando que el sol me quite esta gripe tan horrible.",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 203,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "ES frustration from cardiffnlp/tweet_sentiment_multilingual train row 203"
+  },
+  {
+    "expected_frustration": [
+      "malo"
+    ],
+    "expected_positive": [],
+    "expected_profanity": [],
+    "expected_score_max": -0.55,
+    "expected_score_min": -0.85,
+    "id": "gold-es-cardiff-frustration-018",
+    "language": "es",
+    "text": "@user @user jaja y por que lo peor, los juegos de Ubisoft no son tan malos, lo que si es un poco malo es ser solo de Sony",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 243,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "ES frustration from cardiffnlp/tweet_sentiment_multilingual train row 243"
+  },
+  {
+    "expected_frustration": [
+      "malo"
+    ],
+    "expected_positive": [],
+    "expected_profanity": [],
+    "expected_score_max": -1.15,
+    "expected_score_min": -1.45,
+    "id": "gold-es-cardiff-frustration-019",
+    "language": "es",
+    "text": "hoy ha sido un día muy malo para mi",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 330,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "ES frustration from cardiffnlp/tweet_sentiment_multilingual train row 330"
+  },
+  {
+    "expected_frustration": [
+      "horrible"
+    ],
+    "expected_positive": [],
+    "expected_profanity": [],
+    "expected_score_max": -0.85,
+    "expected_score_min": -1.15,
+    "id": "gold-es-cardiff-frustration-020",
+    "language": "es",
+    "text": "@user Ya no es por bonito o por feo sino porque es un animal con sentimientos tía es horrible",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 510,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "ES frustration from cardiffnlp/tweet_sentiment_multilingual train row 510"
+  },
+  {
+    "expected_frustration": [
+      "basura"
+    ],
+    "expected_positive": [],
+    "expected_profanity": [],
+    "expected_score_max": -0.55,
+    "expected_score_min": -0.85,
+    "id": "gold-es-cardiff-frustration-021",
+    "language": "es",
+    "text": "A Piper no le gusta que robe en las casas ni a la gente, Piper se ha ido a la basura junto a albóndiga",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 864,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "ES frustration from cardiffnlp/tweet_sentiment_multilingual train row 864"
+  },
+  {
+    "expected_frustration": [
+      "horrible"
+    ],
+    "expected_positive": [],
+    "expected_profanity": [],
+    "expected_score_max": -0.85,
+    "expected_score_min": -1.15,
+    "id": "gold-es-cardiff-frustration-022",
+    "language": "es",
+    "text": "Hoy me sentí como grace de \"al fondo hay sitio\" cuando la atropellaron, solo que no fue de mentira y casi no la cuento que horrible",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 873,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "ES frustration from cardiffnlp/tweet_sentiment_multilingual train row 873"
+  },
+  {
+    "expected_frustration": [
+      "muy mal"
+    ],
+    "expected_positive": [],
+    "expected_profanity": [],
+    "expected_score_max": -0.65,
+    "expected_score_min": -0.95,
+    "id": "gold-es-cardiff-frustration-023",
+    "language": "es",
+    "text": "Se me dan muy mal las despedidas",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 936,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "ES frustration from cardiffnlp/tweet_sentiment_multilingual train row 936"
+  },
+  {
+    "expected_frustration": [
+      "malo"
+    ],
+    "expected_positive": [],
+    "expected_profanity": [],
+    "expected_score_max": -0.85,
+    "expected_score_min": -1.15,
+    "id": "gold-es-cardiff-frustration-024",
+    "language": "es",
+    "text": "Lo malo de no poder dormir, es que a estas horas no tengo a quien molestar, todos duermen.",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 963,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "ES frustration from cardiffnlp/tweet_sentiment_multilingual train row 963"
+  },
+  {
+    "expected_frustration": [
+      "malo"
+    ],
+    "expected_positive": [],
+    "expected_profanity": [],
+    "expected_score_max": -0.85,
+    "expected_score_min": -1.15,
+    "id": "gold-es-cardiff-frustration-025",
+    "language": "es",
+    "text": "@user lo malo que el palmarés de los que se han ido era mientras jugaban en el @user",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 990,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "ES frustration from cardiffnlp/tweet_sentiment_multilingual train row 990"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_profanity": [
+      "puta",
+      "mierda"
+    ],
+    "expected_score_max": -1.85,
+    "expected_score_min": -2.15,
+    "id": "gold-es-cardiff-profanity-026",
+    "language": "es",
+    "text": "Pero como no tengo una puta mierda en común pues nadie me mete para ningún grupo ni nada, claro",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 60,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "ES profanity from cardiffnlp/tweet_sentiment_multilingual train row 60"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_profanity": [
+      "que cojones"
+    ],
+    "expected_score_max": -1.15,
+    "expected_score_min": -1.45,
+    "id": "gold-es-cardiff-profanity-027",
+    "language": "es",
+    "text": "ola wapa k tal stas?? spero k no seas una sorra kmo las otras xikas   - machirulo   QUÉ COJONES JAJSAKJKJSADJJSJASJAJAJA",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 102,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "ES profanity from cardiffnlp/tweet_sentiment_multilingual train row 102"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_profanity": [
+      "joder"
+    ],
+    "expected_score_max": -0.85,
+    "expected_score_min": -1.15,
+    "id": "gold-es-cardiff-profanity-028",
+    "language": "es",
+    "text": "@user joder como te entiendo  nosotros literalmente nos tenemos que saltar las clases e ir a un centro comercial si queremos kkar",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 105,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "ES profanity from cardiffnlp/tweet_sentiment_multilingual train row 105"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_profanity": [
+      "mierda"
+    ],
+    "expected_score_max": -0.85,
+    "expected_score_min": -1.15,
+    "id": "gold-es-cardiff-profanity-029",
+    "language": "es",
+    "text": "mi vida es una mierda primero me enamoro de un macedonio en ibiza y ahora del timbales de la panorama",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 237,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "ES profanity from cardiffnlp/tweet_sentiment_multilingual train row 237"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_profanity": [
+      "me cago en la puta"
+    ],
+    "expected_score_max": -1.35,
+    "expected_score_min": -1.65,
+    "id": "gold-es-cardiff-profanity-030",
+    "language": "es",
+    "text": "Me cago en la puta ola de calor que está haciendo  haber si nos morimos",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 291,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "ES profanity from cardiffnlp/tweet_sentiment_multilingual train row 291"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_profanity": [
+      "puto"
+    ],
+    "expected_score_max": -0.85,
+    "expected_score_min": -1.15,
+    "id": "gold-es-cardiff-profanity-031",
+    "language": "es",
+    "text": "Puto, PS4 pro se queda pillado( congelado), pensaba que era solo yo , pero no , ya son varios amigos que es lo mismo",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 336,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "ES profanity from cardiffnlp/tweet_sentiment_multilingual train row 336"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_profanity": [
+      "puta"
+    ],
+    "expected_score_max": -0.95,
+    "expected_score_min": -1.25,
+    "id": "gold-es-cardiff-profanity-032",
+    "language": "es",
+    "text": "Que GUSTAZO me da que España le gane a Bélgica en su puta CASA y encima con goles de un CANARIO !",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 356,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "ES profanity from cardiffnlp/tweet_sentiment_multilingual train row 356"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_profanity": [
+      "gilipollas"
+    ],
+    "expected_score_max": -0.75,
+    "expected_score_min": -1.05,
+    "id": "gold-es-cardiff-profanity-033",
+    "language": "es",
+    "text": "Un gilipollas se me ha cruzado entero en una rotonda  y ya le estaba viendo que lo iba a hacer",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 378,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "ES profanity from cardiffnlp/tweet_sentiment_multilingual train row 378"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_profanity": [
+      "puto"
+    ],
+    "expected_score_max": -0.85,
+    "expected_score_min": -1.15,
+    "id": "gold-es-cardiff-profanity-034",
+    "language": "es",
+    "text": "Quiero que vuelva el invierno  y ponerme pantalones largos y chaquetas y sudaderas y abrigos, puto verano.",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 390,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "ES profanity from cardiffnlp/tweet_sentiment_multilingual train row 390"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_profanity": [
+      "mierda"
+    ],
+    "expected_score_max": -0.75,
+    "expected_score_min": -1.05,
+    "id": "gold-es-cardiff-profanity-035",
+    "language": "es",
+    "text": "- Amor, ¿vamos a ver la vida secreta de tus muscotas? - Hoy no puedo BB - No tienes dinero no? - No - Misio de mierda.",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 391,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "ES profanity from cardiffnlp/tweet_sentiment_multilingual train row 391"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [
+      "brilliant"
+    ],
+    "expected_profanity": [],
+    "expected_score_max": 1.15,
+    "expected_score_min": 0.85,
+    "id": "gold-en-cardiff-positive-006",
+    "language": "en",
+    "text": "\"Frank Gaffrey\\u002c Cliff May\\u002c Steve Emerson: Brilliant. \\\"\"\"\"Looming Threats: Iran\\u002c Hezbollah Hamas\\\"\"\"\" is the best #cufidc session I\\u2019ve had thus far.\" ",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 2,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "EN positive from cardiffnlp/tweet_sentiment_multilingual train row 2"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [
+      "great"
+    ],
+    "expected_profanity": [],
+    "expected_score_max": 1.25,
+    "expected_score_min": 0.95,
+    "id": "gold-en-cardiff-positive-007",
+    "language": "en",
+    "text": "Great article in Rolling Stone on Rod Picott. Check it out!  I'll be interviewing Rod on the August 9th episode... ",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 17,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "EN positive from cardiffnlp/tweet_sentiment_multilingual train row 17"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [
+      "good"
+    ],
+    "expected_profanity": [],
+    "expected_score_max": 1.15,
+    "expected_score_min": 0.85,
+    "id": "gold-en-cardiff-positive-008",
+    "language": "en",
+    "text": "I'm getting strong mail that Eden Hazard will become a Roo tomorrow. Pick 39 & Garlett to wherever the f*ck Hazard plays soccer. Good deal ",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 26,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "EN positive from cardiffnlp/tweet_sentiment_multilingual train row 26"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [
+      "good"
+    ],
+    "expected_profanity": [],
+    "expected_score_max": 1.25,
+    "expected_score_min": 0.95,
+    "id": "gold-en-cardiff-positive-009",
+    "language": "en",
+    "text": "Not even 20 pages into Paper Towns and the book centers around the night of May 5th. I know its gonna be a good one now! #cincodemayo ",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 35,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "EN positive from cardiffnlp/tweet_sentiment_multilingual train row 35"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [
+      "great"
+    ],
+    "expected_profanity": [],
+    "expected_score_max": 1.15,
+    "expected_score_min": 0.85,
+    "id": "gold-en-cardiff-positive-010",
+    "language": "en",
+    "text": "\"Red Sox off to another great start. They lead the Phillies after two innings at Fenway 6-0, scoring 2 in the 1st and 4 more in the second\" ",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 38,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "EN positive from cardiffnlp/tweet_sentiment_multilingual train row 38"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [
+      "awesome"
+    ],
+    "expected_profanity": [],
+    "expected_score_max": 1.25,
+    "expected_score_min": 0.95,
+    "id": "gold-en-cardiff-positive-011",
+    "language": "en",
+    "text": "I went to the Polish Festival on Roncesvalles on Saturday awesome time! ",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 50,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "EN positive from cardiffnlp/tweet_sentiment_multilingual train row 50"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [
+      "good"
+    ],
+    "expected_profanity": [],
+    "expected_score_max": 1.65,
+    "expected_score_min": 1.35,
+    "id": "gold-en-cardiff-positive-012",
+    "language": "en",
+    "text": "@user I had Arian Foster so I'm on 26 already, but having Luck and Hilton puts you in a good place going into NFL Sunday.\" ",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 53,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "EN positive from cardiffnlp/tweet_sentiment_multilingual train row 53"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [
+      "good"
+    ],
+    "expected_profanity": [],
+    "expected_score_max": 1.15,
+    "expected_score_min": 0.85,
+    "id": "gold-en-cardiff-positive-013",
+    "language": "en",
+    "text": "\"If it ain't broke don't fix it, why move kris Bryant up to 3rd when he's hitting as good as he has all season at 5\" ",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 82,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "EN positive from cardiffnlp/tweet_sentiment_multilingual train row 82"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [
+      "awesome"
+    ],
+    "expected_profanity": [],
+    "expected_score_max": 1.47,
+    "expected_score_min": 1.17,
+    "id": "gold-en-cardiff-positive-014",
+    "language": "en",
+    "text": "@user Steelers fans are AWESOME! Just for that, I'm making it my mission to piss off a Brown's fan today hehe #inspiration\" ",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 83,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "EN positive from cardiffnlp/tweet_sentiment_multilingual train row 83"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [
+      "nice"
+    ],
+    "expected_profanity": [],
+    "expected_score_max": 0.95,
+    "expected_score_min": 0.65,
+    "id": "gold-en-cardiff-positive-015",
+    "language": "en",
+    "text": "Nice: @user 2nd spot in Amazon Prime's #TV #campaign shows next day delivery coming to rescue of a lame #dog ",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 86,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "EN positive from cardiffnlp/tweet_sentiment_multilingual train row 86"
+  },
+  {
+    "expected_frustration": [
+      "horrible"
+    ],
+    "expected_positive": [],
+    "expected_profanity": [],
+    "expected_score_max": -0.85,
+    "expected_score_min": -1.15,
+    "id": "gold-en-cardiff-frustration-016",
+    "language": "en",
+    "text": "Donald Trump: I will be in D.C. on Wednesday,1 PM, in front of the Capitol, to protest the horrible &amp; incompetent deal being made with Iran. ",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 48,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "EN frustration from cardiffnlp/tweet_sentiment_multilingual train row 48"
+  },
+  {
+    "expected_frustration": [
+      "bad"
+    ],
+    "expected_positive": [],
+    "expected_profanity": [],
+    "expected_score_max": -1.15,
+    "expected_score_min": -1.45,
+    "id": "gold-en-cardiff-frustration-017",
+    "language": "en",
+    "text": "\"So unfortunately, it's all really bad timing rn, so I can't go to the Ed Sheeran concert tomorrow, but if anybody wants floor seats....\" ",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 198,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "EN frustration from cardiffnlp/tweet_sentiment_multilingual train row 198"
+  },
+  {
+    "expected_frustration": [
+      "bad"
+    ],
+    "expected_positive": [],
+    "expected_profanity": [],
+    "expected_score_max": -1.15,
+    "expected_score_min": -1.45,
+    "id": "gold-en-cardiff-frustration-018",
+    "language": "en",
+    "text": "@user Yeah I think so. We saw Suarez score up near us and we played pretty well 2nd half so it wasn\\u2019t so bad. Probably should\\u2019ve had ET ",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 221,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "EN frustration from cardiffnlp/tweet_sentiment_multilingual train row 221"
+  },
+  {
+    "expected_frustration": [
+      "bad"
+    ],
+    "expected_positive": [],
+    "expected_profanity": [],
+    "expected_score_max": -0.85,
+    "expected_score_min": -1.15,
+    "id": "gold-en-cardiff-frustration-019",
+    "language": "en",
+    "text": "I've a bad feeling Simpson's plot in the 2nd half of the season is #JessicaJones equivalent of 'Thor's vision quest' in Age of Ultron ",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 267,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "EN frustration from cardiffnlp/tweet_sentiment_multilingual train row 267"
+  },
+  {
+    "expected_frustration": [
+      "bad"
+    ],
+    "expected_positive": [],
+    "expected_profanity": [],
+    "expected_score_max": -0.85,
+    "expected_score_min": -1.15,
+    "id": "gold-en-cardiff-frustration-020",
+    "language": "en",
+    "text": "Mehgan James from Bad Girls Club will be in the building Friday @user  To get an express pass go ",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 307,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "EN frustration from cardiffnlp/tweet_sentiment_multilingual train row 307"
+  },
+  {
+    "expected_frustration": [
+      "bad"
+    ],
+    "expected_positive": [],
+    "expected_profanity": [],
+    "expected_score_max": -0.85,
+    "expected_score_min": -1.15,
+    "id": "gold-en-cardiff-frustration-021",
+    "language": "en",
+    "text": "The only bad thing about Barack Obama having a 2nd term as President is that its always a flop 2nd time round historically ",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 345,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "EN frustration from cardiffnlp/tweet_sentiment_multilingual train row 345"
+  },
+  {
+    "expected_frustration": [
+      "bad"
+    ],
+    "expected_positive": [],
+    "expected_profanity": [],
+    "expected_score_max": -0.85,
+    "expected_score_min": -1.15,
+    "id": "gold-en-cardiff-frustration-022",
+    "language": "en",
+    "text": "\"RT @user Feel bad for star crossed LionsRT @user So far, WR Titus Young is the only one of the Lions top three picks  ...\" ",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 372,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "EN frustration from cardiffnlp/tweet_sentiment_multilingual train row 372"
+  },
+  {
+    "expected_frustration": [
+      "bad"
+    ],
+    "expected_positive": [],
+    "expected_profanity": [],
+    "expected_score_max": -0.85,
+    "expected_score_min": -1.15,
+    "id": "gold-en-cardiff-frustration-023",
+    "language": "en",
+    "text": "\"In addition to Bad Blood, my brain is also shuffling the Wonder Woman theme and California Gurls. Still better than November Rain.\" ",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 461,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "EN frustration from cardiffnlp/tweet_sentiment_multilingual train row 461"
+  },
+  {
+    "expected_frustration": [
+      "bad"
+    ],
+    "expected_positive": [],
+    "expected_profanity": [],
+    "expected_score_max": -1.15,
+    "expected_score_min": -1.45,
+    "id": "gold-en-cardiff-frustration-024",
+    "language": "en",
+    "text": "@user @user Hehe...yeah. I mean it wasn't really really bad, but it got no real attention. As far as Kpop goes, people may\" ",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 462,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "EN frustration from cardiffnlp/tweet_sentiment_multilingual train row 462"
+  },
+  {
+    "expected_frustration": [
+      "bad"
+    ],
+    "expected_positive": [],
+    "expected_profanity": [],
+    "expected_score_max": -0.85,
+    "expected_score_min": -1.15,
+    "id": "gold-en-cardiff-frustration-025",
+    "language": "en",
+    "text": "Me right now with Tao (because he used to be my 2nd bias): Bad Blood ",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 487,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "EN frustration from cardiffnlp/tweet_sentiment_multilingual train row 487"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_profanity": [
+      "what the fuck"
+    ],
+    "expected_score_max": -1.35,
+    "expected_score_min": -1.65,
+    "id": "gold-en-cardiff-profanity-026",
+    "language": "en",
+    "text": "\"I just sat through Kanye West's MTV speech, what the fuck was that...\" ",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 15,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "EN profanity from cardiffnlp/tweet_sentiment_multilingual train row 15"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_profanity": [
+      "fuck",
+      "fuck"
+    ],
+    "expected_score_max": -1.65,
+    "expected_score_min": -1.95,
+    "id": "gold-en-cardiff-profanity-027",
+    "language": "en",
+    "text": "Jay-Z: Can I get a Fuck You? Jay-Z's Dad: I don't know, CAN you? Jay-Z: MAY I get a Fuck You? Jay-Z's Dad: No, it's supper time. Go wash up. ",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 73,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "EN profanity from cardiffnlp/tweet_sentiment_multilingual train row 73"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_profanity": [
+      "bullshit"
+    ],
+    "expected_score_max": -0.85,
+    "expected_score_min": -1.15,
+    "id": "gold-en-cardiff-profanity-028",
+    "language": "en",
+    "text": "The Sun is bullshit 99% of the time but they're the ones who said Louis is gonna be a dad and Zayn left and look what happened ",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 159,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "EN profanity from cardiffnlp/tweet_sentiment_multilingual train row 159"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_profanity": [
+      "fuck"
+    ],
+    "expected_score_max": -1.05,
+    "expected_score_min": -1.35,
+    "id": "gold-en-cardiff-profanity-029",
+    "language": "en",
+    "text": "Amazon Prime fucks me off so much, like you get really into something and then after like the 3rd season you have to pay. FUCK OFF. ",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 303,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "EN profanity from cardiffnlp/tweet_sentiment_multilingual train row 303"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_profanity": [
+      "wtf"
+    ],
+    "expected_score_max": -1.41,
+    "expected_score_min": -1.71,
+    "id": "gold-en-cardiff-profanity-030",
+    "language": "en",
+    "text": "WTF! Liu Bei's 2nd wife died! Why the hell Cao Cao so brutal ! ",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 324,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "EN profanity from cardiffnlp/tweet_sentiment_multilingual train row 324"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_profanity": [
+      "shit"
+    ],
+    "expected_score_max": -0.85,
+    "expected_score_min": -1.15,
+    "id": "gold-en-cardiff-profanity-031",
+    "language": "en",
+    "text": "Frank ocean must be going through some shit ",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 357,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "EN profanity from cardiffnlp/tweet_sentiment_multilingual train row 357"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_profanity": [
+      "shit",
+      "shit"
+    ],
+    "expected_score_max": -1.85,
+    "expected_score_min": -2.15,
+    "id": "gold-en-cardiff-profanity-032",
+    "language": "en",
+    "text": "\"Celebrity Big Brother starts tomorrow. I won't be watching, what a load of shit, the majority of them won't even be celebs. #shit #TV\" ",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 393,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "EN profanity from cardiffnlp/tweet_sentiment_multilingual train row 393"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_profanity": [
+      "fucking"
+    ],
+    "expected_score_max": -0.85,
+    "expected_score_min": -1.15,
+    "id": "gold-en-cardiff-profanity-033",
+    "language": "en",
+    "text": "Totally forgot about TVD bc I was too busy studying for my fucking test tomorrow ",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 408,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "EN profanity from cardiffnlp/tweet_sentiment_multilingual train row 408"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_profanity": [
+      "shit"
+    ],
+    "expected_score_max": -1.35,
+    "expected_score_min": -1.65,
+    "id": "gold-en-cardiff-profanity-034",
+    "language": "en",
+    "text": "Lost some respect for Nicki after that. You may be a queen in the rap world but when u start shit at an award show u look like garbage #VMAs ",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 453,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "EN profanity from cardiffnlp/tweet_sentiment_multilingual train row 453"
+  },
+  {
+    "expected_frustration": [],
+    "expected_positive": [],
+    "expected_profanity": [
+      "fucking",
+      "fucking"
+    ],
+    "expected_score_max": -1.85,
+    "expected_score_min": -2.15,
+    "id": "gold-en-cardiff-profanity-035",
+    "language": "en",
+    "text": "I can't believe I saw Ed Sheeran front fucking row at fucking red rocks and then the 2nd night I snuck in and saw him 5th row ",
+    "source": {
+      "dataset": "cardiffnlp/tweet_sentiment_multilingual",
+      "split": "train",
+      "row": 509,
+      "license": "CC BY-SA 3.0"
+    },
+    "note": "EN profanity from cardiffnlp/tweet_sentiment_multilingual train row 509"
   }
 ]
