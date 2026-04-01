@@ -131,3 +131,26 @@ Rationale:
 - all four are short enough to review manually
 - all four contain exact bundled expressions
 - they improve coverage for `positive`, `frustration`, and `profanity`
+
+## Second imported golden messages (PROD-753)
+
+Additional `pt` fixtures from `cardiffnlp/tweet_sentiment_multilingual`:
+
+| ID | Row | Expression | Type | Note |
+|----|-----|------------|------|------|
+| `gold-pt-cardiff-pos-001` | 338 | `maravilha` | positive | Short, clear exclamation |
+| `gold-pt-cardiff-pos-002` | 11 | `maravilhoso` | positive | Hair comment |
+| `gold-pt-cardiff-pos-003` | 71 | `espetacular` | positive | Ingredient diversity |
+| `gold-pt-cardiff-fru-001` | 606 | `lamentavel` | frustration | Pseudoscience criticism |
+| `gold-pt-cardiff-fru-002` | 846 | `vergonhoso` | frustration | Culinary knowledge gap |
+| `gold-pt-cardiff-fru-003` | 1323 | `absurdo` | frustration | Reality TV criticism |
+| `gold-pt-cardiff-pro-001` | 87 | `porra` | profanity | Exasperation |
+| `gold-pt-cardiff-pro-002` | 63 | `bosta` | profanity | TV complaint |
+
+Criteria applied:
+
+- Short (<200 chars)
+- Contains exactly one expression from bundled PT dictionary
+- Label matches expression polarity (label 2 = positive, label 0 = negative)
+- No ambiguous matches (filtered "show" as false positive for positive)
+- Trazable to specific dataset row

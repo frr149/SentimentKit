@@ -84,9 +84,9 @@ let fixture = GoldenFixture(
   id: deriveID(lang: lang, analysis: analysis),
   text: text,
   language: lang,
-  expectedProfanity: analysis.profanity.map(\.text).sorted(),
-  expectedFrustration: analysis.frustration.map(\.text).sorted(),
-  expectedPositive: analysis.positive.map(\.text).sorted(),
+  expectedProfanity: analysis.profanity.map(\.text),
+  expectedFrustration: analysis.frustration.map(\.text),
+  expectedPositive: analysis.positive.map(\.text),
   expectedScoreMin: formatScore(analysis.score - 0.15),
   expectedScoreMax: formatScore(analysis.score + 0.15)
 )

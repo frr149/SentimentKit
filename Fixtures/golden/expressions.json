@@ -1,200 +1,769 @@
 {
   "must_match": [
-    { "text": "joder", "type": "profanity", "language": "es" },
-    { "text": "fuck", "type": "profanity", "language": "en" },
-    { "text": "qué coño", "type": "profanity", "language": "es" },
-    { "text": "mierda", "type": "profanity", "language": "es" },
-    { "text": "aberración", "type": "frustration", "language": "es" },
-    { "text": "chapucero", "type": "frustration", "language": "es" },
-    { "text": "gravísimo", "type": "frustration", "language": "es" },
-    { "text": "no sirve", "type": "frustration", "language": "es" },
-    { "text": "bad", "type": "frustration", "language": "en" },
-    { "text": "very annoying", "type": "frustration", "language": "en" },
-    { "text": "terrible idea", "type": "frustration", "language": "en" },
-    { "text": "extremely frustrating", "type": "frustration", "language": "en" },
-    { "text": "doesn't work", "type": "frustration", "language": "en" },
-    { "text": "frustrating", "type": "frustration", "language": "en" },
-    { "text": "nonsense", "type": "frustration", "language": "en" },
-    { "text": "extremely annoying", "type": "frustration", "language": "en" },
-    { "text": "incredibly frustrating", "type": "frustration", "language": "en" },
-    { "text": "horrivel", "type": "frustration", "language": "pt" },
-    { "text": "horrendo", "type": "frustration", "language": "pt" },
-    { "text": "pessimo", "type": "frustration", "language": "pt" },
-    { "text": "ruim", "type": "frustration", "language": "pt" },
-    { "text": "terrivel", "type": "frustration", "language": "pt" },
-    { "text": "frustrierend", "type": "frustration", "language": "de" },
-    { "text": "furchtbar", "type": "frustration", "language": "de" },
-    { "text": "katastrophal", "type": "frustration", "language": "de" },
-    { "text": "affreux", "type": "frustration", "language": "fr" },
-    { "text": "horrible", "type": "frustration", "language": "fr" },
-    { "text": "nul", "type": "frustration", "language": "fr" },
-    { "text": "malo", "type": "frustration", "language": "es" },
-    { "text": "basura", "type": "frustration", "language": "es" },
-    { "text": "insufrible", "type": "frustration", "language": "es" },
-    { "text": "pésimo", "type": "frustration", "language": "es" },
-    { "text": "horrible", "type": "frustration", "language": "es" },
-    { "text": "gravísimos", "type": "frustration", "language": "es" },
-    { "text": "es insufrible", "type": "frustration", "language": "es" },
-    { "text": "no es soportable", "type": "frustration", "language": "es" },
-    { "text": "es basura", "type": "frustration", "language": "es" },
-    { "text": "bochornoso", "type": "frustration", "language": "es" },
-    { "text": "muy mal", "type": "frustration", "language": "es" },
-    { "text": "suena muy mal", "type": "frustration", "language": "es" },
-    { "text": "good", "type": "positive", "language": "en" },
-    { "text": "perfect", "type": "positive", "language": "en" },
-    { "text": "works great", "type": "positive", "language": "en" },
-    { "text": "excellent tool", "type": "positive", "language": "en" },
-    { "text": "very helpful", "type": "positive", "language": "en" },
-    { "text": "good catch", "type": "positive", "language": "en" },
-    { "text": "makes sense", "type": "positive", "language": "en" },
-    { "text": "excelente", "type": "positive", "language": "pt" },
-    { "text": "genial", "type": "positive", "language": "pt" },
-    { "text": "otimo", "type": "positive", "language": "pt" },
-    { "text": "hervorragend", "type": "positive", "language": "de" },
-    { "text": "prima", "type": "positive", "language": "de" },
-    { "text": "super", "type": "positive", "language": "de" },
-    { "text": "excellent", "type": "positive", "language": "fr" },
-    { "text": "formidable", "type": "positive", "language": "fr" },
-    { "text": "génial", "type": "positive", "language": "fr" },
-    { "text": "bueno", "type": "positive", "language": "es" },
-    { "text": "bien hecho", "type": "positive", "language": "es" },
-    { "text": "me encanta", "type": "positive", "language": "es" },
-    { "text": "never been better", "type": "positive", "language": "en" },
-    { "text": "me gusta", "type": "positive", "language": "es" },
-    { "text": "muy bueno", "type": "positive", "language": "es" },
-    { "text": "tenías razón", "type": "positive", "language": "es" },
-    { "text": "genial", "type": "positive", "language": "es" },
-    { "text": "gracias", "type": "positive", "language": "es" },
-    { "text": "fantástico", "type": "positive", "language": "es" },
-    { "text": "brutal", "type": "positive", "language": "es" },
-    { "text": "excelente", "type": "positive", "language": "es" },
-    { "text": "estupendo", "type": "positive", "language": "es" },
-    { "text": "mola", "type": "positive", "language": "es" },
-    { "text": "así me gusta", "type": "positive", "language": "es" },
-    { "text": "dios te lo pague", "type": "positive", "language": "es" },
-    { "text": "al ataque", "type": "positive", "language": "es" },
-    { "text": "porfa", "type": "positive", "language": "es" },
-    { "text": "por favor", "type": "positive", "language": "es" },
-    { "text": "guay", "type": "positive", "language": "es" },
-    { "text": "what the fuck", "type": "profanity", "language": "en" },
-    { "text": "for fuck s sake", "type": "profanity", "language": "en" },
-    { "text": "what the hell", "type": "profanity", "language": "en" },
-    { "text": "shit", "type": "profanity", "language": "en" },
-    { "text": "damn", "type": "profanity", "language": "en" },
-    { "text": "bullshit", "type": "profanity", "language": "en" },
-    { "text": "wtf", "type": "profanity", "language": "en" },
-    { "text": "ffs", "type": "profanity", "language": "en" },
-    { "text": "caralho", "type": "profanity", "language": "pt" },
-    { "text": "merda", "type": "profanity", "language": "pt" },
-    { "text": "scheiße", "type": "profanity", "language": "de" },
-    { "text": "scheisse", "type": "profanity", "language": "de" },
-    { "text": "merde", "type": "profanity", "language": "fr" },
-    { "text": "putain", "type": "profanity", "language": "fr" },
-    { "text": "por qué cojones", "type": "profanity", "language": "es" },
-    { "text": "al carajo", "type": "profanity", "language": "es" },
-    { "text": "me cago en tus muertos", "type": "profanity", "language": "es" },
-    { "text": "me cago en la puta", "type": "profanity", "language": "es" },
-    { "text": "me cago en todo", "type": "profanity", "language": "es" },
-    { "text": "la puta madre", "type": "profanity", "language": "es" },
-    { "text": "hasta los cojones", "type": "profanity", "language": "es" },
-    { "text": "dolor de huevos", "type": "profanity", "language": "es" },
-    { "text": "me tiene hasta los huevos", "type": "profanity", "language": "es" },
-    { "text": "no me jodas", "type": "profanity", "language": "es" },
-    { "text": "déjate de hostias", "type": "profanity", "language": "es" },
-    { "text": "se fue al carajo", "type": "profanity", "language": "es" },
-    { "text": "esta mierda", "type": "profanity", "language": "es" },
-    { "text": "era una mierda", "type": "profanity", "language": "es" },
-    { "text": "qué cojones", "type": "profanity", "language": "es" },
-    { "text": "que cojones", "type": "profanity", "language": "es" },
-    { "text": "que coño", "type": "profanity", "language": "es" },
-    { "text": "cojones", "type": "profanity", "language": "es" },
-    { "text": "coño", "type": "profanity", "language": "es" },
-    { "text": "jode", "type": "profanity", "language": "es" },
-    { "text": "hostia", "type": "profanity", "language": "es" },
-    { "text": "hostias", "type": "profanity", "language": "es" },
-    { "text": "puta", "type": "profanity", "language": "es" },
-    { "text": "putos", "type": "profanity", "language": "es" },
-    { "text": "cabrón", "type": "profanity", "language": "es" },
-    { "text": "gilipollas", "type": "profanity", "language": "es" },
-    { "text": "idiota", "type": "profanity", "language": "es" },
-    { "text": "inútil", "type": "profanity", "language": "es" },
-    { "text": "imbécil", "type": "profanity", "language": "es" },
-    { "text": "capullo", "type": "profanity", "language": "es" },
-    { "text": "coñazo", "type": "profanity", "language": "es" },
-    { "text": "idiotez", "type": "profanity", "language": "es" },
-    { "text": "cabreo", "type": "profanity", "language": "es" },
-    { "text": "cabreo generalizado", "type": "profanity", "language": "es" },
-    { "text": "ni hablar", "type": "frustration", "language": "es" },
-    { "text": "no me convence", "type": "frustration", "language": "es" },
-    { "text": "qué raro", "type": "frustration", "language": "es" },
-    { "text": "me parece bien", "type": "positive", "language": "es" },
-    { "text": "enhorabuena", "type": "positive", "language": "es" },
-    { "text": "一帆风顺", "type": "positive", "language": "zh" },
-    { "text": "开心", "type": "positive", "language": "zh" },
-    { "text": "完美", "type": "positive", "language": "zh" },
-    { "text": "优秀", "type": "positive", "language": "zh" },
-    { "text": "糟糕", "type": "frustration", "language": "zh" },
-    { "text": "烦死", "type": "frustration", "language": "zh" },
-    { "text": "烦躁", "type": "frustration", "language": "zh" },
-    { "text": "失望", "type": "frustration", "language": "zh" },
-    { "text": "去死", "type": "profanity", "language": "zh" },
-    { "text": "滚蛋", "type": "profanity", "language": "zh" },
-    { "text": "贱人", "type": "profanity", "language": "zh" },
-    { "text": "混蛋", "type": "profanity", "language": "zh" },
-    { "text": "brilhante", "type": "positive", "language": "pt" },
-    { "text": "perfeito", "type": "positive", "language": "pt" },
-    { "text": "decepcionante", "type": "frustration", "language": "pt" },
-    { "text": "frustrante", "type": "frustration", "language": "pt" },
-    { "text": "porra", "type": "profanity", "language": "pt" },
-    { "text": "fantastisch", "type": "positive", "language": "de" },
-    { "text": "toll", "type": "positive", "language": "de" },
-    { "text": "grossartig", "type": "positive", "language": "de" },
-    { "text": "perfekt", "type": "positive", "language": "de" },
-    { "text": "entsetzlich", "type": "frustration", "language": "de" },
-    { "text": "enttauschend", "type": "frustration", "language": "de" },
-    { "text": "verdammt", "type": "profanity", "language": "de" },
-    { "text": "mist", "type": "profanity", "language": "de" },
-    { "text": "magnifique", "type": "positive", "language": "fr" },
-    { "text": "impressionnant", "type": "positive", "language": "fr" },
-    { "text": "parfait", "type": "positive", "language": "fr" },
-    { "text": "superbe", "type": "positive", "language": "fr" },
-    { "text": "exasperant", "type": "frustration", "language": "fr" },
-    { "text": "terrible", "type": "frustration", "language": "fr" },
-    { "text": "出色", "type": "positive", "language": "zh" },
-    { "text": "棒", "type": "positive", "language": "zh" },
-    { "text": "厉害", "type": "positive", "language": "zh" },
-    { "text": "满意", "type": "positive", "language": "zh" },
-    { "text": "精彩", "type": "positive", "language": "zh" },
-    { "text": "讨厌", "type": "frustration", "language": "zh" },
-    { "text": "崩溃", "type": "frustration", "language": "zh" },
-    { "text": "烦人", "type": "frustration", "language": "zh" },
-    { "text": "他妈的", "type": "profanity", "language": "zh" },
-    { "text": "垃圾", "type": "profanity", "language": "zh" },
-    { "text": "操", "type": "profanity", "language": "zh" },
-    { "text": "废物", "type": "profanity", "language": "zh" }
+    {
+      "text": "joder",
+      "type": "profanity",
+      "language": "es"
+    },
+    {
+      "text": "fuck",
+      "type": "profanity",
+      "language": "en"
+    },
+    {
+      "text": "qué coño",
+      "type": "profanity",
+      "language": "es"
+    },
+    {
+      "text": "mierda",
+      "type": "profanity",
+      "language": "es"
+    },
+    {
+      "text": "aberración",
+      "type": "frustration",
+      "language": "es"
+    },
+    {
+      "text": "chapucero",
+      "type": "frustration",
+      "language": "es"
+    },
+    {
+      "text": "gravísimo",
+      "type": "frustration",
+      "language": "es"
+    },
+    {
+      "text": "no sirve",
+      "type": "frustration",
+      "language": "es"
+    },
+    {
+      "text": "bad",
+      "type": "frustration",
+      "language": "en"
+    },
+    {
+      "text": "very annoying",
+      "type": "frustration",
+      "language": "en"
+    },
+    {
+      "text": "terrible idea",
+      "type": "frustration",
+      "language": "en"
+    },
+    {
+      "text": "extremely frustrating",
+      "type": "frustration",
+      "language": "en"
+    },
+    {
+      "text": "doesn't work",
+      "type": "frustration",
+      "language": "en"
+    },
+    {
+      "text": "frustrating",
+      "type": "frustration",
+      "language": "en"
+    },
+    {
+      "text": "nonsense",
+      "type": "frustration",
+      "language": "en"
+    },
+    {
+      "text": "extremely annoying",
+      "type": "frustration",
+      "language": "en"
+    },
+    {
+      "text": "incredibly frustrating",
+      "type": "frustration",
+      "language": "en"
+    },
+    {
+      "text": "horrivel",
+      "type": "frustration",
+      "language": "pt"
+    },
+    {
+      "text": "horrendo",
+      "type": "frustration",
+      "language": "pt"
+    },
+    {
+      "text": "pessimo",
+      "type": "frustration",
+      "language": "pt"
+    },
+    {
+      "text": "ruim",
+      "type": "frustration",
+      "language": "pt"
+    },
+    {
+      "text": "terrivel",
+      "type": "frustration",
+      "language": "pt"
+    },
+    {
+      "text": "lamentavel",
+      "type": "frustration",
+      "language": "pt"
+    },
+    {
+      "text": "vergonhoso",
+      "type": "frustration",
+      "language": "pt"
+    },
+    {
+      "text": "absurdo",
+      "type": "frustration",
+      "language": "pt"
+    },
+    {
+      "text": "frustrierend",
+      "type": "frustration",
+      "language": "de"
+    },
+    {
+      "text": "furchtbar",
+      "type": "frustration",
+      "language": "de"
+    },
+    {
+      "text": "katastrophal",
+      "type": "frustration",
+      "language": "de"
+    },
+    {
+      "text": "affreux",
+      "type": "frustration",
+      "language": "fr"
+    },
+    {
+      "text": "horrible",
+      "type": "frustration",
+      "language": "fr"
+    },
+    {
+      "text": "nul",
+      "type": "frustration",
+      "language": "fr"
+    },
+    {
+      "text": "malo",
+      "type": "frustration",
+      "language": "es"
+    },
+    {
+      "text": "basura",
+      "type": "frustration",
+      "language": "es"
+    },
+    {
+      "text": "insufrible",
+      "type": "frustration",
+      "language": "es"
+    },
+    {
+      "text": "pésimo",
+      "type": "frustration",
+      "language": "es"
+    },
+    {
+      "text": "horrible",
+      "type": "frustration",
+      "language": "es"
+    },
+    {
+      "text": "gravísimos",
+      "type": "frustration",
+      "language": "es"
+    },
+    {
+      "text": "es insufrible",
+      "type": "frustration",
+      "language": "es"
+    },
+    {
+      "text": "no es soportable",
+      "type": "frustration",
+      "language": "es"
+    },
+    {
+      "text": "es basura",
+      "type": "frustration",
+      "language": "es"
+    },
+    {
+      "text": "bochornoso",
+      "type": "frustration",
+      "language": "es"
+    },
+    {
+      "text": "muy mal",
+      "type": "frustration",
+      "language": "es"
+    },
+    {
+      "text": "suena muy mal",
+      "type": "frustration",
+      "language": "es"
+    },
+    {
+      "text": "good",
+      "type": "positive",
+      "language": "en"
+    },
+    {
+      "text": "perfect",
+      "type": "positive",
+      "language": "en"
+    },
+    {
+      "text": "works great",
+      "type": "positive",
+      "language": "en"
+    },
+    {
+      "text": "excellent tool",
+      "type": "positive",
+      "language": "en"
+    },
+    {
+      "text": "very helpful",
+      "type": "positive",
+      "language": "en"
+    },
+    {
+      "text": "good catch",
+      "type": "positive",
+      "language": "en"
+    },
+    {
+      "text": "makes sense",
+      "type": "positive",
+      "language": "en"
+    },
+    {
+      "text": "excelente",
+      "type": "positive",
+      "language": "pt"
+    },
+    {
+      "text": "genial",
+      "type": "positive",
+      "language": "pt"
+    },
+    {
+      "text": "otimo",
+      "type": "positive",
+      "language": "pt"
+    },
+    {
+      "text": "maravilha",
+      "type": "positive",
+      "language": "pt"
+    },
+    {
+      "text": "maravilhoso",
+      "type": "positive",
+      "language": "pt"
+    },
+    {
+      "text": "espetacular",
+      "type": "positive",
+      "language": "pt"
+    },
+    {
+      "text": "hervorragend",
+      "type": "positive",
+      "language": "de"
+    },
+    {
+      "text": "prima",
+      "type": "positive",
+      "language": "de"
+    },
+    {
+      "text": "super",
+      "type": "positive",
+      "language": "de"
+    },
+    {
+      "text": "ausgezeichnet",
+      "type": "positive",
+      "language": "de"
+    },
+    {
+      "text": "toll",
+      "type": "positive",
+      "language": "de"
+    },
+    {
+      "text": "grossartig",
+      "type": "positive",
+      "language": "de"
+    },
+    {
+      "text": "perfekt",
+      "type": "positive",
+      "language": "de"
+    },
+    {
+      "text": "entsetzlich",
+      "type": "frustration",
+      "language": "de"
+    },
+    {
+      "text": "ekelhaft",
+      "type": "frustration",
+      "language": "de"
+    },
+    {
+      "text": "enttauschend",
+      "type": "frustration",
+      "language": "de"
+    },
+    {
+      "text": "verdammt",
+      "type": "profanity",
+      "language": "de"
+    },
+    {
+      "text": "mist",
+      "type": "profanity",
+      "language": "de"
+    },
+    {
+      "text": "magnifique",
+      "type": "positive",
+      "language": "fr"
+    },
+    {
+      "text": "impressionnant",
+      "type": "positive",
+      "language": "fr"
+    },
+    {
+      "text": "parfait",
+      "type": "positive",
+      "language": "fr"
+    },
+    {
+      "text": "superbe",
+      "type": "positive",
+      "language": "fr"
+    },
+    {
+      "text": "incroyable",
+      "type": "positive",
+      "language": "fr"
+    },
+    {
+      "text": "extraordinaire",
+      "type": "positive",
+      "language": "fr"
+    },
+    {
+      "text": "exasperant",
+      "type": "frustration",
+      "language": "fr"
+    },
+    {
+      "text": "terrible",
+      "type": "frustration",
+      "language": "fr"
+    },
+    {
+      "text": "degoutant",
+      "type": "frustration",
+      "language": "fr"
+    },
+    {
+      "text": "honteux",
+      "type": "frustration",
+      "language": "fr"
+    },
+    {
+      "text": "inacceptable",
+      "type": "frustration",
+      "language": "fr"
+    },
+    {
+      "text": "merde",
+      "type": "profanity",
+      "language": "fr"
+    },
+    {
+      "text": "出色",
+      "type": "positive",
+      "language": "zh"
+    },
+    {
+      "text": "棒",
+      "type": "positive",
+      "language": "zh"
+    },
+    {
+      "text": "厉害",
+      "type": "positive",
+      "language": "zh"
+    },
+    {
+      "text": "满意",
+      "type": "positive",
+      "language": "zh"
+    },
+    {
+      "text": "精彩",
+      "type": "positive",
+      "language": "zh"
+    },
+    {
+      "text": "讨厌",
+      "type": "frustration",
+      "language": "zh"
+    },
+    {
+      "text": "崩溃",
+      "type": "frustration",
+      "language": "zh"
+    },
+    {
+      "text": "烦人",
+      "type": "frustration",
+      "language": "zh"
+    },
+    {
+      "text": "他妈的",
+      "type": "profanity",
+      "language": "zh"
+    },
+    {
+      "text": "垃圾",
+      "type": "profanity",
+      "language": "zh"
+    },
+    {
+      "text": "操",
+      "type": "profanity",
+      "language": "zh"
+    },
+    {
+      "text": "废物",
+      "type": "profanity",
+      "language": "zh"
+    },
+    {
+      "text": "ausgezeichnet",
+      "type": "positive",
+      "language": "de"
+    },
+    {
+      "text": "toll",
+      "type": "positive",
+      "language": "de"
+    },
+    {
+      "text": "ekelhaft",
+      "type": "frustration",
+      "language": "de"
+    },
+    {
+      "text": "scheiss",
+      "type": "profanity",
+      "language": "de"
+    },
+    {
+      "text": "mist",
+      "type": "profanity",
+      "language": "de"
+    },
+    {
+      "text": "arsch",
+      "type": "profanity",
+      "language": "de"
+    },
+    {
+      "text": "au top",
+      "type": "positive",
+      "language": "fr"
+    },
+    {
+      "text": "bosta",
+      "type": "profanity",
+      "language": "pt"
+    },
+    {
+      "text": "brilhante",
+      "type": "positive",
+      "language": "pt"
+    },
+    {
+      "text": "caralho",
+      "type": "profanity",
+      "language": "pt"
+    },
+    {
+      "text": "con",
+      "type": "profanity",
+      "language": "fr"
+    },
+    {
+      "text": "deprimierend",
+      "type": "frustration",
+      "language": "de"
+    },
+    {
+      "text": "excellente",
+      "type": "positive",
+      "language": "fr"
+    },
+    {
+      "text": "maudit",
+      "type": "profanity",
+      "language": "fr"
+    },
+    {
+      "text": "merda",
+      "type": "profanity",
+      "language": "pt"
+    },
+    {
+      "text": "miserabel",
+      "type": "frustration",
+      "language": "de"
+    },
+    {
+      "text": "peinlich",
+      "type": "frustration",
+      "language": "de"
+    },
+    {
+      "text": "porra",
+      "type": "profanity",
+      "language": "pt"
+    },
+    {
+      "text": "show",
+      "type": "positive",
+      "language": "pt"
+    },
+    {
+      "text": "失望",
+      "type": "frustration",
+      "language": "zh"
+    },
+    {
+      "text": "完美",
+      "type": "positive",
+      "language": "zh"
+    },
+    {
+      "text": "愉快",
+      "type": "positive",
+      "language": "zh"
+    },
+    {
+      "text": "成功",
+      "type": "positive",
+      "language": "zh"
+    },
+    {
+      "text": "awesome",
+      "type": "positive",
+      "language": "en"
+    },
+    {
+      "text": "brilliant",
+      "type": "positive",
+      "language": "en"
+    },
+    {
+      "text": "bueno",
+      "type": "positive",
+      "language": "es"
+    },
+    {
+      "text": "bullshit",
+      "type": "profanity",
+      "language": "en"
+    },
+    {
+      "text": "enhorabuena",
+      "type": "positive",
+      "language": "es"
+    },
+    {
+      "text": "fucking",
+      "type": "profanity",
+      "language": "en"
+    },
+    {
+      "text": "gilipollas",
+      "type": "profanity",
+      "language": "es"
+    },
+    {
+      "text": "gracias",
+      "type": "positive",
+      "language": "es"
+    },
+    {
+      "text": "great",
+      "type": "positive",
+      "language": "en"
+    },
+    {
+      "text": "horrible",
+      "type": "frustration",
+      "language": "en"
+    },
+    {
+      "text": "me cago en la puta",
+      "type": "profanity",
+      "language": "es"
+    },
+    {
+      "text": "me gusta",
+      "type": "positive",
+      "language": "es"
+    },
+    {
+      "text": "mola",
+      "type": "positive",
+      "language": "es"
+    },
+    {
+      "text": "nice",
+      "type": "positive",
+      "language": "en"
+    },
+    {
+      "text": "puta",
+      "type": "profanity",
+      "language": "es"
+    },
+    {
+      "text": "puto",
+      "type": "profanity",
+      "language": "es"
+    },
+    {
+      "text": "que cojones",
+      "type": "profanity",
+      "language": "es"
+    },
+    {
+      "text": "shit",
+      "type": "profanity",
+      "language": "en"
+    },
+    {
+      "text": "what the fuck",
+      "type": "profanity",
+      "language": "en"
+    },
+    {
+      "text": "wtf",
+      "type": "profanity",
+      "language": "en"
+    }
   ],
   "must_not_match": [
-    { "text": "borra", "note": "command, not profanity" },
-    { "text": "huelga", "note": "neutral word" },
-    { "text": "exterminio", "note": "technical context" },
-    { "text": "hehco", "note": "typo, not profanity" },
-    { "text": "murió", "note": "technical context" },
-    { "text": "restos mortales", "note": "technical context" },
-    { "text": "manipulacion", "note": "technical context" },
-    { "text": "animal", "note": "ambiguous" },
-    { "text": "lo vá matar", "note": "typo" },
-    { "text": "lo vía matar", "note": "typo" },
-    { "text": "ok", "note": "neutral acknowledgment" },
-    { "text": "delete", "note": "technical command" },
-    { "text": "kill", "note": "technical command" },
-    { "text": "abort", "note": "technical command" },
-    { "text": "execute", "note": "technical command" },
-    { "text": "dump", "note": "technical command" },
-    { "text": "die", "note": "technical command" },
-    { "text": "crash", "note": "technical term" },
-    { "text": "fatal", "note": "technical term" },
-    { "text": "panic", "note": "technical term" },
-    { "text": "destroy", "note": "technical term" },
-    { "text": "nuke", "note": "technical slang" }
+    {
+      "text": "borra",
+      "note": "command, not profanity"
+    },
+    {
+      "text": "huelga",
+      "note": "neutral word"
+    },
+    {
+      "text": "exterminio",
+      "note": "technical context"
+    },
+    {
+      "text": "hehco",
+      "note": "typo, not profanity"
+    },
+    {
+      "text": "murió",
+      "note": "technical context"
+    },
+    {
+      "text": "restos mortales",
+      "note": "technical context"
+    },
+    {
+      "text": "manipulacion",
+      "note": "technical context"
+    },
+    {
+      "text": "animal",
+      "note": "ambiguous"
+    },
+    {
+      "text": "lo vá matar",
+      "note": "typo"
+    },
+    {
+      "text": "lo vía matar",
+      "note": "typo"
+    },
+    {
+      "text": "ok",
+      "note": "neutral acknowledgment"
+    },
+    {
+      "text": "delete",
+      "note": "technical command"
+    },
+    {
+      "text": "kill",
+      "note": "technical command"
+    },
+    {
+      "text": "abort",
+      "note": "technical command"
+    },
+    {
+      "text": "execute",
+      "note": "technical command"
+    },
+    {
+      "text": "dump",
+      "note": "technical command"
+    },
+    {
+      "text": "die",
+      "note": "technical command"
+    },
+    {
+      "text": "crash",
+      "note": "technical term"
+    },
+    {
+      "text": "fatal",
+      "note": "technical term"
+    },
+    {
+      "text": "panic",
+      "note": "technical term"
+    },
+    {
+      "text": "destroy",
+      "note": "technical term"
+    },
+    {
+      "text": "nuke",
+      "note": "technical slang"
+    }
   ]
 }
