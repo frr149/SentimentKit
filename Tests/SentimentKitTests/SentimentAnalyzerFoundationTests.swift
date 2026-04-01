@@ -18,7 +18,7 @@ struct SentimentAnalyzerFoundationTests {
 
     let result = analyzer.analyze("qué coño es esto")
 
-    #expect(result.profanity.map(\.text) == ["qué coño"])
+    #expect(result.profanity.map(\.text) == ["que cono"])
     #expect(result.score < 0)
   }
 
@@ -88,7 +88,7 @@ struct SentimentAnalyzerFoundationTests {
     #expect(strongerNegative.score < 0)
 
     #expect(profanity.language == nil || profanity.language == "de")
-    #expect(profanity.profanity.map(\.text) == ["scheiße", "scheiße"])
+    #expect(profanity.profanity.map(\.text) == ["scheisse", "scheisse"])
     #expect(profanity.score < 0)
 
     #expect(positive.language == "de")
@@ -119,11 +119,12 @@ struct SentimentAnalyzerFoundationTests {
 
   @Test
   func analyzeUsesInjectedKeywordDictionaries() throws {
+    // Note: Dictionary entries must be pre-normalized
     let profanity = try ExpressionDictionary(
       language: "es",
       type: .profanity,
       entries: [
-        .init(expression: "qué coño", score: -1.2),
+        .init(expression: "que cono", score: -1.2),
         .init(expression: "mierda", score: -1.0),
       ]
     )
@@ -141,7 +142,7 @@ struct SentimentAnalyzerFoundationTests {
     let result = analyzer.analyze("Qué coño, this is great... y una mierda")
 
     #expect(abs(result.score - (-1.2)) < 0.000_001)
-    #expect(result.profanity.map(\.text) == ["qué coño", "mierda"])
+    #expect(result.profanity.map(\.text) == ["que cono", "mierda"])
     #expect(result.positive.map(\.text) == ["great"])
     #expect(result.frustration.isEmpty)
   }

@@ -1,14 +1,14 @@
 # language: es
 # type: frustration
-aberración	-0.7
+aberracion	-0.7
 chapucero	-0.7
 basura	-0.7
 insufrible	-0.8
-pésimo	-1.0
+pesimo	-1.0
 horrible	-1.0
 malo	-1.0
-gravísimo	-1.0
-gravísimos	-1.0
+gravisimo	-1.0
+gravisimos	-1.0
 es insufrible	-0.8
 no es soportable	-0.8
 es basura	-0.8
@@ -18,13 +18,13 @@ muy mal	-0.8
 suena muy mal	-0.7
 ni hablar	-0.8
 no me convence	-0.7
-qué raro	-0.5
+que raro	-0.5
 # Latin American Spanish frustration expressions
-qué cagada	-0.9
+que cagada	-0.9
 esto es una cagada	-0.9
 vale verga	-0.8
 me tiene hasta la madre	-1.0
 estoy hasta la madre	-0.9
-qué huevada	-0.8
+que huevada	-0.8
 no sirve para nada	-0.8
 no sirve pa' nada	-0.8

@@ -4,7 +4,7 @@
     "text": "qué coño es esto, no funciona una mierda",
     "language": "es",
     "expected_profanity": [
-      "qué coño",
+      "que cono",
       "mierda"
     ],
     "expected_frustration": [],
@@ -80,7 +80,7 @@
     "language": "es",
     "expected_profanity": [],
     "expected_frustration": [
-      "aberración",
+      "aberracion",
       "chapucero"
     ],
     "expected_positive": [],
@@ -115,7 +115,7 @@
     "text": "qué coño es esto",
     "language": "es",
     "expected_profanity": [
-      "qué coño"
+      "que cono"
     ],
     "expected_frustration": [],
     "expected_positive": [],
