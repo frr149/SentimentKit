@@ -3,31 +3,45 @@
 # Source: Japanese polarity dictionaries (PN Table), common usage
 # See docs/JA_DATA_SOURCES.md for provenance
 # Note: Japanese profanity is context-dependent and often milder than Western equivalents
-# Using negative scores but less severe than Western profanity
+# Includes hiragana/katakana variants and common abbreviations
 バカ	-1.0
 馬鹿	-1.0
 阿呆	-1.0
 あほ	-1.0
+あーほ	-1.0
 クソ	-1.0
 糞	-1.0
 くそ	-1.0
+くーそ	-1.0
 死ね	-1.2
+しにゃれ	-1.2
 氏ね	-1.2
 ゴミ	-1.0
 塵	-1.0
 ごみ	-1.0
 気持ち悪い	-1.0
 キモい	-1.0
+きもい	-1.0
 気持ち悪	-1.0
 ブス	-1.0
+ぶす	-1.0
 不細工	-1.0
 デブ	-1.0
+でぶ	-1.0
 太	-0.8
 ハゲ	-1.0
 禿	-1.0
+はげ	-1.0
 ちくしょう	-1.0
 畜生	-1.0
+ちくしょう	-1.0
 くそったれ	-1.0
 クソったれ	-1.0
+くたばれ	-1.0
 ふざけるな	-1.0
 ふざけんな	-1.0
+ふざけんじゃねえ	-1.0
+うざい	-1.0
+うざ	-1.0
+うざったい	-1.0
+マジうざい	-1.0
