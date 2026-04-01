@@ -1,7 +1,7 @@
 # language: de
 # type: profanity
 # Source: SentiWS 2.0, common usage (see docs/DE_DATA_SOURCES.md)
-scheiße	-1.0
+scheisse	-1.0
 verdammt	-1.0
 arschloch	-1.0
 wichser	-1.0
@@ -14,8 +14,8 @@ trottel	-1.0
 idiot	-1.0
 dummkopf	-1.0
 schwachkopf	-1.0
-blödmann	-1.0
-scheiß	-1.0
+blodmann	-1.0
+scheiss	-1.0
 mist	-1.0
 verflucht	-1.0
 gottverdammt	-1.2

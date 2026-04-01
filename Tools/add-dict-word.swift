@@ -11,7 +11,6 @@ struct AddDictWord {
     case invalidType(String)
     case invalidScore(String)
     case wordAlreadyExists(String, String)
-    case duplicateAfterNormalization(String, String, String)
     case fileNotFound(String)
 
     var errorDescription: String? {
@@ -24,11 +23,6 @@ struct AddDictWord {
         return "Invalid score: '\(score)'. Must be a number like -1.0, 0.8, 1.5"
       case .wordAlreadyExists(let word, let file):
         return "Word '\(word)' already exists in \(file)"
-      case .duplicateAfterNormalization(let word, let normalized, let existing):
-        return """
-        Word '\(word)' normalizes to '\(normalized)' which already exists as '\(existing)'.
-        This would create a duplicate after normalization.
-        """
       case .fileNotFound(let file):
         return "Dictionary file not found: \(file)"
       }
@@ -83,7 +77,7 @@ struct AddDictWord {
     // Normalize the new word
     let normalizedWord = normalizeWord(word, language: language)
 
-    // Check for existing entries (both original and normalized)
+    // Check for existing entries (all entries in the file are already normalized)
     for line in lines {
       let trimmed = line.trimmingCharacters(in: .whitespaces)
       guard !trimmed.isEmpty && !trimmed.hasPrefix("#") else { continue }
@@ -91,25 +85,21 @@ struct AddDictWord {
       let parts = trimmed.components(separatedBy: "\t")
       let existingWord = parts[0].trimmingCharacters(in: .whitespaces)
 
-      // Check exact match
-      if existingWord == word {
-        throw ValidationError.wordAlreadyExists(word, fileName)
-      }
-
-      // Check normalized match
-      let existingNormalized = normalizeWord(existingWord, language: language)
-      if existingNormalized == normalizedWord && existingWord != word {
-        throw ValidationError.duplicateAfterNormalization(word, normalizedWord, existingWord)
+      // Since all entries are pre-normalized, just compare directly
+      if existingWord == normalizedWord {
+        throw ValidationError.wordAlreadyExists(normalizedWord, fileName)
       }
     }
 
-    // Append the new entry
-    let newEntry = "\(word)\t\(scoreString)"
+    // Append the new entry (normalized form)
+    let newEntry = "\(normalizedWord)\t\(scoreString)"
     let newContent = content + newEntry + "\n"
     try newContent.write(toFile: filePath, atomically: true, encoding: .utf8)
 
-    print("✅ Added '\(word)' to \(fileName) with score \(scoreString)")
-    print("   Normalized form: '\(normalizedWord)'")
+    print("✅ Added '\(normalizedWord)' to \(fileName) with score \(scoreString)")
+    if normalizedWord != word {
+      print("   (normalized from '\(word)')")
+    }
   }
 
   func normalizeWord(_ word: String, language: String) -> String {

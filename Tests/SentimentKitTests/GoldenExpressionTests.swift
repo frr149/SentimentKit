@@ -55,7 +55,7 @@ struct GoldenExpressionTests {
 
     let oleTusCojones = analyzer.analyze("olé tus cojones")
     #expect(oleTusCojones.score > 1.0, "olé tus cojones should be strongly positive")
-    #expect(oleTusCojones.positive.contains(where: { $0.text == "olé tus cojones" }))
+    #expect(oleTusCojones.positive.contains(where: { $0.text == "ole tus cojones" }))
     #expect(oleTusCojones.profanity.isEmpty, "olé tus cojones should not trigger profanity")
 
     // Insults should still be negative

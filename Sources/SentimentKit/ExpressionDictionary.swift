@@ -45,10 +45,11 @@ public struct ExpressionDictionary: Sendable, Equatable {
       throw ExpressionDictionaryError.missingMetadata("language")
     }
 
+    // Since entries are pre-normalized in TSV files, duplicate detection is just string equality.
+    // No normalization step needed - what you see in the file is what gets compared.
     var seen = Set<String>()
     for entry in entries {
-      let normalizedExpression = Self.normalize(entry.expression, language: normalizedLanguage)
-      guard normalizedExpression.isEmpty == false else {
+      guard entry.expression.isEmpty == false else {
         throw ExpressionDictionaryError.invalidEntry(
           line: 0, reason: "expression must not be empty")
       }
@@ -60,7 +61,7 @@ public struct ExpressionDictionary: Sendable, Equatable {
         )
       }
 
-      let inserted = seen.insert(normalizedExpression).inserted
+      let inserted = seen.insert(entry.expression).inserted
       if inserted == false {
         throw ExpressionDictionaryError.duplicateExpression(entry.expression)
       }
@@ -178,9 +179,5 @@ public struct ExpressionDictionary: Sendable, Equatable {
     }
 
     return (language, type, entries)
-  }
-
-  private static func normalize(_ expression: String, language: String) -> String {
-    TextNormalization.normalizeExpression(expression, language: language)
   }
 }

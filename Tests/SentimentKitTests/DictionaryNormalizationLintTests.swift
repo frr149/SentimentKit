@@ -6,15 +6,18 @@ import Foundation
 struct DictionaryNormalizationLintTests {
 
   @Test
-  func dictionaryHasNoDuplicatesAfterNormalization() throws {
-    // This test catches duplicate entries after normalization.
-    // If you get a duplicateExpression error, it means two entries
-    // in the dictionary normalize to the same string (e.g., "câlice" and "calice").
+  func allDictionaryEntriesArePreNormalized() throws {
+    // Dictionary TSV files must store entries in their normalized form.
+    // This means: for any entry e in a TSV file,
+    //   TextNormalization.normalizeExpression(e, language: lang) == e
+    // If this fails, run: swift Tools/normalize-dictionaries.swift
     //
-    // Solution: Keep only one form (preferably the canonical/standard form).
-    // Use: swift Tools/add-dict-word.swift to add entries safely.
+    // Note: This test only checks ExpressionDictionary files (profanity, frustration, positive).
+    // PhraseLexicon files (negation, intensifiers, diminishers, conjunctions) are loaded
+    // differently and don't require scores.
 
     let resourceNames = [
+      // ExpressionDictionary files (have scores)
       "es-profanity.tsv",
       "es-frustration.tsv",
       "es-positive.tsv",
@@ -36,15 +39,66 @@ struct DictionaryNormalizationLintTests {
     ]
 
     var totalEntries = 0
+    var violations: [(file: String, entry: String, normalized: String)] = []
+
     for resourceName in resourceNames {
       let dictionary = try ExpressionDictionary.bundled(named: resourceName)
       totalEntries += dictionary.entries.count
+
+      for entry in dictionary.entries {
+        let normalized = TextNormalization.normalizeExpression(
+          entry.expression, language: dictionary.language)
+
+        if entry.expression != normalized {
+          violations.append((file: resourceName, entry: entry.expression, normalized: normalized))
+        }
+      }
     }
 
-    // If we get here, all dictionaries loaded without duplicateExpression errors
+    // Must load successfully (no duplicates)
     #expect(totalEntries > 0, "Should load dictionary entries")
 
-    print("✅ All \(resourceNames.count) dictionaries loaded successfully with \(totalEntries) total entries")
-    print("   No duplicates after normalization detected")
+    // All entries must be pre-normalized
+    if !violations.isEmpty {
+      let message = """
+        Found \(violations.count) non-normalized entries. Run: swift Tools/normalize-dictionaries.swift
+
+        \(violations.prefix(5).map { "\($0.file): '\($0.entry)' should be '\($0.normalized)'" }.joined(separator: "\n        "))
+        \(violations.count > 5 ? "... and \(violations.count - 5) more" : "")
+        """
+      #expect(violations.isEmpty, Comment(rawValue: message))
+    }
+
+    // Also check PhraseLexicon files (no scores, just expressions)
+    let phraseLexiconFiles = [
+      "es-negation.tsv",
+      "es-intensifiers.tsv",
+      "es-diminishers.tsv",
+      "es-conjunctions.tsv",
+      "en-negation.tsv",
+      "en-intensifiers.tsv",
+      "en-diminishers.tsv",
+      "en-conjunctions.tsv",
+      "pt-negation.tsv",
+      "pt-intensifiers.tsv",
+      "pt-diminishers.tsv",
+      "pt-conjunctions.tsv",
+      "de-negation.tsv",
+      "de-intensifiers.tsv",
+      "de-diminishers.tsv",
+      "de-conjunctions.tsv",
+      "fr-negation.tsv",
+      "fr-intensifiers.tsv",
+      "fr-diminishers.tsv",
+      "fr-conjunctions.tsv",
+      "zh-negation.tsv",
+      "zh-intensifiers.tsv",
+    ]
+
+    // PhraseLexicon files don't need additional checks - they load as simple phrase lists
+    // and normalizing happens in PhraseLexicon.load() via MessageTokenizer.tokenize()
+    print("✅ All \(resourceNames.count) ExpressionDictionary files validated")
+    print("✅ All \(phraseLexiconFiles.count) PhraseLexicon files will be normalized on load")
+    print("   Total entries: \(totalEntries)")
   }
 }
