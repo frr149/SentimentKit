@@ -41,8 +41,11 @@ Message
   │  Conversion tooling lives in Tools/CoreMLConversion/.
   │  The model artifact is generated locally, not shipped in the repo.
   │
-  └─ Layer 4: LLM scorer (optional, requires API)
+  └─ Layer 4: LLM scorer (optional)
      For ambiguous cases only. Never generates expressions.
+     Cloud: OpenAI, Anthropic (requires API key).
+     On-device: Apple Intelligence via FoundationModels
+     (macOS 26+ / iOS 26+, no API key, no network).
 ```
 
 Each layer is optional. v1 ships without the CoreML model; the default package works with keywords + VADER + NLTagger fallback.
@@ -127,31 +130,41 @@ let session = analyzer.analyzeSession([
 
 ## Optional LLM session scoring
 
-The default API stays synchronous and offline-first. If you want an optional remote LLM layer, use the separate async entrypoint.
+The default API stays synchronous and offline-first. If you want an optional LLM layer, use the separate async entrypoint.
+
+### On-device with Apple Intelligence (no API key, no network)
 
 ```swift
 import SentimentKit
 
 let analyzer = SentimentAnalyzer()
-let scorer = try OpenAISentimentScorer()
+let scorer = try AppleIntelligenceScorer()  // macOS 26+ / iOS 26+
 
 let session = try await analyzer.analyzeSession([
     "works now, thanks",
     "this was painful to debug",
 ], using: scorer)
-
-// `session.meanScore` may be refined by the LLM scorer.
-// Expression matches still come only from deterministic layers.
 ```
 
-The remote scorer only contributes `meanScore`. It never adds, removes, or invents expressions.
+Runs entirely on-device via Apple's FoundationModels framework (~3B parameter model). Typical latency: ~600ms for a session of 50 messages. Check availability at runtime with `AppleIntelligenceScorer.isAvailable`.
+
+### Cloud providers
+
+```swift
+let scorer = try OpenAISentimentScorer()
+// or
+let scorer = try AnthropicSentimentScorer()
+```
+
+All scorers only contribute `meanScore`. They never add, remove, or invent expressions.
 
 Provider wrappers currently included:
 
+- `AppleIntelligenceScorer` using Apple Intelligence on-device (FoundationModels, macOS 26+/iOS 26+)
 - `OpenAISentimentScorer` using OpenAI's Responses API
 - `AnthropicSentimentScorer` using Anthropic's Messages API
 
-Both wrappers enforce simple request budgets so the optional LLM layer remains explicit and bounded.
+All wrappers enforce simple request budgets so the LLM layer remains explicit and bounded.
 
 ## CoreML layer
 
@@ -214,6 +227,7 @@ This keeps the SwiftPM package lightweight while preserving a documented path fo
 The rules for what may enter built-in dictionaries, golden fixtures, or synthetic candidate queues are documented in [AGENTS.md](AGENTS.md) (anti-hallucination rules).
 
 Golden messages source datasets:
+
 - ES/EN/PT/DE/FR: [cardiffnlp/tweet_sentiment_multilingual](https://huggingface.co/datasets/cardiffnlp/tweet_sentiment_multilingual) (CC BY-SA 3.0)
 - ZH: [sepidmnorozy/Chinese_sentiment](https://huggingface.co/datasets/sepidmnorozy/Chinese_sentiment)
 
